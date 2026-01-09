@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"CuidadorIdoso",
-    "path":"CuidadorIdoso.yyp",
+    "name":"sprite",
+    "path":"folders/sprite.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
