@@ -14,6 +14,7 @@ y += vveloc;
 
 dir = floor((point_direction(x, y, mouse_x, mouse_y) + 45)/90);
 
+if hveloc == 0 and vveloc == 0 {
 switch dir{
 	default:
 	  sprite_index = spr_acacia_parada_direita
@@ -28,4 +29,19 @@ switch dir{
 	  sprite_index = spr_acacia_parada_baixo
 	break;
 }
-	
+ }else{
+	 switch dir{
+	default:
+	  sprite_index = spr_acacia_caminhando_direita
+    break;
+	case 1:
+      sprite_index = spr_acacia_caminhando_cima
+    break;
+	case 2:
+	  sprite_index = spr_acacia_caminhando_esquerda
+	break;
+	case 3:
+	  sprite_index = spr_acacia_caminhando_baixo
+	break;
+}
+ } 
