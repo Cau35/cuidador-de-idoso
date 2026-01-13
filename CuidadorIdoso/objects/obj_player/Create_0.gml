@@ -1,11 +1,3 @@
-direita = -1;
-cima  = -1;
-esquerda = -1;
-baixo = -1;
+player = new Personagem_Cuidador();
 
-hveloc = 0;
-vveloc = 0;
-
-veloc = 2;
-
-dir = 0
+sprite_index = player.spr_parado_baixo
