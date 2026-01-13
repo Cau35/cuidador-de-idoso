@@ -1,4 +1,4 @@
-player = new Personagem_CuidadorSJ();
+player = new Personagem_CuidadorCJ();
 
 velh = 0; 
 velv = 0; 
