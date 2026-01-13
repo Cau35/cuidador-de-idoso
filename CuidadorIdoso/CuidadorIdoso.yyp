@@ -26,6 +26,8 @@
     {"id":{"name":"obj_acacia","path":"objects/obj_acacia/obj_acacia.yy",},},
     {"id":{"name":"obj_chico","path":"objects/obj_chico/obj_chico.yy",},},
     {"id":{"name":"obj_clesia","path":"objects/obj_clesia/obj_clesia.yy",},},
+    {"id":{"name":"obj_control","path":"objects/obj_control/obj_control.yy",},},
+    {"id":{"name":"obj_fundo","path":"objects/obj_fundo/obj_fundo.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_seletor","path":"objects/obj_seletor/obj_seletor.yy",},},
     {"id":{"name":"Object2","path":"objects/Object2/Object2.yy",},},
