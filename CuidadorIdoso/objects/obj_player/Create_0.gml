@@ -2,6 +2,8 @@ switch(global.player)
 {
 	case 0: player = new Personagem_CuidadorSJ(); break;
 	case 1: player = new Personagem_CuidadorCJ(); break;
+	case 2: player = new Personagem_CuidadoraSJ(); break;
+	case 3: player = new Personagem_CuidadoraCJ(); break; 
 }
 
 velh = 0; 
