@@ -7,8 +7,8 @@ function Personagem_CuidadorSJ() constructor {
 }
 function Personagem_CuidadoraSJ() constructor {
 	
-	sprite_idle = spr_acacia_parada_baixo
-	sprite_walk = spr_acacia_caminhando_direita
+	sprite_idle = spr_pmsj_parada_baixo
+	sprite_walk = spr_pmsj_caminhando_direita
 }
 function Personagem_CuidadorCJ() constructor {
 
@@ -17,8 +17,8 @@ function Personagem_CuidadorCJ() constructor {
 }
 function Personagem_CuidadoraCJ() constructor {
 	
-	sprite_idle = spr_clesia_parada_baixo
-	sprite_walk = spr_clesia_caminhando_direita
+	sprite_idle = spr_pmcj_parada_baixo
+	sprite_walk = spr_pmcj_caminhando_direita
 }
 
 global.player = 0;
