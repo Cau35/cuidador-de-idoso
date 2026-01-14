@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_chico_caminhando_baixo",
-    "path":"sprites/spr_chico_caminhando_baixo/spr_chico_caminhando_baixo.yy",
+    "name":"spr_acacia_caminhando_direita",
+    "path":"sprites/spr_acacia_caminhando_direita/spr_acacia_caminhando_direita.yy",
   },
   "spriteMaskId":null,
   "visible":true,
