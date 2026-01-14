@@ -15,6 +15,9 @@ down = 0
 left = 0 
 right = 0
 
+image_xscale = 0.4;
+image_yscale = 0.4;
+
 sprite_index = player.sprite_idle
 
 pega_input = function() { 
@@ -62,7 +65,7 @@ estado_walk = function()
 	if (velh != 0)
 
 	{
-	image_xscale = sign(velh);
+	image_xscale = abs(image_xscale) * sign(velh);
 	}
 
 }
