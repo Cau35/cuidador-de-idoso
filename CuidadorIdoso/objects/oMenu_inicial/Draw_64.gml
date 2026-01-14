@@ -31,7 +31,7 @@ for(var i = 0; i < tam_menu; i++)
 			switch menu_inicial[i]
 			{
 				case menu_inicial[0]: //Jogar
-					show_message("Vamos Jogar");
+					room_goto(Room_selecao);
 					break;
 				case menu_inicial[1]: // Opções
 					show_message("Opções")
