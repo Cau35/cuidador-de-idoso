@@ -22,6 +22,7 @@
   },
   "name":"CuidadorIdoso",
   "resources":[
+    {"id":{"name":"fmenu_inicial","path":"fonts/fmenu_inicial/fmenu_inicial.yy",},},
     {"id":{"name":"Camera","path":"objects/Camera/Camera.yy",},},
     {"id":{"name":"obj_acacia","path":"objects/obj_acacia/obj_acacia.yy",},},
     {"id":{"name":"obj_chico","path":"objects/obj_chico/obj_chico.yy",},},
