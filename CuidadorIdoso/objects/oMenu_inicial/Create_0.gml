@@ -1,0 +1,1 @@
+menu_inicial = ["Jogar", "Opções", "Sair"];
