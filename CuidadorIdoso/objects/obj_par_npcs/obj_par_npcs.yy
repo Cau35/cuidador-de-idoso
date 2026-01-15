@@ -1,20 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_clesia",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_par_npcs",
+  "eventList":[],
   "managed":true,
-  "name":"obj_clesia",
+  "name":"obj_par_npcs",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
     "path":"folders/objeto.yy",
   },
-  "parentObjectId":{
-    "name":"obj_par_npcs",
-    "path":"objects/obj_par_npcs/obj_par_npcs.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_clesia_parada_baixo",
-    "path":"sprites/spr_clesia_parada_baixo/spr_clesia_parada_baixo.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

@@ -1,0 +1,1 @@
+nome = "Thats is my granny she get hit by a bazooka";
