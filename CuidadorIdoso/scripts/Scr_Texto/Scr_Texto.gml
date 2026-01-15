@@ -11,7 +11,7 @@ function scr_textos(){
 	}
 }
 
-function ds_drid_add_row(){
+function ds_grid_add_row(){
 	///@arg ds_grid
 	
 	var _grid = argument[0];
