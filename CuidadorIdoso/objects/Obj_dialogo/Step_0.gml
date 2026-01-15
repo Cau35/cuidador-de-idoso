@@ -3,9 +3,10 @@ if (inicializar == false) {
     inicializar = true;
 }
 if (mouse_check_button_pressed(mb_left)) {
-    if (pagina < array_length(texto) - 1) {
+    if pagina < ds_grid_height(texto_grid) - 1 {
         pagina++;
     } else {
+		global.dialogo = false;
         instance_destroy();
     }
 }
