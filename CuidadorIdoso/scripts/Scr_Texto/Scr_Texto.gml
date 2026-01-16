@@ -14,6 +14,14 @@ function scr_textos(){
 			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2", voz_npc);
 			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Quinto textoooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+		break;
+		case "Prof":
+			ds_grid_add_text("Oi Professora, Só na paz?", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2", voz_npc);
+			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Quinto textoooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
 		break;
 	}
 }
