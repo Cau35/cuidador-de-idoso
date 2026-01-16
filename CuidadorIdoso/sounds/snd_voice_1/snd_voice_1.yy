@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_voice_1",
   "parent":{
-    "name":"CuidadorIdoso",
-    "path":"CuidadorIdoso.yyp",
+    "name":"Sons",
+    "path":"folders/Sons.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

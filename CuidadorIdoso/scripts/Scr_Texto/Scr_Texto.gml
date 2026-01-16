@@ -1,3 +1,4 @@
+#region Textos
 function scr_textos(){
 	// Retrato do PLAYER depende de quem foi escolhido na seleção
 	// global.player: 0/1 = cuidador (masc), 2/3 = cuidadora (fem)
@@ -15,17 +16,26 @@ function scr_textos(){
 			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Quinto textoooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				add_op("Primeira Opção",								"Resposta 1");
+				add_op("Segunda Opção, só que com mais texto",			"Resposta 2");
+				add_op("Terceira Opção, só que com mais texto ainda",	"Resposta 3");
 		break;
-		case "Prof":
-			ds_grid_add_text("Oi Professora, Só na paz?", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2", voz_npc);
-			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Quinto textoooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
-		break;
+				case "Resposta 1":
+				ds_grid_add_text("Essa é a primeira resposta.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Textooooooooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+				case "Resposta 2":
+				ds_grid_add_text("Essa é a segunda resposta.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Textooooooooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+				case "Resposta 3":
+				ds_grid_add_text("Essa é a terceira resposta.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Textooooooooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
 	}
 }
-
+#endregion
+#region ds_grid_add_row
 function ds_grid_add_row(){
 	///@arg ds_grid
 	
@@ -33,7 +43,8 @@ function ds_grid_add_row(){
 	ds_grid_resize(_grid, ds_grid_width(_grid), ds_grid_height(_grid)+ 1);
 	return(ds_grid_height(_grid)-1);
 }
-
+#endregion
+#region ds_grid_add_text
 function ds_grid_add_text(){
 	///@arg texto
 	///@arg retrato
@@ -47,4 +58,12 @@ function ds_grid_add_text(){
 	_grid[# 2, _y] = argument[2];
 	_grid[# 3, _y] = argument[3];
 	_grid[# 4, _y] = argument[4];
+}
+#endregion
+
+function add_op(_texto, _resposta){
+	op[op_num] = _texto;
+	op_resposta[op_num] = _resposta;
+	
+	op_num++;
 }

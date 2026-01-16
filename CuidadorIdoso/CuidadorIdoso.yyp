@@ -10,6 +10,7 @@
   },
   "defaultScriptType":1,
   "Folders":[
+    {"$GMFolder":"","%Name":"Sons","folderPath":"folders/Sons.yy","name":"Sons","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"objeto","folderPath":"folders/objeto.yy","name":"objeto","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Script","folderPath":"folders/Script.yy","name":"Script","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"sprite","folderPath":"folders/sprite.yy","name":"sprite","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -72,6 +73,8 @@
     {"id":{"name":"spr_clesia_parada_cima","path":"sprites/spr_clesia_parada_cima/spr_clesia_parada_cima.yy",},},
     {"id":{"name":"spr_clesia_parada_direita","path":"sprites/spr_clesia_parada_direita/spr_clesia_parada_direita.yy",},},
     {"id":{"name":"spr_clesia_parada_esquerda","path":"sprites/spr_clesia_parada_esquerda/spr_clesia_parada_esquerda.yy",},},
+    {"id":{"name":"spr_op_background","path":"sprites/spr_op_background/spr_op_background.yy",},},
+    {"id":{"name":"spr_op_seletor","path":"sprites/spr_op_seletor/spr_op_seletor.yy",},},
     {"id":{"name":"spr_phcj_caminhando_baixo","path":"sprites/spr_phcj_caminhando_baixo/spr_phcj_caminhando_baixo.yy",},},
     {"id":{"name":"spr_phcj_caminhando_cima","path":"sprites/spr_phcj_caminhando_cima/spr_phcj_caminhando_cima.yy",},},
     {"id":{"name":"spr_phcj_caminhando_direita","path":"sprites/spr_phcj_caminhando_direita/spr_phcj_caminhando_direita.yy",},},

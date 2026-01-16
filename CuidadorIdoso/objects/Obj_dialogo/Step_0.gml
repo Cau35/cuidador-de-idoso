@@ -6,7 +6,7 @@ if (inicializar == false) {
 }
 
 // Clique para avançar / pular texto
-if (mouse_check_button_pressed(mb_left)) {
+if global.tecla{
 
     var texto = texto_grid[# Infos.Texto, pagina];
     var len = string_length(texto);
@@ -44,8 +44,12 @@ if (mouse_check_button_pressed(mb_left)) {
             alarm[0] = 1;
         }
         else {
-            global.dialogo = false;
-            instance_destroy();
-        }
-    }
+			if op_num != 0{
+				op_draw = true;
+			}else{
+	            global.dialogo = false;
+	            instance_destroy();
+	        }
+	    }
+	}
 }
