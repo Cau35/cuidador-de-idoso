@@ -60,10 +60,11 @@ function ds_grid_add_text(){
 	_grid[# 4, _y] = argument[4];
 }
 #endregion
-
+#region add_op
 function add_op(_texto, _resposta){
 	op[op_num] = _texto;
 	op_resposta[op_num] = _resposta;
 	
 	op_num++;
 }
+#endregion
