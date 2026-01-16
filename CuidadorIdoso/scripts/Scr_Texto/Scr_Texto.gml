@@ -36,3 +36,29 @@ function ds_grid_add_text(){
 	_grid[# 2, _y] = argument[2];
 	_grid[# 3, _y] = argument[3];
 }
+function scr_adicionar_opcao(_texto, _resposta) {
+    op[op_num] = _texto;
+    op_resposta[op_num] = _resposta;
+    op_num++;
+}
+function scr_textos2(){
+    switch(nome){
+        
+        // Exemplo de um NPC que inicia a conversa
+        case "npc_guarda":
+            scr_adicionar_texto("Parado aí! Identifique-se.");
+            scr_adicionar_opcao("Sou um viajante", "resposta_viajante");
+            scr_adicionar_opcao("Não te interessa!", "resposta_grosseira");
+        break;
+
+        // Caso o jogador escolha "Sou um viajante"
+        case "resposta_viajante":
+            scr_adicionar_texto("Entendo. Pode passar, mas tenha cuidado.");
+        break;
+
+        // Caso o jogador escolha "Não te interessa!"
+        case "resposta_grosseira":
+            scr_adicionar_texto("Ora, seu abusado! Saia daqui agora!");
+        break;
+    }
+}

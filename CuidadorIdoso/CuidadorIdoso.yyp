@@ -35,6 +35,7 @@
     {"id":{"name":"obj_par_npcs","path":"objects/obj_par_npcs/obj_par_npcs.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_seletor","path":"objects/obj_seletor/obj_seletor.yy",},},
+    {"id":{"name":"Obj_true","path":"objects/Obj_true/Obj_true.yy",},},
     {"id":{"name":"Object2","path":"objects/Object2/Object2.yy",},},
     {"id":{"name":"oMenu_inicial","path":"objects/oMenu_inicial/oMenu_inicial.yy",},},
     {"id":{"name":"GameMenu","path":"rooms/GameMenu/GameMenu.yy",},},
