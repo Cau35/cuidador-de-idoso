@@ -8,7 +8,7 @@ enum Infos{
 
 
 npc_nome = "";
-texto_grid = ds_grid_create(4, 0);
+texto_grid = ds_grid_create(5, 0);
 pagina = 0;
 inicializar = false;
 
