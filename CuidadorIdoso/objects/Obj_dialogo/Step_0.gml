@@ -46,10 +46,22 @@ if (global.tecla) {
                 global.tecla = false;
             }
             else {
-                // 4) sem opção: encerra o diálogo
-                global.dialogo = false;
-                instance_destroy();
-            }
+			    // 4) sem opção: encerra o diálogo
+
+			    // IMPORTANTÍSSIMO: consome a tecla pra não reabrir no mesmo frame
+			    global.tecla = false;
+
+			    // (opcional, mas recomendado) garante que o som não fique tocando
+			    if (voice_id != -1 && audio_is_playing(voice_id)) {
+			        audio_stop_sound(voice_id);
+			    }
+			    voice_id = -1;
+			    voice_asset = noone;
+			    alarm[0] = -1;
+
+			    global.dialogo = false;
+			    instance_destroy();
+			}
         }
     }
 }
