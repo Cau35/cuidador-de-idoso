@@ -2,7 +2,8 @@ enum Infos{
 	Texto,
 	Retrato,
 	Lado,
-	Nome
+	Nome,
+	Voz
 }
 
 
@@ -13,3 +14,4 @@ inicializar = false;
 
 caractere = 0;
 alarm[0] = 1;
+voice_id = -1;

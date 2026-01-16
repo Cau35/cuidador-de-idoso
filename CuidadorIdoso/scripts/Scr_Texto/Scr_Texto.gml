@@ -3,14 +3,17 @@ function scr_textos(){
 	// global.player: 0/1 = cuidador (masc), 2/3 = cuidadora (fem)
 	var _p_neutro = (global.player <= 1) ? portrait_phn : portrait_pmn;
 	var _p_falando = (global.player <= 1) ? portrait_phf : portrait_pmf;
+	var voz_player = snd_voice_1;
+	var voz_npc = snd_voice_2;
+	
 	
 	switch(npc_nome)
 	{
 		case "Thats is my granny she get hit by a bazooka":
-			ds_grid_add_text("Primeiro texto", _p_neutro, 0, "Personagem 1");
-			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2");
-			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1");
-			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1");
+			ds_grid_add_text("Primeiro texto", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2", voz_npc);
+			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
 		break;
 	}
 }
@@ -35,4 +38,5 @@ function ds_grid_add_text(){
 	_grid[# 1, _y] = argument[1];
 	_grid[# 2, _y] = argument[2];
 	_grid[# 3, _y] = argument[3];
+	_grid[# 4, _y] = argument[4];
 }
