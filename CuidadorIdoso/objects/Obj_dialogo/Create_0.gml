@@ -15,3 +15,4 @@ inicializar = false;
 caractere = 0;
 alarm[0] = 1;
 voice_id = -1;
+voice_asset = noone;

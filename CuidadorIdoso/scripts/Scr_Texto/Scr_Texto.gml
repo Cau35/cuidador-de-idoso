@@ -10,7 +10,7 @@ function scr_textos(){
 	switch(npc_nome)
 	{
 		case "Thats is my granny she get hit by a bazooka":
-			ds_grid_add_text("Primeiro texto", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Esse é um teste pra ver oque acontecesse", _p_neutro, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2", voz_npc);
 			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
