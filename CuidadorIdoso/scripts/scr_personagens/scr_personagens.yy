@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_personagens",
   "parent":{
-    "name":"CuidadorIdoso",
-    "path":"CuidadorIdoso.yyp",
+    "name":"Script",
+    "path":"folders/Script.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
