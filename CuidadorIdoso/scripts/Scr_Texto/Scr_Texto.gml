@@ -11,26 +11,26 @@ function scr_textos(){
 	switch(npc_nome)
 	{
 		case "Thats is my granny she get hit by a bazooka":
-			ds_grid_add_text("Esse é um teste pra ver oque acontecesse, vou adicionar mais texto só pra ver se o texto ta acompanhando.", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Segundo texto", portrait_pmf, 1, "Personagem 2", voz_npc);
-			ds_grid_add_text("Terceiro texto", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Quarto texto", _p_falando, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Quinto textoooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
-				add_op("Primeira Opção",								"Resposta 1");
-				add_op("Segunda Opção, só que com mais texto",			"Resposta 2");
-				add_op("Terceira Opção, só que com mais texto ainda",	"Resposta 3");
+			ds_grid_add_text("Oi, tudo dboa?.", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Opa eae...", portrait_pmf, 1, "Personagem 2", voz_npc);
+			ds_grid_add_text("Eu me sinto meio só ultimamente...", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Tipo, eu to trabalhando muito, e com pessoas que me enchem o saco", _p_falando, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Sei como é, quer continuar falando sobre isso?", portrait_pmf, 1, "Personagem 2", voz_npc);
+				add_op("Não, obrigado",								"Resposta 1");
+				add_op("Sim, muito obrigado",						"Resposta 2");
+				add_op("Tanto faz",									"Resposta 3");
 		break;
 				case "Resposta 1":
-				ds_grid_add_text("Essa é a primeira resposta.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Textooooooooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Não, obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Okay, tchau", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 2":
-				ds_grid_add_text("Essa é a segunda resposta.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Textooooooooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Sim, muito obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Foi por educação, se vira ai negão", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 3":
-				ds_grid_add_text("Essa é a terceira resposta.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Textooooooooooo", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Tanto faz", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Mehhh", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 	}
 }
