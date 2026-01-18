@@ -33,6 +33,20 @@ function scr_textos(){
 				ds_grid_add_text("Mehhh", portrait_pmf, 1, "Personagem 2", voz_npc);
 				ds_grid_add_text("Tchau, desempregada", _p_neutro, 0, "Personagem 1", voz_player);
 				break;
+				
+		case "Prof":
+			ds_grid_add_text("Oi Professora Acácia", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Professora?", _p_neutro, 0, "Personagem 1", voz_player);
+				add_op("Incomodá-la",								"Resposta 1.1");
+				add_op("Ir embora",									"Resposta 2.1");	
+		break;
+				case "Resposta 1.1":
+				ds_grid_add_text("Profesoraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Sai mlk, me deixa", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+				case "Resposta 2.1":
+				ds_grid_add_text("...", _p_neutro, 0, "Personagem 1", voz_player);
+				break;
 	}
 }
 #endregion
