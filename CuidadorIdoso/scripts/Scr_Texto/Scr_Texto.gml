@@ -44,6 +44,8 @@ function scr_textos(){
 				case "Resposta 1.1":
 				ds_grid_add_text("Profesoraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Sai mlk, me deixa", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("A professora te olha feio, e você decide não irritar mais ela", noone, 0, "", snd_voice_1, "narracao");
+				ds_grid_add_text("Pare de ser tão irritante...", noone, 0, "", snd_voice_1, "narracao");
 				break;
 				case "Resposta 2.1":
 				ds_grid_add_text("...", _p_neutro, 0, "Personagem 1", voz_player);
