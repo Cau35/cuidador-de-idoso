@@ -1,3 +1,20 @@
+// === APLICAR JALECO EM TEMPO DE JOGO ===
+if (global.pegar_jaleco)
+{
+	if (global.player == 0) global.player = 1;
+	else if (global.player == 2) global.player = 3;
+
+	switch (global.player)
+	{
+		case 1: player = new Personagem_CuidadorCJ(); break;
+		case 3: player = new Personagem_CuidadoraCJ(); break;
+	}
+
+	sprite_index = player.sprite_idle;
+
+	global.pegar_jaleco = false;
+}
+
 estado();
 
 move_and_collide(velh, velv, all);
