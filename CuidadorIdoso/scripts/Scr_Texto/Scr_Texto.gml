@@ -36,50 +36,22 @@ function scr_textos(){
 				break;
 				
 		case "Prof":
-    ds_grid_add_text(
-        "Olá! Você gostaria de pegar seu jaleco agora?",
-        portrait_pmf,
-        1,
-        "Professora Acácia",
-        voz_npc
-    );
+			ds_grid_add_text("Olá! Você gostaria de pegar seu jaleco agora?", portrait_pmf, 1, "Professora Acácia", voz_npc);
+			ds_grid_add_text("A professora pega um jaleco e te entrega.", noone, 0, "", snd_voice_1, "narracao");
+				add_op("Pegar", "Pegar_Jaleco");
+				add_op("Não pegar", "NaoPegar_Jaleco");
+		break;
 
-    ds_grid_add_text(
-        "A professora pega um jaleco e te entrega.",
-        noone,
-        0,
-        "",
-        snd_voice_1,
-        "narracao"
-    );
-
-    add_op("Pegar", "Pegar_Jaleco");
-    add_op("Não pegar", "NaoPegar_Jaleco");
-break;
-
-case "Pegar_Jaleco":
-    ds_grid_add_text(
-        "Aqui está!",
-        portrait_pmf,
-        1,
-        "Professora Acácia",
-        voz_npc
-    );
-
-    // Marca que o jogador agora TEM jaleco
-    global.pegar_jaleco = true;
-break;
+				case "Pegar_Jaleco":
+			    ds_grid_add_text("Aqui está!", portrait_pmf, 1, "Professora Acácia", voz_npc);
+				// Marca que o jogador agora TEM jaleco
+				global.pegar_jaleco = true;
+		break;
 
 
-case "NaoPegar_Jaleco":
-    ds_grid_add_text(
-        "Okay!! Até mais tarde!!",
-        portrait_pmf,
-        1,
-        "Professora Acácia",
-        voz_npc
-    );
-break;
+				case "NaoPegar_Jaleco":
+			    ds_grid_add_text("Okay!! Até mais tarde!!", portrait_pmf, 1, "Professora Acácia", voz_npc);
+		break;
 	}
 }
 #endregion
