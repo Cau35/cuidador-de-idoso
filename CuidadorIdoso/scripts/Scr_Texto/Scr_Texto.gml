@@ -31,6 +31,7 @@ function scr_textos(){
 				case "Resposta 3":
 				ds_grid_add_text("Tanto faz", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Mehhh", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Tchau, desempregada", _p_neutro, 0, "Personagem 1", voz_player);
 				break;
 	}
 }
