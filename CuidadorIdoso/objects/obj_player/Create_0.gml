@@ -6,6 +6,27 @@ switch(global.player)
 	case 3: player = new Personagem_CuidadoraCJ(); break; 
 }
 
+if (global.pegar_jaleco == true) {
+
+    // Atualiza o índice do personagem
+    if (global.player == 0) global.player = 1; // cuidador sem -> com jaleco
+    if (global.player == 2) global.player = 3; // cuidadora sem -> com jaleco
+
+    // Recria o personagem correto
+    if (global.player == 1) {
+        player = new Personagem_CuidadorCJ();
+    }
+    else if (global.player == 3) {
+        player = new Personagem_CuidadoraCJ();
+    }
+
+    // Atualiza sprite inicial
+    sprite_index = player.sprite_idle;
+
+    // Consome o evento
+    global.pegar_jaleco = false;
+}
+
 velh = 0; 
 velv = 0; 
 vel = 1;
