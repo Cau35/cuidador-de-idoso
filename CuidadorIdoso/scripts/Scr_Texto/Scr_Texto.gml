@@ -11,6 +11,7 @@ function scr_textos(){
 	switch(npc_nome)
 	{
 		case "Thats is my granny she get hit by a bazooka":
+			ds_grid_add_text("HORAS DEPOIS...", noone, 0, "", snd_voice_1, "narracao");
 			ds_grid_add_text("Oi, tudo dboa?.", _p_neutro, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Opa eae...", portrait_pmf, 1, "Personagem 2", voz_npc);
 			ds_grid_add_text("Eu me sinto meio só ultimamente...", _p_neutro, 0, "Personagem 1", voz_player);
@@ -64,6 +65,9 @@ function ds_grid_add_text(){
 	///@arg texto
 	///@arg retrato
 	///@arg lado
+	///@arg nome
+	///@arg voz
+	///@arg tipo (opcional) "dialogo" / "narracao"
 	
 	var _grid = texto_grid;
 	var _y = ds_grid_add_row(_grid);
@@ -73,6 +77,13 @@ function ds_grid_add_text(){
 	_grid[# 2, _y] = argument[2];
 	_grid[# 3, _y] = argument[3];
 	_grid[# 4, _y] = argument[4];
+
+	// Tipo opcional
+	if (argument_count > 5) {
+		_grid[# Infos.Tipo, _y] = argument[5];
+	}else{
+		_grid[# Infos.Tipo, _y] = "dialogo";
+	}
 }
 #endregion
 #region add_op

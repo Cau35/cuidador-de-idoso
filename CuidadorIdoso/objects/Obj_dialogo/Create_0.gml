@@ -3,12 +3,13 @@ enum Infos{
 	Retrato,
 	Lado,
 	Nome,
-	Voz
+	Voz,
+	Tipo
 }
 
 
 npc_nome = "";
-texto_grid = ds_grid_create(5, 0);
+texto_grid = ds_grid_create(6, 0);
 pagina = 0;
 
 op[0] = "";
