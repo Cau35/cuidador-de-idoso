@@ -47,6 +47,7 @@ function scr_textos(){
 				break;
 				case "Resposta 2.1":
 				ds_grid_add_text("...", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("A professora te olha feio, e você decide não mecher com ela", noone, 0, "", snd_voice_1, "narracao");
 				break;
 	}
 }
