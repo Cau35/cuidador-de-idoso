@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"sprite",
-    "path":"folders/sprite.yy",
+    "name":"Pmsj",
+    "path":"folders/sprite/Pmsj.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

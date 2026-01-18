@@ -44,8 +44,8 @@
   },
   "origin":4,
   "parent":{
-    "name":"sprite",
-    "path":"folders/sprite.yy",
+    "name":"Chico",
+    "path":"folders/sprite/Chico.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
