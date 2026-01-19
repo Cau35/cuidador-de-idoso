@@ -36,10 +36,33 @@ function scr_textos(){
 				break;
 				
 		case "Prof":
-			ds_grid_add_text("Olá! Você gostaria de pegar seu jaleco agora?", portrait_pmf, 1, "Professora Acácia", voz_npc);
-			ds_grid_add_text("A professora pega um jaleco e te entrega.", noone, 0, "", snd_voice_1, "narracao");
-				add_op("Pegar", "Pegar_Jaleco");
-				add_op("Não pegar", "NaoPegar_Jaleco");
+
+    // SE JÁ TEM JALECO
+    if (global.player == 1 || global.player == 3) {
+        ds_grid_add_text(
+            "Você já está com o jaleco, vaza frances",
+            portrait_pmf,
+            1,
+            "Professora Acácia",
+            snd_voice_2,
+            0
+        );
+		ds_grid_add_text("Depois dessa grosseria você decide sair de perto dela...", noone, 0, "", snd_voice_1, "narracao");
+    }
+    // SE AINDA NÃO TEM
+    else {
+        ds_grid_add_text(
+            "Olá! Você gostaria de pegar seu jaleco agora?",
+            portrait_pmf,
+            1,
+            "Professora Acácia",
+            snd_voice_2,
+            0
+        );
+
+        add_op("Pegar", "Pegar_Jaleco");
+        add_op("Não pegar", "Nao_Pegar");
+    }
 		break;
 
 				case "Pegar_Jaleco":

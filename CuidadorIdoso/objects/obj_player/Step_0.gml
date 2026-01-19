@@ -1,4 +1,4 @@
-// === APLICAR JALECO EM TEMPO DE JOGO ===
+ // === APLICAR JALECO EM TEMPO DE JOGO ===
 if (global.pegar_jaleco)
 {
 	if (global.player == 0) global.player = 1;
