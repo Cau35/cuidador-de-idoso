@@ -40,7 +40,7 @@ function scr_textos(){
     // SE JÁ TEM JALECO
     if (global.player == 1 || global.player == 3) {
         ds_grid_add_text(
-            "Você já está com o jaleco, vaza frances",
+            "Você já está com o <y>jaleco</y>, vaza frances",
             portrait_pmf,
             1,
             "Professora Acácia",
@@ -52,7 +52,7 @@ function scr_textos(){
     // SE AINDA NÃO TEM
     else {
         ds_grid_add_text(
-            "Olá! Você gostaria de pegar seu jaleco agora?",
+            "Olá! Você gostaria de pegar seu <y>jaleco</y> agora?",
             portrait_pmf,
             1,
             "Professora Acácia",

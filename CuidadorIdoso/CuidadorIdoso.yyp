@@ -48,6 +48,7 @@
     {"id":{"name":"GameMenu","path":"rooms/GameMenu/GameMenu.yy",},},
     {"id":{"name":"Room_selecao","path":"rooms/Room_selecao/Room_selecao.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"scr_draw_text","path":"scripts/scr_draw_text/scr_draw_text.yy",},},
     {"id":{"name":"scr_personagens","path":"scripts/scr_personagens/scr_personagens.yy",},},
     {"id":{"name":"Scr_Texto","path":"scripts/Scr_Texto/Scr_Texto.yy",},},
     {"id":{"name":"snd_voice_1","path":"sounds/snd_voice_1/snd_voice_1.yy",},},
