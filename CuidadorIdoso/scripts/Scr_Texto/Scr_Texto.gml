@@ -11,11 +11,11 @@ function scr_textos(){
 	switch(npc_nome)
 	{
 		case "Thats is my granny she get hit by a bazooka":
-			ds_grid_add_text("HORAS DEPOIS...", noone, 0, "", snd_voice_1, "narracao");
+			ds_grid_add_text("A moça te encara...", noone, 0, "", snd_voice_1, "narracao");
 			ds_grid_add_text("Oi, tudo dboa?.", _p_neutro, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Opa eae...", portrait_pmf, 1, "Personagem 2", voz_npc);
 			ds_grid_add_text("Eu me sinto meio só ultimamente...", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Tipo, eu to trabalhando muito, e com pessoas que me enchem o saco", _p_falando, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Tipo, eu to trabalhando <r>muito</r>, e com pessoas que me enchem o saco", _p_falando, 0, "Personagem 1", voz_player);
 			ds_grid_add_text("Sei como é, quer continuar falando sobre isso?", portrait_pmf, 1, "Personagem 2", voz_npc);
 				add_op("Não, obrigado",								"Resposta 1");
 				add_op("Sim, muito obrigado",						"Resposta 2");
