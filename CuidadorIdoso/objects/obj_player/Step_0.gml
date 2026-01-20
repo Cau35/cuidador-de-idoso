@@ -6,6 +6,14 @@ if (global.dialogo)
     exit;
 }
 
+if instance_exists(obj_pause)
+{
+    velh = 0;
+    velv = 0;
+	sprite_index = player.sprite_idle;
+    exit;
+}
+
  // === APLICAR JALECO EM TEMPO DE JOGO ===
 if (global.pegar_jaleco)
 {
