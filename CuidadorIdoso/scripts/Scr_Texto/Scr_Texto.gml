@@ -66,9 +66,9 @@ function scr_textos(){
 		break;
 
 				case "Pegar_Jaleco":
+				global.pegar_jaleco = true;
 			    ds_grid_add_text("Aqui está!", portrait_pmf, 1, "Professora Acácia", voz_npc);
 				// Marca que o jogador agora TEM jaleco
-				global.pegar_jaleco = true;
 		break;
 
 
