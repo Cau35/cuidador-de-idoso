@@ -1,8 +1,8 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_phsj_parado_baixo",
-  "bboxMode":0,
-  "bbox_bottom":163,
+  "bboxMode":2,
+  "bbox_bottom":167,
   "bbox_left":0,
   "bbox_right":74,
   "bbox_top":0,
