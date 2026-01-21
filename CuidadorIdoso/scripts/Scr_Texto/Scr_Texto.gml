@@ -75,8 +75,140 @@ function scr_textos(){
 				case "Nao_Pegar":
 			    ds_grid_add_text("Okay!! Até mais tarde!!", portrait_pmf, 1, "Professora Acácia", voz_npc);
 		break;
+		
+		
+		case "Estante":
+    // Narração inicial (sem retrato/nome)
+    ds_grid_add_text(
+        "Uma estante velha cheia de livros. Alguns parecem úteis, outros só estão aqui pra enfeitar e juntar poeira.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Você puxa alguns títulos e decide o que vai ler:",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    // Opções de livros
+    add_op("Guia de Estudos (importante)", "Livro_Guia");
+    add_op("Pensamento Computacional (resumo)", "Livro_PC");
+    add_op("Livro Aleatório", "Livro_Aleatorio");
+    add_op("Fechar a estante", "Fechar_Estante");
+break;
+
+
+case "Livro_Guia":
+    ds_grid_add_text(
+        "GUIA DE ESTUDOS",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "1) Leia com calma.\n\nNão é “passar o olho”. É ler mesmo.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "2) Anote o que você não entendeu.\n\nSe você não anotar, você vai esquecer e fingir que entendeu.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "3) Teste no jogo o que você aprender.\n\nSem aplicar, vira só texto bonito ocupando espaço.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Você fecha o guia e coloca ele de volta na estante.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    add_op("Ler outro livro", "Estante");
+    add_op("Sair", "Fechar_Estante");
+break;
+
+
+case "Livro_PC":
+    ds_grid_add_text(
+        "PENSAMENTO COMPUTACIONAL (resumo)",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "• Decomposição\nQuebrar um problema grande em partes pequenas e tratáveis.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "• Reconhecimento de padrões\nPerceber o que se repete e reaproveitar solução em vez de reinventar a roda.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "• Abstração\nFocar no essencial e ignorar o barulho.\n\nNem tudo precisa virar mecânica.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "• Algoritmo\nUma sequência clara de passos para resolver.\n\nSe não dá pra explicar, não é algoritmo, é fé.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Você sente que isso vai cair na sua mecânica do idoso, gostando você ou não.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    add_op("Ler outro livro", "Estante");
+    add_op("Sair", "Fechar_Estante");
+break;
+
+
+case "Livro_Aleatorio":
+    ds_grid_add_text(
+        "LIVRO ALEATÓRIO",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Você abre um livro qualquer.\n\nEle fala sobre um assunto extremamente específico.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Depois de duas páginas, você percebe que isso não vai te ajudar em absolutamente nada no jogo.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Você fecha na hora certa, antes de perder neurônios.",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+
+    add_op("Ler outro livro", "Estante");
+    add_op("Sair", "Fechar_Estante");
+	
+break;
+	
+case "Fechar_Estante":
+	 ds_grid_add_text(
+        "Depois dessa auta dose de sabedoria literária, você imprudentemente resolve deixar o ouro em formas de livro",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+	 ds_grid_add_text(
+        "...",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+	 ds_grid_add_text(
+        "Aquele livro aleatório não conta...",
+        noone, 0, "", snd_voice_2, "narracao"
+    );
+break;
+		
+		
 	}
 }
+
 #endregion
 #region ds_grid_add_row
 function ds_grid_add_row(){
