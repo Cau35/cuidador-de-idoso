@@ -111,7 +111,6 @@
     {"id":{"name":"spr_warp_block","path":"sprites/spr_warp_block/spr_warp_block.yy",},},
     {"id":{"name":"spr_warp_transition","path":"sprites/spr_warp_transition/spr_warp_transition.yy",},},
     {"id":{"name":"Sprite1","path":"sprites/Sprite1/Sprite1.yy",},},
-    {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},},
     {"id":{"name":"Sprite55","path":"sprites/Sprite55/Sprite55.yy",},},
   ],
   "resourceType":"GMProject",
