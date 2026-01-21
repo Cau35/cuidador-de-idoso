@@ -1,3 +1,3 @@
-target_x = 283;
-target_y = 43;
+target_x = 739;
+target_y = 167;
 target_rm = Room2;

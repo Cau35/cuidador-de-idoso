@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"bg_secretaria",
   "bboxMode":0,
-  "bbox_bottom":99,
+  "bbox_bottom":879,
   "bbox_left":0,
-  "bbox_right":99,
+  "bbox_right":1199,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"3bde52ec-dd3e-49e2-a932-dce6709855ad","name":"3bde52ec-dd3e-49e2-a932-dce6709855ad","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"d8eb0762-3ca0-4f6b-a344-428ee00660c1","name":"d8eb0762-3ca0-4f6b-a344-428ee00660c1","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
-  "height":100,
+  "height":880,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"1086caa8-577d-4dd3-b410-c6d085b12d20","blendMode":0,"displayName":"default","isLocked":false,"name":"1086caa8-577d-4dd3-b410-c6d085b12d20","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"3c872019-bc85-4b50-b955-9e5c8651e9c7","blendMode":0,"displayName":"default","isLocked":false,"name":"3c872019-bc85-4b50-b955-9e5c8651e9c7","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"bg_secretaria",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"3bde52ec-dd3e-49e2-a932-dce6709855ad","path":"sprites/bg_secretaria/bg_secretaria.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"ae130a03-8023-4c5f-85b0-205fbf18e6e9","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"d8eb0762-3ca0-4f6b-a344-428ee00660c1","path":"sprites/bg_secretaria/bg_secretaria.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"8d1f1348-bfac-4b73-be3a-a41f65f51e31","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
@@ -86,5 +86,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":100,
+  "width":1200,
 }
