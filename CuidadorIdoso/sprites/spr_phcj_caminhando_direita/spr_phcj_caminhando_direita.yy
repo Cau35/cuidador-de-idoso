@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_phcj_caminhando_direita",
   "bboxMode":2,
-  "bbox_bottom":165,
+  "bbox_bottom":167,
   "bbox_left":-3,
   "bbox_right":70,
   "bbox_top":-2,
