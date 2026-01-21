@@ -72,7 +72,7 @@ function scr_textos(){
 		break;
 
 
-				case "NaoPegar_Jaleco":
+				case "Nao_Pegar":
 			    ds_grid_add_text("Okay!! Até mais tarde!!", portrait_pmf, 1, "Professora Acácia", voz_npc);
 		break;
 	}
