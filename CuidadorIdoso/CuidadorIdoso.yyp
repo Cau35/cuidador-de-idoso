@@ -38,6 +38,7 @@
     {"id":{"name":"obj_chico","path":"objects/obj_chico/obj_chico.yy",},},
     {"id":{"name":"obj_clesia","path":"objects/obj_clesia/obj_clesia.yy",},},
     {"id":{"name":"obj_control","path":"objects/obj_control/obj_control.yy",},},
+    {"id":{"name":"obj_cutscene_bg","path":"objects/obj_cutscene_bg/obj_cutscene_bg.yy",},},
     {"id":{"name":"obj_dialogo","path":"objects/obj_dialogo/obj_dialogo.yy",},},
     {"id":{"name":"obj_estante","path":"objects/obj_estante/obj_estante.yy",},},
     {"id":{"name":"obj_fundo","path":"objects/obj_fundo/obj_fundo.yy",},},
