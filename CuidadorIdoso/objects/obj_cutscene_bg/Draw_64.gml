@@ -1,6 +1,7 @@
-var s = global.cutscene_bg;
-if (s != noone) {
-	var w = display_get_gui_width();
-	var h = display_get_gui_height();
-	draw_sprite_stretched(s, 0, 0, 0, w, h);
+if (!variable_global_exists("cutscene_bg")) {
+    global.cutscene_bg = noone;
+}
+
+if (global.cutscene_bg != noone) {
+    draw_sprite(global.cutscene_bg, 0, 0, 0);
 }

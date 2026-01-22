@@ -4,6 +4,6 @@ if (global.escolhe_player == false)
 
     if (image_alpha >= 1) 
     {
-        room_goto_next();
+        room_goto(Room6);
     }
 }

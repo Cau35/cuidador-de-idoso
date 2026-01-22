@@ -206,6 +206,28 @@ case "Fechar_Estante":
 break;
 		
 		
+		case "Cutscene_1":
+
+    // quando acabar, vai pra Room_1
+    global.cutscene_next_room = Room1;
+
+    // Cena 1
+    global.cutscene_bg = spr_teste_cena1;
+    ds_grid_add_text("Teste um da cutscene", noone, 0, "", snd_voice_2, "narracao");
+
+    // mantém a mesma imagem
+    ds_grid_add_text("esta imagem vai permanecer até eu pedir para mudar", noone, 0, "", snd_voice_2, "narracao");
+
+    // troca para Cena 2
+    global.cutscene_bg = spr_teste_cena2;
+    ds_grid_add_text("Viu só?! mudou!!", noone, 0, "", snd_voice_2, "narracao");
+
+    // final
+    ds_grid_add_text("e agora o jogo vai começar!!!", noone, 0, "", snd_voice_2, "narracao");
+
+break;
+		
+		
 	}
 }
 
