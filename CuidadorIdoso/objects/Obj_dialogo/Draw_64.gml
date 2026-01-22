@@ -21,6 +21,16 @@ if (inicializar == true) {
     var _tipo = texto_grid[# Infos.Tipo, pagina];
     if (is_undefined(_tipo)) _tipo = "dialogo";
 
+    // ==========================================
+    // ✅ ADIÇÃO: cutscene muda imagem por página
+    // ==========================================
+    if (variable_global_exists("cutscene_ativa") && global.cutscene_ativa) {
+        if (array_length(cutscene_bg_page) > 0) {
+            global.cutscene_bg = cutscene_bg_page[pagina];
+        }
+    }
+    // ==========================================
+
     // =======================
     // NARRAÇÃO
     // =======================
@@ -106,7 +116,6 @@ if (op_draw == true) {
             1, 0, c_white, 1
         );
 
-        // opções também suportam cor se você quiser
         draw_text_color_ext(_opx + _opborda, _opy - (_opsep * i), op[i], 32, _gui_l - 64);
 
         if (op_selecionada == i) {
@@ -114,7 +123,7 @@ if (op_draw == true) {
         }
     }
 
-    // escolher opção: cria novo diálogo e fecha o atual
+    // escolher opção
     if (global.tecla) {
         var _inst = instance_create_layer(x, y, "Instances", obj_dialogo);
         _inst.npc_nome = op_resposta[op_selecionada];

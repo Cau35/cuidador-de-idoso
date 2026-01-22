@@ -5,6 +5,17 @@ if (global.cutscene_ativa) {
     op_draw = false;
 }
 
+
+// ===============================
+// BLOQUEIA O STEP QUANDO AS OPÇÕES ESTÃO NA TELA
+// (senão o Step "rouba" o E e você nunca confirma)
+// ===============================
+if (op_draw && !global.cutscene_ativa) {
+    global.tecla = false; // consome o input pra não ficar repetindo
+    exit;
+}
+
+
 // ===============================
 // Inicialização do diálogo
 // ===============================
@@ -84,10 +95,10 @@ if (global.tecla) {
                 // ===========================
                 if (variable_global_exists("cutscene_next_room")) {
                     var _rm = global.cutscene_next_room;
-                    variable_global_remove("cutscene_next_room");
-                    instance_destroy();
-                    room_goto(_rm);
-                    return;
+global.cutscene_next_room = noone; // "remove" do jeito simples
+instance_destroy();
+room_goto(_rm);
+return;
                 }
 
                 instance_destroy();
