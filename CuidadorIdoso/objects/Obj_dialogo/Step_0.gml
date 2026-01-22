@@ -5,16 +5,15 @@ if (global.cutscene_ativa) {
     op_draw = false;
 }
 
-
 // ===============================
 // BLOQUEIA O STEP QUANDO AS OPÇÕES ESTÃO NA TELA
-// (senão o Step "rouba" o E e você nunca confirma)
+// (senão o Step roda o diálogo enquanto você escolhe)
+// IMPORTANTE: NÃO consome global.tecla aqui,
+// porque o Draw_GUI precisa ler global.tecla pra confirmar.
 // ===============================
 if (op_draw && !global.cutscene_ativa) {
-    global.tecla = false; // consome o input pra não ficar repetindo
     exit;
 }
-
 
 // ===============================
 // Inicialização do diálogo
@@ -94,11 +93,18 @@ if (global.tecla) {
                 // 🔥 Troca de sala (cutscene)
                 // ===========================
                 if (variable_global_exists("cutscene_next_room")) {
+
                     var _rm = global.cutscene_next_room;
-global.cutscene_next_room = noone; // "remove" do jeito simples
-instance_destroy();
-room_goto(_rm);
-return;
+
+                    // "remove" do jeito simples
+                    global.cutscene_next_room = noone;
+
+                    // só troca se for uma room válida
+                    if (!is_undefined(_rm) && _rm != noone && room_exists(_rm)) {
+                        instance_destroy();
+                        room_goto(_rm);
+                        return;
+                    }
                 }
 
                 instance_destroy();
