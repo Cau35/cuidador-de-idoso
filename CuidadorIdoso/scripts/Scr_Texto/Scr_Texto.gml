@@ -230,362 +230,157 @@ break;
 
 break;
 		
-		
-		case "IDOSO":
+case "IDOSO":
 {
-    switch (global.puzzle)
-    {
-        // ===============================
-        // PUZZLE 0 – ÁGUA
-        // ===============================
+    // Inicialização global segura
+    if (!variable_global_exists("puzzle")) global.puzzle = 0;
+    if (!variable_global_exists("puzzle_cd")) global.puzzle_cd = 0;
+
+    // Se estiver em cooldown, só fala algo e NÃO inicia puzzle
+    if (global.puzzle_cd > 0) {
+        global.puzzle_cd--;
+
+        ds_grid_add_text("Obrigado por cuidar de mim...", portrait_IN, 0, "Idoso", voz_npc);
+        break;
+    }
+
+    // Decide qual puzzle aparece
+    switch (global.puzzle) {
+
+        // Puzzle 0 - água
         case 0:
-        {
-            ds_grid_add_text(
-                "Ei... eu tô com sede...",
-                portrait_IF,
-                1,
-                "Idoso",
-                voz_npc,
-            );
+            ds_grid_add_text("Ei... tô com sede.", portrait_IF, 0, "Idoso", voz_npc);
+            ds_grid_add_text("O que você faz?", noone, 0, "", noone, "narracao");
 
-            ds_grid_add_text(
-                "O idoso parece desconfortável. O que você faz?",
-                noone,
-                0,
-                "",
-                noone,
-                "narracao"
-            );
-
-            add_op("Dar água agora", "IDOSO_AGUA_DAR");
-            add_op("Perguntar se ele pode beber água", "IDOSO_AGUA_PERGUNTAR");
-            add_op("Ignorar / pedir pra esperar", "IDOSO_AGUA_IGNORAR");
-        }
+            add_op("Dar água agora", "p0_agua_certo");
+            add_op("Perguntar antes", "p0_agua_quase");
+            add_op("Ignorar / dizer pra esperar", "p0_agua_errado");
         break;
 
-        // ===============================
-        // Depois que resolver o puzzle
-        // ===============================
+        // Puzzle 1 - remédio
+        case 1:
+            ds_grid_add_text("Acho que tá na hora do meu remédio...", portrait_IF, 0, "Idoso", voz_npc);
+            ds_grid_add_text("Qual a sequência certa de ações?", noone, 0, "", noone, "narracao");
+
+            add_op("Conferir horário/receita → pegar remédio → dar água → entregar", "p1_remedio_certo");
+            add_op("Pegar remédio e entregar logo, sem conferir nada", "p1_remedio_errado");
+            add_op("Dar água primeiro e depois ver o remédio", "p1_remedio_quase");
+        break;
+
+        // Puzzle 2 - quarto
+        case 2:
+            ds_grid_add_text("Tá tudo meio bagunçado aqui... isso me deixa nervoso.", portrait_IF, 0, "Idoso", voz_npc);
+            ds_grid_add_text("Qual jeito é melhor pra resolver?", noone, 0, "", noone, "narracao");
+
+            add_op("Organizar por partes: lixo → roupas → remédios → cama", "p2_quarto_certo");
+            add_op("Tentar arrumar tudo de uma vez no impulso", "p2_quarto_errado");
+            add_op("Arrumar só a cama e ignorar o resto", "p2_quarto_errado2");
+        break;
+
+        // Puzzle 3 - cadeira travando
+        case 3:
+            ds_grid_add_text("Minha cadeira tá travando... acho que tem algo errado.", portrait_IF, 0, "Idoso", voz_npc);
+            ds_grid_add_text("O que você faz primeiro?", noone, 0, "", noone, "narracao");
+
+            add_op("Verificar se a roda está presa / freio ativado", "p3_erro_certo");
+            add_op("Puxar com força até destravar", "p3_erro_errado");
+            add_op("Ignorar e deixar assim", "p3_erro_errado2");
+        break;
+
         default:
-        {
-            ds_grid_add_text(
-                "Obrigado por cuidar de mim...",
-                portrait_IN,
-                1,
-                "Idoso",
-                voz_npc,
-            );
-        }
+            ds_grid_add_text("Obrigado... você já fez muita coisa por mim.", portrait_IN, 0, "Idoso", voz_npc);
+            ds_grid_add_text("Agora só vamos com calma.", noone, 0, "", noone, "narracao");
         break;
     }
 }
 break;
 
-case "IDOSO_AGUA_DAR":
-{
-    ds_grid_add_text(
-        "Ahh... obrigado. Era só isso mesmo.",
-        portrait_IF,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "✅ Você resolveu corretamente: sede é uma necessidade básica e imediata.",
-        noone, 0, "", noone, "narracao"
-    );
-
-    ds_grid_add_text(
-        "Isso é priorização: primeiro o básico, depois o resto.",
-        noone, 0, "", noone, "narracao"
-    );
-
+// ==========================
+// FUNÇÃO AUX (use dentro dos cases abaixo)
+// ==========================
+function _puzzle_finish() {
     global.puzzle += 1;
+    global.puzzle_cd = room_speed * 30; // 30 segundos
 }
+
+// ===== Puzzle 0 (Água) =====
+case "p0_agua_certo":
+    ds_grid_add_text("Ah... obrigado. Era isso mesmo.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Você priorizou uma necessidade imediata.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
-case "IDOSO_AGUA_PERGUNTAR":
-{
-    ds_grid_add_text(
-        "Eu só queria um pouco de água...",
-        portrait_IF,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "✅ Você tentou confirmar antes de agir. Isso também é cuidado.",
-        noone, 0, "", noone, "narracao"
-    );
-
-    ds_grid_add_text(
-        "Mas nesse caso o sinal já era simples: ele estava com sede.",
-        noone, 0, "", noone, "narracao"
-    );
-
-    global.puzzle += 1;
-}
+case "p0_agua_quase":
+    ds_grid_add_text("É... eu só queria um pouco de água.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Você teve cuidado. Aqui era um caso simples.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
-case "IDOSO_AGUA_IGNORAR":
-{
-    ds_grid_add_text(
-        "Ah... tudo bem então...",
-        portrait_IN,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "❌ Ignorar sede piora o desconforto e atrapalha todo o cuidado.",
-        noone, 0, "", noone, "narracao"
-    );
-
-    ds_grid_add_text(
-        "No cuidado, reconhecer sinais simples é parte essencial do processo.",
-        noone, 0, "", noone, "narracao"
-    );
-
-    global.puzzle += 1;
-}
-break;
-		
-		
-		case 1:
-        {
-            // ===============================
-            // PUZZLE 2 - REMÉDIO (algoritmo / checagem)
-            // ===============================
-
-            ds_grid_add_text(
-                "Moço(a)... tá na hora do meu remédio?",
-                portrait_IF,
-                1,
-                "Idoso",
-                voz_npc,
-            );
-
-            ds_grid_add_text(
-                "Você precisa decidir o que fazer antes de dar qualquer remédio.",
-                noone,
-                1,
-                "",
-                noone,
-                "narracao"
-            );
-
-            add_op("Conferir horário e qual remédio é", "IDOSO_REMEDIO_CONFERIR");
-            add_op("Dar qualquer remédio logo", "IDOSO_REMEDIO_DAR_QUALQUER");
-            add_op("Ignorar / deixar pra depois", "IDOSO_REMEDIO_IGNORAR");
-        }
-        break;
-
-// =====================================================
-// PUZZLE 2 - REMÉDIO
-// =====================================================
-
-case "IDOSO_REMEDIO_CONFERIR":
-{
-    ds_grid_add_text(
-        "Isso... confere direitinho, por favor.",
-        portrait_IF,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "Você confere a prescrição: 14:00 → remédio de PRESSÃO (caixa AZUL).",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    ds_grid_add_text(
-        "Qual a próxima ação correta?",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    add_op("Pegar a caixa AZUL e dar com água", "IDOSO_REMEDIO_AZUL_OK");
-    add_op("Pegar a caixa VERMELHA (dor) e dar", "IDOSO_REMEDIO_VERMELHA_ERRO");
-    add_op("Dar o remédio certo, mas SEM água", "IDOSO_REMEDIO_SEM_AGUA_ERRO");
-}
+case "p0_agua_errado":
+    ds_grid_add_text("Ah... tudo bem então...", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Ignorar sede piora o desconforto.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
 
-case "IDOSO_REMEDIO_DAR_QUALQUER":
-{
-    ds_grid_add_text(
-        "Ei... calma... não é assim...",
-        portrait_IN,
-        1,
-        "Idoso",
-        voz_npc,
-    );
+// ===== Puzzle 1 (Remédio) =====
+case "p1_remedio_certo":
+    ds_grid_add_text("Boa... é melhor conferir direitinho.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Algoritmo: conferir → preparar → executar.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
+break;
 
-    ds_grid_add_text(
-        "❌ Errado: dar remédio sem conferir pode causar erro grave.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
+case "p1_remedio_quase":
+    ds_grid_add_text("Água ajuda... mas e o horário do remédio?", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Quase: faltou conferir antes.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
+break;
 
-    ds_grid_add_text(
-        "Pensamento computacional aqui é seguir um PASSO A PASSO (algoritmo): checar horário → checar remédio → só então dar.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    global.puzzle += 1;
-}
+case "p1_remedio_errado":
+    ds_grid_add_text("Tem certeza que é agora...? fico com medo de errar.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Sem conferir horário/receita é perigoso.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
 
-case "IDOSO_REMEDIO_IGNORAR":
-{
-    ds_grid_add_text(
-        "Tudo bem... eu espero...",
-        portrait_IN,
-        1,
-        "Idoso",
-        voz_npc,
-    );
+// ===== Puzzle 2 (Quarto) =====
+case "p2_quarto_certo":
+    ds_grid_add_text("Assim fica bem melhor... obrigado.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Decomposição: resolver por partes.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
+break;
 
-    ds_grid_add_text(
-        "❌ Errado: ignorar pode atrasar horário e piorar a condição.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
+case "p2_quarto_errado":
+    ds_grid_add_text("Calma... assim eu me confundo todo.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Tudo de uma vez aumenta erro.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
+break;
 
-    ds_grid_add_text(
-        "No cuidado, prioridade e rotina importam. O algoritmo precisa ser seguido no tempo certo.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    global.puzzle += 1;
-}
+case "p2_quarto_errado2":
+    ds_grid_add_text("A cama tá ok... mas o resto ainda me incomoda.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Resolver só um pedaço não resolve tudo.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
 
-case "IDOSO_REMEDIO_AZUL_OK":
-{
-    ds_grid_add_text(
-        "Obrigado... agora sim.",
-        portrait_IF,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "✅ Correto: você conferiu o horário e o remédio, e deu com água.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    ds_grid_add_text(
-        "Isso é ALGORITMO: seguir passos na ordem certa para evitar erro.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    global.puzzle += 1;
-}
+// ===== Puzzle 3 (Cadeira) =====
+case "p3_erro_certo":
+    ds_grid_add_text("Isso... era o freio mesmo.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Checar a causa antes de agir evita acidente.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
-
-case "IDOSO_REMEDIO_VERMELHA_ERRO":
-{
-    ds_grid_add_text(
-        "Acho que esse não é o certo...",
-        portrait_IN,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "❌ Errado: remédio diferente do prescrito no horário pode dar problema.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    ds_grid_add_text(
-        "A checagem (condição) é parte do algoritmo: confirmar antes de agir.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    global.puzzle += 1;
-}
+case "p3_erro_errado":
+    ds_grid_add_text("Ei, cuidado! Assim pode quebrar ou me machucar.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Forçar é perigoso. Primeiro verifica.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
 
-
-case "IDOSO_REMEDIO_SEM_AGUA_ERRO":
-{
-    ds_grid_add_text(
-        "Tá preso... preciso de água...",
-        portrait_IN,
-        1,
-        "Idoso",
-        voz_npc,
-    );
-
-    ds_grid_add_text(
-        "❌ Quase: o remédio certo, mas sem água pode dificultar engolir e causar desconforto.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    ds_grid_add_text(
-        "Algoritmo completo: conferir → pegar certo → oferecer água → administrar.",
-        noone,
-        1,
-        "",
-        noone,
-        "narracao"
-    );
-
-    global.puzzle += 1;
-}
+case "p3_erro_errado2":
+    ds_grid_add_text("Aí eu fico preso... melhor olhar isso.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Ignorar mantém o problema.", noone, 0, "", noone, "narracao");
+    _puzzle_finish();
 break;
-		
 		
 	}
 }

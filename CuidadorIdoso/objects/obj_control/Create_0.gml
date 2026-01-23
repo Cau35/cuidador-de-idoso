@@ -14,4 +14,7 @@ if (!variable_global_exists("cutscene_bg"))
 }
 
 global.cutscene_ativa = false;
+
 if (!variable_global_exists("puzzle")) global.puzzle = 0;
+global.puzzle_cd = 0;
+global.puzzle_pronto = true;
