@@ -354,6 +354,238 @@ case "IDOSO_AGUA_IGNORAR":
 break;
 		
 		
+		case 1:
+        {
+            // ===============================
+            // PUZZLE 2 - REMÉDIO (algoritmo / checagem)
+            // ===============================
+
+            ds_grid_add_text(
+                "Moço(a)... tá na hora do meu remédio?",
+                portrait_IF,
+                1,
+                "Idoso",
+                voz_npc,
+            );
+
+            ds_grid_add_text(
+                "Você precisa decidir o que fazer antes de dar qualquer remédio.",
+                noone,
+                1,
+                "",
+                noone,
+                "narracao"
+            );
+
+            add_op("Conferir horário e qual remédio é", "IDOSO_REMEDIO_CONFERIR");
+            add_op("Dar qualquer remédio logo", "IDOSO_REMEDIO_DAR_QUALQUER");
+            add_op("Ignorar / deixar pra depois", "IDOSO_REMEDIO_IGNORAR");
+        }
+        break;
+
+// =====================================================
+// PUZZLE 2 - REMÉDIO
+// =====================================================
+
+case "IDOSO_REMEDIO_CONFERIR":
+{
+    ds_grid_add_text(
+        "Isso... confere direitinho, por favor.",
+        portrait_IF,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "Você confere a prescrição: 14:00 → remédio de PRESSÃO (caixa AZUL).",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    ds_grid_add_text(
+        "Qual a próxima ação correta?",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    add_op("Pegar a caixa AZUL e dar com água", "IDOSO_REMEDIO_AZUL_OK");
+    add_op("Pegar a caixa VERMELHA (dor) e dar", "IDOSO_REMEDIO_VERMELHA_ERRO");
+    add_op("Dar o remédio certo, mas SEM água", "IDOSO_REMEDIO_SEM_AGUA_ERRO");
+}
+break;
+
+
+case "IDOSO_REMEDIO_DAR_QUALQUER":
+{
+    ds_grid_add_text(
+        "Ei... calma... não é assim...",
+        portrait_IN,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "❌ Errado: dar remédio sem conferir pode causar erro grave.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    ds_grid_add_text(
+        "Pensamento computacional aqui é seguir um PASSO A PASSO (algoritmo): checar horário → checar remédio → só então dar.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+
+
+case "IDOSO_REMEDIO_IGNORAR":
+{
+    ds_grid_add_text(
+        "Tudo bem... eu espero...",
+        portrait_IN,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "❌ Errado: ignorar pode atrasar horário e piorar a condição.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    ds_grid_add_text(
+        "No cuidado, prioridade e rotina importam. O algoritmo precisa ser seguido no tempo certo.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+
+
+case "IDOSO_REMEDIO_AZUL_OK":
+{
+    ds_grid_add_text(
+        "Obrigado... agora sim.",
+        portrait_IF,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "✅ Correto: você conferiu o horário e o remédio, e deu com água.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    ds_grid_add_text(
+        "Isso é ALGORITMO: seguir passos na ordem certa para evitar erro.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+
+
+case "IDOSO_REMEDIO_VERMELHA_ERRO":
+{
+    ds_grid_add_text(
+        "Acho que esse não é o certo...",
+        portrait_IN,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "❌ Errado: remédio diferente do prescrito no horário pode dar problema.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    ds_grid_add_text(
+        "A checagem (condição) é parte do algoritmo: confirmar antes de agir.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+
+
+case "IDOSO_REMEDIO_SEM_AGUA_ERRO":
+{
+    ds_grid_add_text(
+        "Tá preso... preciso de água...",
+        portrait_IN,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "❌ Quase: o remédio certo, mas sem água pode dificultar engolir e causar desconforto.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    ds_grid_add_text(
+        "Algoritmo completo: conferir → pegar certo → oferecer água → administrar.",
+        noone,
+        1,
+        "",
+        noone,
+        "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+		
 		
 	}
 }
