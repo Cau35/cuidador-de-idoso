@@ -232,155 +232,225 @@ break;
 		
 case "IDOSO":
 {
-    // Inicialização global segura
+    // ===============================
+    // Inicialização global "safe"
+    // ===============================
     if (!variable_global_exists("puzzle")) global.puzzle = 0;
     if (!variable_global_exists("puzzle_cd")) global.puzzle_cd = 0;
 
-    // Se estiver em cooldown, só fala algo e NÃO inicia puzzle
+    // ===============================
+    // Cooldown (30s) entre puzzles
+    // ===============================
     if (global.puzzle_cd > 0) {
-        global.puzzle_cd--;
+        global.puzzle_cd -= 1;
 
         ds_grid_add_text("Obrigado por cuidar de mim...", portrait_IN, 0, "Idoso", voz_npc);
-        break;
+        ds_grid_add_text("Daqui a pouco eu falo de novo...", noone, 0, "", noone, "narracao");
+        break; // NÃO usa exit aqui
     }
 
-    // Decide qual puzzle aparece
+    // ===============================
+    // Escolhe qual puzzle roda
+    // ===============================
     switch (global.puzzle) {
 
-        // Puzzle 0 - água
+        // =========================================
+        // PUZZLE 1 (global.puzzle == 0) - ÁGUA
+        // =========================================
         case 0:
-            ds_grid_add_text("Ei... tô com sede.", portrait_IF, 0, "Idoso", voz_npc);
+        {
+            ds_grid_add_text("Ei... eu tô com sede...", portrait_IF, 0, "Idoso", voz_npc);
             ds_grid_add_text("O que você faz?", noone, 0, "", noone, "narracao");
 
             add_op("Dar água agora", "p0_agua_certo");
-            add_op("Perguntar antes", "p0_agua_quase");
+            add_op("Perguntar antes se ele pode beber", "p0_agua_quase");
             add_op("Ignorar / dizer pra esperar", "p0_agua_errado");
+        }
         break;
 
-        // Puzzle 1 - remédio
+        // =========================================
+        // PUZZLE 2 (global.puzzle == 1) - REMÉDIO
+        // =========================================
         case 1:
+        {
             ds_grid_add_text("Acho que tá na hora do meu remédio...", portrait_IF, 0, "Idoso", voz_npc);
-            ds_grid_add_text("Qual a sequência certa de ações?", noone, 0, "", noone, "narracao");
+            ds_grid_add_text("Qual é a sequência certa?", noone, 0, "", noone, "narracao");
 
-            add_op("Conferir horário/receita → pegar remédio → dar água → entregar", "p1_remedio_certo");
-            add_op("Pegar remédio e entregar logo, sem conferir nada", "p1_remedio_errado");
+            add_op("Conferir horário → pegar remédio → dar água → entregar", "p1_remedio_certo");
+            add_op("Pegar e entregar logo sem conferir nada", "p1_remedio_errado");
             add_op("Dar água primeiro e depois ver o remédio", "p1_remedio_quase");
+        }
         break;
 
-        // Puzzle 2 - quarto
+        // =========================================
+        // PUZZLE 3 (global.puzzle == 2) - QUARTO
+        // =========================================
         case 2:
+        {
             ds_grid_add_text("Tá tudo meio bagunçado aqui... isso me deixa nervoso.", portrait_IF, 0, "Idoso", voz_npc);
             ds_grid_add_text("Qual jeito é melhor pra resolver?", noone, 0, "", noone, "narracao");
 
-            add_op("Organizar por partes: lixo → roupas → remédios → cama", "p2_quarto_certo");
-            add_op("Tentar arrumar tudo de uma vez no impulso", "p2_quarto_errado");
+            add_op("Organizar por partes (lixo → roupas → remédios → cama)", "p2_quarto_certo");
+            add_op("Tentar arrumar tudo de uma vez", "p2_quarto_errado");
             add_op("Arrumar só a cama e ignorar o resto", "p2_quarto_errado2");
+        }
         break;
 
-        // Puzzle 3 - cadeira travando
+        // =========================================
+        // PUZZLE 4 (global.puzzle == 3) - CADEIRA
+        // =========================================
         case 3:
+        {
             ds_grid_add_text("Minha cadeira tá travando... acho que tem algo errado.", portrait_IF, 0, "Idoso", voz_npc);
             ds_grid_add_text("O que você faz primeiro?", noone, 0, "", noone, "narracao");
 
-            add_op("Verificar se a roda está presa / freio ativado", "p3_erro_certo");
-            add_op("Puxar com força até destravar", "p3_erro_errado");
-            add_op("Ignorar e deixar assim", "p3_erro_errado2");
+            add_op("Verificar roda presa / freio ativado", "p3_cadeira_certo");
+            add_op("Puxar com força até destravar", "p3_cadeira_errado");
+            add_op("Ignorar e deixar assim", "p3_cadeira_errado2");
+        }
         break;
 
+        // =========================================
+        // FIM (global.puzzle >= 4)
+        // =========================================
         default:
-            ds_grid_add_text("Obrigado... você já fez muita coisa por mim.", portrait_IN, 0, "Idoso", voz_npc);
-            ds_grid_add_text("Agora só vamos com calma.", noone, 0, "", noone, "narracao");
+        {
+            ds_grid_add_text("Você já fez muita coisa por mim...", portrait_IN, 0, "Idoso", voz_npc);
+            ds_grid_add_text("Agora é só ir com calma.", noone, 0, "", noone, "narracao");
+        }
         break;
     }
 }
 break;
 
-// ==========================
-// FUNÇÃO AUX (use dentro dos cases abaixo)
-// ==========================
-function _puzzle_finish() {
-    global.puzzle += 1;
-    global.puzzle_cd = room_speed * 30; // 30 segundos
-}
 
-// ===== Puzzle 0 (Água) =====
+
+// =======================================================
+// RESPOSTAS DO PUZZLE 1 - ÁGUA
+// =======================================================
 case "p0_agua_certo":
-    ds_grid_add_text("Ah... obrigado. Era isso mesmo.", portrait_IN, 0, "Idoso", voz_npc);
+{
+    ds_grid_add_text("Obrigado... era isso mesmo.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Você priorizou uma necessidade imediata.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("Isso é pensar em prioridade: primeiro o básico.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 case "p0_agua_quase":
-    ds_grid_add_text("É... eu só queria um pouco de água.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("✅ Você teve cuidado. Aqui era um caso simples.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+{
+    ds_grid_add_text("Eu só queria um pouco de água...", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("✅ Você checou antes. Também é cuidado.", noone, 0, "", noone, "narracao");
+    ds_grid_add_text("Aqui era um caso simples: dava pra agir direto.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 case "p0_agua_errado":
-    ds_grid_add_text("Ah... tudo bem então...", portrait_IN, 0, "Idoso", voz_npc);
+{
+    ds_grid_add_text("Ah... tá bom...", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("❌ Ignorar sede piora o desconforto.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("No cuidado, reconhecer sinais simples é essencial.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 
-// ===== Puzzle 1 (Remédio) =====
+
+// =======================================================
+// RESPOSTAS DO PUZZLE 2 - REMÉDIO
+// =======================================================
 case "p1_remedio_certo":
+{
     ds_grid_add_text("Boa... é melhor conferir direitinho.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("✅ Algoritmo: conferir → preparar → executar.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("✅ Algoritmo: checar → preparar → executar.", noone, 0, "", noone, "narracao");
+    ds_grid_add_text("Ordem certa evita erro e deixa o cuidado seguro.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 case "p1_remedio_quase":
+{
     ds_grid_add_text("Água ajuda... mas e o horário do remédio?", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("✅ Quase: faltou conferir antes.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("✅ Você ajudou, mas faltou checar primeiro.", noone, 0, "", noone, "narracao");
+    ds_grid_add_text("No cuidado, ordem importa.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 case "p1_remedio_errado":
-    ds_grid_add_text("Tem certeza que é agora...? fico com medo de errar.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("❌ Sem conferir horário/receita é perigoso.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+{
+    ds_grid_add_text("Tem certeza que é agora...? Eu fico com medo de errar.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Dar sem conferir horário/receita é perigoso.", noone, 0, "", noone, "narracao");
+    ds_grid_add_text("Algoritmo: checar condição antes de agir.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 
-// ===== Puzzle 2 (Quarto) =====
+
+// =======================================================
+// RESPOSTAS DO PUZZLE 3 - QUARTO
+// =======================================================
 case "p2_quarto_certo":
+{
     ds_grid_add_text("Assim fica bem melhor... obrigado.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("✅ Decomposição: resolver por partes.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("✅ Decomposição: resolver por partes deixa mais fácil.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 case "p2_quarto_errado":
+{
     ds_grid_add_text("Calma... assim eu me confundo todo.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("❌ Tudo de uma vez aumenta erro.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("❌ Tudo de uma vez aumenta erro e estresse.", noone, 0, "", noone, "narracao");
+    ds_grid_add_text("Decompor em etapas é mais eficiente.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
 case "p2_quarto_errado2":
-    ds_grid_add_text("A cama tá ok... mas o resto ainda me incomoda.", portrait_IN, 0, "Idoso", voz_npc);
+{
+    ds_grid_add_text("A cama tá ok... mas o resto ainda incomoda.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("❌ Resolver só um pedaço não resolve tudo.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    puzzle_finish();
+}
 break;
 
 
-// ===== Puzzle 3 (Cadeira) =====
-case "p3_erro_certo":
+
+// =======================================================
+// RESPOSTAS DO PUZZLE 4 - CADEIRA
+// =======================================================
+case "p3_cadeira_certo":
+{
     ds_grid_add_text("Isso... era o freio mesmo.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("✅ Checar a causa antes de agir evita acidente.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+    ds_grid_add_text("✅ Identificar a causa antes evita piorar.", noone, 0, "", noone, "narracao");
+    ds_grid_add_text("Abstração: focar no essencial primeiro.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
-case "p3_erro_errado":
-    ds_grid_add_text("Ei, cuidado! Assim pode quebrar ou me machucar.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("❌ Forçar é perigoso. Primeiro verifica.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+case "p3_cadeira_errado":
+{
+    ds_grid_add_text("Ei, cuidado! Assim pode me machucar.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Forçar pode causar acidente. Verifica antes.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
 
-case "p3_erro_errado2":
-    ds_grid_add_text("Aí eu fico preso... melhor olhar isso.", portrait_IN, 0, "Idoso", voz_npc);
-    ds_grid_add_text("❌ Ignorar mantém o problema.", noone, 0, "", noone, "narracao");
-    _puzzle_finish();
+case "p3_cadeira_errado2":
+{
+    ds_grid_add_text("Assim eu fico preso... melhor olhar isso.", portrait_IN, 0, "Idoso", voz_npc);
+    ds_grid_add_text("❌ Ignorar mantém o problema e pode piorar.", noone, 0, "", noone, "narracao");
+    puzzle_finish();
+}
 break;
+
+function puzzle_finish() {
+    global.puzzle += 1;
+    global.puzzle_cd = game_get_speed(gamespeed_fps) * 30; // 30 segundos
+}
 		
 	}
 }
