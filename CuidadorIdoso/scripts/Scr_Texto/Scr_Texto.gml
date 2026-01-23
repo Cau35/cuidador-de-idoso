@@ -231,6 +231,130 @@ break;
 break;
 		
 		
+		case "IDOSO":
+{
+    switch (global.puzzle)
+    {
+        // ===============================
+        // PUZZLE 0 – ÁGUA
+        // ===============================
+        case 0:
+        {
+            ds_grid_add_text(
+                "Ei... eu tô com sede...",
+                portrait_IF,
+                1,
+                "Idoso",
+                voz_npc,
+            );
+
+            ds_grid_add_text(
+                "O idoso parece desconfortável. O que você faz?",
+                noone,
+                0,
+                "",
+                noone,
+                "narracao"
+            );
+
+            add_op("Dar água agora", "IDOSO_AGUA_DAR");
+            add_op("Perguntar se ele pode beber água", "IDOSO_AGUA_PERGUNTAR");
+            add_op("Ignorar / pedir pra esperar", "IDOSO_AGUA_IGNORAR");
+        }
+        break;
+
+        // ===============================
+        // Depois que resolver o puzzle
+        // ===============================
+        default:
+        {
+            ds_grid_add_text(
+                "Obrigado por cuidar de mim...",
+                portrait_IN,
+                1,
+                "Idoso",
+                voz_npc,
+            );
+        }
+        break;
+    }
+}
+break;
+
+case "IDOSO_AGUA_DAR":
+{
+    ds_grid_add_text(
+        "Ahh... obrigado. Era só isso mesmo.",
+        portrait_IF,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "✅ Você resolveu corretamente: sede é uma necessidade básica e imediata.",
+        noone, 0, "", noone, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Isso é priorização: primeiro o básico, depois o resto.",
+        noone, 0, "", noone, "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+
+case "IDOSO_AGUA_PERGUNTAR":
+{
+    ds_grid_add_text(
+        "Eu só queria um pouco de água...",
+        portrait_IF,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "✅ Você tentou confirmar antes de agir. Isso também é cuidado.",
+        noone, 0, "", noone, "narracao"
+    );
+
+    ds_grid_add_text(
+        "Mas nesse caso o sinal já era simples: ele estava com sede.",
+        noone, 0, "", noone, "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+
+case "IDOSO_AGUA_IGNORAR":
+{
+    ds_grid_add_text(
+        "Ah... tudo bem então...",
+        portrait_IN,
+        1,
+        "Idoso",
+        voz_npc,
+    );
+
+    ds_grid_add_text(
+        "❌ Ignorar sede piora o desconforto e atrapalha todo o cuidado.",
+        noone, 0, "", noone, "narracao"
+    );
+
+    ds_grid_add_text(
+        "No cuidado, reconhecer sinais simples é parte essencial do processo.",
+        noone, 0, "", noone, "narracao"
+    );
+
+    global.puzzle += 1;
+}
+break;
+		
+		
+		
 	}
 }
 
