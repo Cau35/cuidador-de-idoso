@@ -30,7 +30,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.2.213",
+    "IDEVersion":"2024.14.3.217",
   },
   "name":"CuidadorIdoso",
   "resources":[
@@ -132,6 +132,8 @@
     {"id":{"name":"spr_WC_idoso_walking","path":"sprites/spr_WC_idoso_walking/spr_WC_idoso_walking.yy",},},
     {"id":{"name":"Sprite1","path":"sprites/Sprite1/Sprite1.yy",},},
     {"id":{"name":"Sprite55","path":"sprites/Sprite55/Sprite55.yy",},},
+    {"id":{"name":"Sprite68","path":"sprites/Sprite68/Sprite68.yy",},},
+    {"id":{"name":"Sprite69","path":"sprites/Sprite69/Sprite69.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

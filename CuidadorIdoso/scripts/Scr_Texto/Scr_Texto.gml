@@ -12,27 +12,27 @@ function scr_textos(){
 	{
 		case "Thats is my granny she get hit by a bazooka":
 			ds_grid_add_text("A moça te encara...", noone, 0, "", snd_voice_1, "narracao");
-			ds_grid_add_text("Oi, tudo dboa?.", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Opa eae...", portrait_pmf, 1, "Personagem 2", voz_npc);
-			ds_grid_add_text("Eu me sinto meio só ultimamente...", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Tipo, eu to trabalhando <r>muito</r>, e com pessoas que me enchem o saco", _p_falando, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Sei como é, quer continuar falando sobre isso?", portrait_pmf, 1, "Personagem 2", voz_npc);
-				add_op("Não, obrigado",								"Resposta 1");
-				add_op("Sim, muito obrigado",						"Resposta 2");
-				add_op("Tanto faz",									"Resposta 3");
+			ds_grid_add_text("Olá, tudo bem?.", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Opa, tudo sim.", portrait_pmf, 1, "Personagem 2", voz_npc);
+			ds_grid_add_text("Bom, teria uma pergunta.", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Poderia me falar se qual seria meu cliente de hoje?", _p_falando, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Sei sim, mas antes, você ja pegou seu equipamento e o já leu os livros na estante?", portrait_pmf, 1, "Personagem 2", voz_npc);
+				add_op("Ainda não.",								"Resposta 1");
+				add_op("Apenas peguei meu equipamento.",						"Resposta 2");
+				add_op("Já peguei meu equipamento e li os livros",									"Resposta 3");
 		break;
 				case "Resposta 1":
-				ds_grid_add_text("Não, obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Okay, tchau", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Ainda não.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Então vá falar com Acacia e o ler os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 2":
 				ds_grid_add_text("Sim, muito obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Foi por educação, se vira ai negão", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 3":
-				ds_grid_add_text("Tanto faz", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Mehhh", portrait_pmf, 1, "Personagem 2", voz_npc);
-				ds_grid_add_text("Tchau, desempregada", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Já peguei meu equipamento e li os livros", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Maravilhoso.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("O nome dele é Sr. Chico, ele está te esperando, se apresse.", _p_neutro, 0, "Personagem 2", voz_player);
 				break;
 				
 		case "Prof":
@@ -40,19 +40,19 @@ function scr_textos(){
     // SE JÁ TEM JALECO
     if (global.player == 1 || global.player == 3) {
         ds_grid_add_text(
-            "Você já está com o <y>jaleco</y>, vaza frances",
+            "Você já está com o <y>jaleco</y>, vá ler os livros!!!",
             portrait_pmf,
             1,
             "Professora Acácia",
             snd_voice_2,
             0
         );
-		ds_grid_add_text("Depois dessa grosseria você decide sair de perto dela...", noone, 0, "", snd_voice_1, "narracao");
+		ds_grid_add_text("Depois desse aviso você decide sair de perto dela...", noone, 0, "", snd_voice_1, "narracao");
     }
     // SE AINDA NÃO TEM
     else {
         ds_grid_add_text(
-            "Olá! Você gostaria de pegar seu <y>jaleco</y> agora?",
+            "Olá Frances! Você gostaria de pegar seu <y>jaleco</y> agora?",
             portrait_pmf,
             1,
             "Professora Acácia",
@@ -214,19 +214,19 @@ break;
 
     // Cena 1
     array_push(cutscene_bg_page, spr_teste_cena1)
-    ds_grid_add_text("Teste um da cutscene", noone, 0, "", snd_voice_2, "narracao");
+    ds_grid_add_text("Que paisagem linda.", noone, 0, "", snd_voice_2, "narracao");
 
     // mantém a mesma imagem
 	array_push(cutscene_bg_page, spr_teste_cena1)
-    ds_grid_add_text("esta imagem vai permanecer até eu pedir para mudar", noone, 0, "", snd_voice_2, "narracao");
+    ds_grid_add_text("Acho que essa paisagem ja está ficando chata, acho que quero ir pra outro lugar.", noone, 0, "", snd_voice_2, "narracao");
 
     // troca para Cena 2
     array_push(cutscene_bg_page, spr_teste_cena2)
-    ds_grid_add_text("Viu só?! mudou!!", noone, 0, "", snd_voice_2, "narracao");
+    ds_grid_add_text("Oxe, que estranho, como eu vim parar nesse lugar.", noone, 0, "", snd_voice_2, "narracao");
 
     // final
 	array_push(cutscene_bg_page, spr_teste_cena2)
-    ds_grid_add_text("e agora o jogo vai começar!!!", noone, 0, "", snd_voice_2, "narracao");
+    ds_grid_add_text("Será que estou sonhando, ent é melhor eu acordar.", noone, 0, "", snd_voice_2, "narracao");
 
 break;
 		
