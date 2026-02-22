@@ -59,6 +59,7 @@
     {"id":{"name":"GameMenu","path":"rooms/GameMenu/GameMenu.yy",},},
     {"id":{"name":"Room_selecao","path":"rooms/Room_selecao/Room_selecao.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Room2_1","path":"rooms/Room2_1/Room2_1.yy",},},
     {"id":{"name":"Room2","path":"rooms/Room2/Room2.yy",},},
     {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"id":{"name":"Room6","path":"rooms/Room6/Room6.yy",},},
@@ -141,6 +142,7 @@
     {"id":{"name":"Sprite71","path":"sprites/Sprite71/Sprite71.yy",},},
     {"id":{"name":"Sprite72","path":"sprites/Sprite72/Sprite72.yy",},},
     {"id":{"name":"Sprite73","path":"sprites/Sprite73/Sprite73.yy",},},
+    {"id":{"name":"Sprite74","path":"sprites/Sprite74/Sprite74.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
@@ -152,6 +154,7 @@
     {"roomId":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"roomId":{"name":"Room6","path":"rooms/Room6/Room6.yy",},},
     {"roomId":{"name":"Room7","path":"rooms/Room7/Room7.yy",},},
+    {"roomId":{"name":"Room2_1","path":"rooms/Room2_1/Room2_1.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
