@@ -31,8 +31,8 @@ function scr_textos(){
 				break;
 				case "Resposta 3":
 				ds_grid_add_text("Já peguei meu equipamento e li os livros", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Maravilhoso.", portrait_pmf, 1, "Personagem 2", voz_npc);
-				ds_grid_add_text("O nome dele é Sr. Chico, ele está te esperando, se apresse.", _p_neutro, 0, "Personagem 2", voz_player);
+				ds_grid_add_text("Maravilhoso, o nome dele é Sr. Chico, ele está te esperando, se apresse.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Certo, irei ver ele.", _p_neutro, 0, "Personagem 2", voz_player);
 				break;
 				
 		case "Prof":
