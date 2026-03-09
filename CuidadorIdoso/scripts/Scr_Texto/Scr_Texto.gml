@@ -10,6 +10,30 @@ function scr_textos(){
 	
 	switch(npc_nome)
 	{
+		case "Vendedor":
+		ds_grid_add_text("Olá, como posso te ajudar?", portrait_pmf, 1, "Personagem 2", voz_npc);
+		ds_grid_add_text("Oi, estou em busca de alguns intrumentos cientificos, você terai algum ai?", _p_neutro, 0, "Personagem 1", voz_player);
+		ds_grid_add_text("Tenho sim, de uma olhada.", portrait_pmf, 1, "Personagem 2", voz_npc);
+		add_op("Estetoscópopio (20 moedas).",								"Resposta 1");
+		add_op("Luvas (10 moedas).",								"Resposta 2");
+		add_op("Touca (5 moedas).",								"Resposta 3");
+		add_op("Medidor de Pressão (50 moedas).",								"Resposta 4");
+		break;
+		case "Resposta 1":
+				ds_grid_add_text("Ainda não.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Então vá falar com Acacia e o ler os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+				case "Resposta 2":
+				ds_grid_add_text("Apenaspeguei meu jaleco.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Então leia os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+				case "Resposta 3":
+				ds_grid_add_text("Já peguei meu equipamento e li os livros", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Maravilhoso, o nome dele é Sr. Chico, ele está te esperando, se apresse.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Certo, irei ver ele.", _p_neutro, 0, "Personagem 2", voz_player);
+				break;
+		
+		
 		case "Thats is my granny she get hit by a bazooka":
 			ds_grid_add_text("A moça te encara...", noone, 0, "", snd_voice_1, "narracao");
 			ds_grid_add_text("Olá, tudo bem?.", _p_neutro, 0, "Personagem 1", voz_player);
@@ -26,15 +50,14 @@ function scr_textos(){
 				ds_grid_add_text("Então vá falar com Acacia e o ler os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 2":
-				ds_grid_add_text("Sim, muito obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Foi por educação, se vira ai negão", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Apenaspeguei meu jaleco.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Então leia os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 3":
 				ds_grid_add_text("Já peguei meu equipamento e li os livros", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Maravilhoso, o nome dele é Sr. Chico, ele está te esperando, se apresse.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				ds_grid_add_text("Certo, irei ver ele.", _p_neutro, 0, "Personagem 2", voz_player);
 				break;
-				
 		case "Prof":
 
     // SE JÁ TEM JALECO
@@ -237,6 +260,7 @@ case "IDOSO":
     // ===============================
     if (!variable_global_exists("puzzle")) global.puzzle = 0;
     if (!variable_global_exists("puzzle_cd")) global.puzzle_cd = 0;
+	if (!variable_global_exists("moedas")) global.moedas = 0;
 
     // ===============================
     // Cooldown (30s) entre puzzles
@@ -330,6 +354,7 @@ break;
 // =======================================================
 case "p0_agua_certo":
 {
+   global.moedas += 10;
     ds_grid_add_text("Obrigado... era isso mesmo.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Você priorizou uma necessidade imediata.", noone, 0, "", noone, "narracao");
     ds_grid_add_text("Isso é pensar em prioridade: primeiro o básico.", noone, 0, "", noone, "narracao");
