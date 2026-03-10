@@ -13,24 +13,31 @@ function scr_textos(){
 		case "Vendedor":
 		ds_grid_add_text("Olá, como posso te ajudar?", portrait_pmf, 1, "Personagem 2", voz_npc);
 		ds_grid_add_text("Oi, estou em busca de alguns intrumentos cientificos, você terai algum ai?", _p_neutro, 0, "Personagem 1", voz_player);
-		ds_grid_add_text("Tenho sim, de uma olhada.", portrait_pmf, 1, "Personagem 2", voz_npc);
-		add_op("Estetoscópopio (20 moedas).",								"Resposta 1");
-		add_op("Luvas (10 moedas).",								"Resposta 2");
-		add_op("Touca (5 moedas).",								"Resposta 3");
-		add_op("Medidor de Pressão (50 moedas).",								"Resposta 4");
+		ds_grid_add_text("Tenho sim, dé uma olhada.", portrait_pmf, 1, "Personagem 2", voz_npc);
+		add_op("Estetoscópopio (20 moedas).",								"Resposta 8");
+		add_op("Luvas (10 moedas).",								"Resposta 6");
+		add_op("Touca (5 moedas).",								"Resposta 7");
+		add_op("Medidor de Pressão (50 moedas).",								"Resposta 9");
 		break;
-		case "Resposta 1":
-				ds_grid_add_text("Ainda não.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Então vá falar com Acacia e o ler os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
+		case "Resposta 8":
+		        global.moedas -= 20;
+				ds_grid_add_text("O estetoscópopio.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
-				case "Resposta 2":
-				ds_grid_add_text("Apenaspeguei meu jaleco.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Então leia os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				case "Resposta 6":
+				global.moedas -= 10;
+				ds_grid_add_text("Quero um par de luvas", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
-				case "Resposta 3":
-				ds_grid_add_text("Já peguei meu equipamento e li os livros", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Maravilhoso, o nome dele é Sr. Chico, ele está te esperando, se apresse.", portrait_pmf, 1, "Personagem 2", voz_npc);
-				ds_grid_add_text("Certo, irei ver ele.", _p_neutro, 0, "Personagem 2", voz_player);
+				case "Resposta 7":
+				global.moedas -= 5;
+				ds_grid_add_text("Desejo uma Touca", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+				case "Resposta 9":
+				global.moedas -= 50;
+				ds_grid_add_text("Me veja um medidor de pressão", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 		
 		
@@ -50,7 +57,7 @@ function scr_textos(){
 				ds_grid_add_text("Então vá falar com Acacia e o ler os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 2":
-				ds_grid_add_text("Apenaspeguei meu jaleco.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Apenas peguei meu jaleco.", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Então leia os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 3":
@@ -387,6 +394,7 @@ break;
 // =======================================================
 case "p1_remedio_certo":
 {
+	global.moedas += 10;
     ds_grid_add_text("Boa... é melhor conferir direitinho.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Algoritmo: checar → preparar → executar.", noone, 0, "", noone, "narracao");
     ds_grid_add_text("Ordem certa evita erro e deixa o cuidado seguro.", noone, 0, "", noone, "narracao");
@@ -419,6 +427,7 @@ break;
 // =======================================================
 case "p2_quarto_certo":
 {
+	global.moedas += 10;
     ds_grid_add_text("Assim fica bem melhor... obrigado.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Decomposição: resolver por partes deixa mais fácil.", noone, 0, "", noone, "narracao");
     puzzle_finish();
@@ -449,6 +458,7 @@ break;
 // =======================================================
 case "p3_cadeira_certo":
 {
+	global.moedas += 10;
     ds_grid_add_text("Isso... era o freio mesmo.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Identificar a causa antes evita piorar.", noone, 0, "", noone, "narracao");
     ds_grid_add_text("Abstração: focar no essencial primeiro.", noone, 0, "", noone, "narracao");
