@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Camera",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"Obj_armario",
+  "eventList":[],
   "managed":true,
-  "name":"Camera",
+  "name":"Obj_armario",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
@@ -29,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"Sprite87",
+    "path":"sprites/Sprite87/Sprite87.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
