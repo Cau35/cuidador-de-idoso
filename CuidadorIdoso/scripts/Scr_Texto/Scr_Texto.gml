@@ -20,25 +20,42 @@ function scr_textos(){
 		add_op("Medidor de Pressão (50 moedas).",								"Resposta 9");
 		break;
 		case "Resposta 8":
-		        global.moedas -= 20;
-				ds_grid_add_text("O estetoscópopio.", _p_neutro, 0, "Personagem 1", voz_player);
+		   if (global.moedas >= 20) {
+ds_grid_add_text("O estetoscópopio.", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 20;
 				break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+}
 				case "Resposta 6":
-				global.moedas -= 10;
-				ds_grid_add_text("Quero um par de luvas", _p_neutro, 0, "Personagem 1", voz_player);
+				 if (global.moedas >= 10) {
+ds_grid_add_text("Quero um par de luvas", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 10; break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
+}
 				case "Resposta 7":
-				global.moedas -= 5;
-				ds_grid_add_text("Desejo uma Touca", _p_neutro, 0, "Personagem 1", voz_player);
+								 if (global.moedas >= 5) {
+ds_grid_add_text("Desejo uma Touca", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 5; break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
+}
 				case "Resposta 9":
-				global.moedas -= 50;
-				ds_grid_add_text("Me veja um medidor de pressão", _p_neutro, 0, "Personagem 1", voz_player);
+				 if (global.moedas >= 50) {
+ds_grid_add_text("Me veja um medidor de pressão", _p_neutro, 0, "Personagem 1", voz_player);
 				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 50; break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
+}
 		
 		
 		case "Thats is my granny she get hit by a bazooka":
