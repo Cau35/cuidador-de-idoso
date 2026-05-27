@@ -1,20 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_daniel",
+  "%Name":"drag_and_drop",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_daniel",
+  "name":"drag_and_drop",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
     "path":"folders/objeto.yy",
   },
-  "parentObjectId":{
-    "name":"obj_par_npcs",
-    "path":"objects/obj_par_npcs/obj_par_npcs.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -33,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_daniel",
-    "path":"sprites/spr_daniel/spr_daniel.yy",
+    "name":"Sprite88",
+    "path":"sprites/Sprite88/Sprite88.yy",
   },
   "spriteMaskId":null,
   "visible":true,

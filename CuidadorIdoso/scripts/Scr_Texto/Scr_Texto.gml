@@ -58,11 +58,21 @@ ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_p
 }
 		
 		case "wilson, lo siento wilson...":
-ds_grid_add_text("Olá, você é o Doutor Wilson?.", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Opa, sou sim, como posso lhe ajudar?.", portrait_pmf, 1, "Personagem 2", voz_npc);
-			ds_grid_add_text("Bom, teria uma pergunta.", _p_neutro, 0, "Personagem 1", voz_player);
-			break;
-			
+    ds_grid_add_text("Olá, você é o Doutor Wilson?.", _p_neutro, 0, "Personagem 1", voz_player);
+    ds_grid_add_text("Opa, sou sim, como tenho um desafio para você.", portrait_pmf, 1, "Personagem 2", voz_npc);
+    // Define a próxima sala APENAS para este diálogo
+    global.cutscene_next_room = Room_minigame1; // ⚠️ Substitui pelo nome exato da tua sala!
+break;
+				
+		case "daniel":
+    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);	
+	
+		case "eliza":
+    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+	
+		case "marcio":
+    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+	
 		case "Thats is my granny she get hit by a bazooka":
 			ds_grid_add_text("A moça te encara...", noone, 0, "", snd_voice_1, "narracao");
 			ds_grid_add_text("Olá, tudo bem?.", _p_neutro, 0, "Personagem 1", voz_player);

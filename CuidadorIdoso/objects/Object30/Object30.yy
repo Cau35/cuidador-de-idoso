@@ -1,20 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_daniel",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"Object30",
+  "eventList":[],
   "managed":true,
-  "name":"obj_daniel",
+  "name":"Object30",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
     "path":"folders/objeto.yy",
   },
-  "parentObjectId":{
-    "name":"obj_par_npcs",
-    "path":"objects/obj_par_npcs/obj_par_npcs.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -32,10 +27,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_daniel",
-    "path":"sprites/spr_daniel/spr_daniel.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
