@@ -267,31 +267,8 @@ case "Fechar_Estante":
     );
 break;
 		
-		
-		case "Cutscene_1":
 
-    // quando acabar, vai pra Room_1
-	global.cutscene_ativa = true;
-    global.cutscene_next_room = Room1;
 
-    // Cena 1
-    array_push(cutscene_bg_page, spr_teste_cena1)
-    ds_grid_add_text("Que paisagem linda (clique na tecla e do seu teclado para prosseguir).", noone, 0, "", snd_voice_2, "narracao");
-
-    // mantém a mesma imagem
-	array_push(cutscene_bg_page, spr_teste_cena1)
-    ds_grid_add_text("Acho que essa paisagem ja está ficando chata, acho que quero ir pra outro lugar.", noone, 0, "", snd_voice_2, "narracao");
-
-    // troca para Cena 2
-    array_push(cutscene_bg_page, spr_teste_cena2)
-    ds_grid_add_text("Oxe, que estranho, como eu vim parar nesse lugar.", noone, 0, "", snd_voice_2, "narracao");
-
-    // final
-	array_push(cutscene_bg_page, spr_teste_cena2)
-    ds_grid_add_text("Será que estou sonhando, então é melhor eu acordar (quando iniciar o jogo use as telcas de seta do seu teclado para se mover).", noone, 0, "", snd_voice_2, "narracao");
-
-break;
-		
 case "IDOSO":
 {
     // ===============================

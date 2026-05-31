@@ -1,0 +1,1 @@
+tipo_caixa = 2; nome_caixa = "O que levar para registrar";

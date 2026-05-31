@@ -1,0 +1,1 @@
+nome_item = "Crachá"; // Certo! Dentro das aspas o acento funciona.

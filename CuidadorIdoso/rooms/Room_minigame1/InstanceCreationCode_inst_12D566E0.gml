@@ -1,0 +1,1 @@
+nome_item = "Álcool em Gel"; // Certo!
