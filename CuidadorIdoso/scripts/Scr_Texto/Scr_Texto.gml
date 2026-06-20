@@ -65,13 +65,15 @@ ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_p
 break;
 				
 		case "daniel":
-    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);	
+    ds_grid_add_text("EM DESENVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+	    global.cutscene_next_room = rm_prontuario;
+		break;
 	
 		case "eliza":
-    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+    ds_grid_add_text("EM DESENVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
 	
 		case "marcio":
-    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+    ds_grid_add_text("EM DESENVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
 	
 		case "Thats is my granny she get hit by a bazooka":
 			ds_grid_add_text("A moça te encara...", noone, 0, "", snd_voice_1, "narracao");
