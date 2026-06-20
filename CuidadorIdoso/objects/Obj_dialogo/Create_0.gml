@@ -26,3 +26,4 @@ voice_id = -1;
 voice_asset = noone;
 
 cutscene_bg_page = [];
+global.mudar_de_sala = false;

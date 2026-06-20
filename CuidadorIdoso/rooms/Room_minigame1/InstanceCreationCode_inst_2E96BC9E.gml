@@ -1,0 +1,1 @@
+tipo_caixa = 3; nome_caixa = "O que conferir antes";

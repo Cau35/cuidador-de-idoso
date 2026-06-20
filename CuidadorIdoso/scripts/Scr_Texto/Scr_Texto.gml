@@ -10,49 +10,111 @@ function scr_textos(){
 	
 	switch(npc_nome)
 	{
+		case "Vendedor":
+		ds_grid_add_text("Olá, como posso te ajudar?", portrait_pmf, 1, "Personagem 2", voz_npc);
+		ds_grid_add_text("Oi, estou em busca de alguns intrumentos cientificos, você terai algum ai?", _p_neutro, 0, "Personagem 1", voz_player);
+		ds_grid_add_text("Tenho sim, dé uma olhada.", portrait_pmf, 1, "Personagem 2", voz_npc);
+		add_op("Estetoscópopio (20 moedas).",								"Resposta 8");
+		add_op("Luvas (10 moedas).",								"Resposta 6");
+		add_op("Touca (5 moedas).",								"Resposta 7");
+		add_op("Medidor de Pressão (50 moedas).",								"Resposta 9");
+		break;
+		case "Resposta 8":
+		   if (global.moedas >= 20) {
+ds_grid_add_text("O estetoscópopio.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 20;
+				break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+}
+				case "Resposta 6":
+				 if (global.moedas >= 10) {
+ds_grid_add_text("Quero um par de luvas", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 10; break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+}
+				case "Resposta 7":
+								 if (global.moedas >= 5) {
+ds_grid_add_text("Desejo uma Touca", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 5; break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+}
+				case "Resposta 9":
+				 if (global.moedas >= 50) {
+ds_grid_add_text("Me veja um medidor de pressão", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Certo, aqui está.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				global.moedas -= 50; break;
+} else {
+ds_grid_add_text("Desculpe senhor, mas você não tem o suficiente.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				break;
+}
+		
+		case "wilson, lo siento wilson...":
+    ds_grid_add_text("Olá, você é o Doutor Wilson?.", _p_neutro, 0, "Personagem 1", voz_player);
+    ds_grid_add_text("Opa, sou sim, como tenho um desafio para você.", portrait_pmf, 1, "Personagem 2", voz_npc);
+    // Define a próxima sala APENAS para este diálogo
+    global.cutscene_next_room = Room_minigame1; // ⚠️ Substitui pelo nome exato da tua sala!
+break;
+				
+		case "daniel":
+    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);	
+	
+		case "eliza":
+    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+	
+		case "marcio":
+    ds_grid_add_text("EM DESEMVOLVIMENTO!!!!.", portrait_pmf, 1, "Personagem 2", voz_npc);
+	
 		case "Thats is my granny she get hit by a bazooka":
 			ds_grid_add_text("A moça te encara...", noone, 0, "", snd_voice_1, "narracao");
-			ds_grid_add_text("Oi, tudo dboa?.", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Opa eae...", portrait_pmf, 1, "Personagem 2", voz_npc);
-			ds_grid_add_text("Eu me sinto meio só ultimamente...", _p_neutro, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Tipo, eu to trabalhando <r>muito</r>, e com pessoas que me enchem o saco", _p_falando, 0, "Personagem 1", voz_player);
-			ds_grid_add_text("Sei como é, quer continuar falando sobre isso?", portrait_pmf, 1, "Personagem 2", voz_npc);
-				add_op("Não, obrigado",								"Resposta 1");
-				add_op("Sim, muito obrigado",						"Resposta 2");
-				add_op("Tanto faz",									"Resposta 3");
+			ds_grid_add_text("Olá, tudo bem?.", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Opa, tudo sim.", portrait_pmf, 1, "Personagem 2", voz_npc);
+			ds_grid_add_text("Bom, teria uma pergunta.", _p_neutro, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Poderia me falar se qual seria meu cliente de hoje?", _p_falando, 0, "Personagem 1", voz_player);
+			ds_grid_add_text("Sei sim, mas antes, você ja pegou seu equipamento e o já leu os livros na estante?", portrait_pmf, 1, "Personagem 2", voz_npc);
+				add_op("Ainda não.",								"Resposta 1");
+				add_op("Apenas peguei meu equipamento.",						"Resposta 2");
+				add_op("Já peguei meu equipamento e li os livros",									"Resposta 3");
 		break;
 				case "Resposta 1":
-				ds_grid_add_text("Não, obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Okay, tchau", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Ainda não.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Então vá falar com Acacia e o ler os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 2":
-				ds_grid_add_text("Sim, muito obrigado.", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Foi por educação, se vira ai negão", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Apenas peguei meu jaleco.", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Então leia os livros na estante.", portrait_pmf, 1, "Personagem 2", voz_npc);
 				break;
 				case "Resposta 3":
-				ds_grid_add_text("Tanto faz", _p_neutro, 0, "Personagem 1", voz_player);
-				ds_grid_add_text("Mehhh", portrait_pmf, 1, "Personagem 2", voz_npc);
-				ds_grid_add_text("Tchau, desempregada", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Já peguei meu equipamento e li os livros", _p_neutro, 0, "Personagem 1", voz_player);
+				ds_grid_add_text("Maravilhoso, o nome dele é Sr. Chico, ele está te esperando, se apresse.", portrait_pmf, 1, "Personagem 2", voz_npc);
+				ds_grid_add_text("Certo, irei ver ele.", _p_neutro, 0, "Personagem 2", voz_player);
 				break;
-				
 		case "Prof":
 
     // SE JÁ TEM JALECO
     if (global.player == 1 || global.player == 3) {
         ds_grid_add_text(
-            "Você já está com o <y>jaleco</y>, vaza frances",
+            "Você já está com o <y>jaleco</y>, vá ler os livros!!!",
             portrait_pmf,
             1,
             "Professora Acácia",
             snd_voice_2,
             0
         );
-		ds_grid_add_text("Depois dessa grosseria você decide sair de perto dela...", noone, 0, "", snd_voice_1, "narracao");
+		ds_grid_add_text("Depois desse aviso você decide sair de perto dela...", noone, 0, "", snd_voice_1, "narracao");
     }
     // SE AINDA NÃO TEM
     else {
         ds_grid_add_text(
-            "Olá! Você gostaria de pegar seu <y>jaleco</y> agora?",
+            "Olá Frances! Você gostaria de pegar seu <y>jaleco</y> agora?",
             portrait_pmf,
             1,
             "Professora Acácia",
@@ -205,31 +267,8 @@ case "Fechar_Estante":
     );
 break;
 		
-		
-		case "Cutscene_1":
 
-    // quando acabar, vai pra Room_1
-	global.cutscene_ativa = true;
-    global.cutscene_next_room = Room1;
 
-    // Cena 1
-    array_push(cutscene_bg_page, spr_teste_cena1)
-    ds_grid_add_text("Teste um da cutscene", noone, 0, "", snd_voice_2, "narracao");
-
-    // mantém a mesma imagem
-	array_push(cutscene_bg_page, spr_teste_cena1)
-    ds_grid_add_text("esta imagem vai permanecer até eu pedir para mudar", noone, 0, "", snd_voice_2, "narracao");
-
-    // troca para Cena 2
-    array_push(cutscene_bg_page, spr_teste_cena2)
-    ds_grid_add_text("Viu só?! mudou!!", noone, 0, "", snd_voice_2, "narracao");
-
-    // final
-	array_push(cutscene_bg_page, spr_teste_cena2)
-    ds_grid_add_text("e agora o jogo vai começar!!!", noone, 0, "", snd_voice_2, "narracao");
-
-break;
-		
 case "IDOSO":
 {
     // ===============================
@@ -237,6 +276,7 @@ case "IDOSO":
     // ===============================
     if (!variable_global_exists("puzzle")) global.puzzle = 0;
     if (!variable_global_exists("puzzle_cd")) global.puzzle_cd = 0;
+	if (!variable_global_exists("moedas")) global.moedas = 0;
 
     // ===============================
     // Cooldown (30s) entre puzzles
@@ -330,6 +370,7 @@ break;
 // =======================================================
 case "p0_agua_certo":
 {
+   global.moedas += 10;
     ds_grid_add_text("Obrigado... era isso mesmo.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Você priorizou uma necessidade imediata.", noone, 0, "", noone, "narracao");
     ds_grid_add_text("Isso é pensar em prioridade: primeiro o básico.", noone, 0, "", noone, "narracao");
@@ -362,6 +403,7 @@ break;
 // =======================================================
 case "p1_remedio_certo":
 {
+	global.moedas += 10;
     ds_grid_add_text("Boa... é melhor conferir direitinho.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Algoritmo: checar → preparar → executar.", noone, 0, "", noone, "narracao");
     ds_grid_add_text("Ordem certa evita erro e deixa o cuidado seguro.", noone, 0, "", noone, "narracao");
@@ -394,6 +436,7 @@ break;
 // =======================================================
 case "p2_quarto_certo":
 {
+	global.moedas += 10;
     ds_grid_add_text("Assim fica bem melhor... obrigado.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Decomposição: resolver por partes deixa mais fácil.", noone, 0, "", noone, "narracao");
     puzzle_finish();
@@ -424,6 +467,7 @@ break;
 // =======================================================
 case "p3_cadeira_certo":
 {
+	global.moedas += 10;
     ds_grid_add_text("Isso... era o freio mesmo.", portrait_IN, 0, "Idoso", voz_npc);
     ds_grid_add_text("✅ Identificar a causa antes evita piorar.", noone, 0, "", noone, "narracao");
     ds_grid_add_text("Abstração: focar no essencial primeiro.", noone, 0, "", noone, "narracao");

@@ -1,10 +1,10 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_acacia_parada_baixo",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":131,
   "bbox_left":0,
-  "bbox_right":57,
+  "bbox_right":54,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,

@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_gb_idoso",
-    "path":"sprites/spr_gb_idoso/spr_gb_idoso.yy",
+    "name":"spr_bb_idoso",
+    "path":"sprites/spr_bb_idoso/spr_bb_idoso.yy",
   },
   "spriteMaskId":null,
   "visible":true,

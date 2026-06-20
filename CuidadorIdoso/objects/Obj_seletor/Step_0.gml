@@ -13,6 +13,7 @@ if (global.escolhe_player)
         {
             global.player = player;         // Guarda QUEM foi o escolhido
             global.escolhe_player = false;  // Fecha a fase de seleção
+			room_goto(Room1);
         }
     }
     else 

@@ -17,3 +17,5 @@ global.cutscene_ativa = false;
 
 if (!variable_global_exists("puzzle")) global.puzzle = 0;
 if (!variable_global_exists("puzzle_cd")) global.puzzle_cd = 0;
+
+global.moedas = 0;
