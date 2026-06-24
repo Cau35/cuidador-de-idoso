@@ -31,10 +31,10 @@ for(var i = 0; i < tam_menu; i++)
 			switch menu_inicial[i]
 			{
 				case menu_inicial[0]: //Jogar
-					room_goto(Room_selecao);
+					room_goto(Room1);
 					break;
 				case menu_inicial[1]: // Opções
-					show_message("Opções")
+					room_goto(opcoes)
 					break;
 				case menu_inicial[2]: // Sair
 					game_end()

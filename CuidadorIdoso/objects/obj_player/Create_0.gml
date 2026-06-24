@@ -2,13 +2,9 @@ if (!variable_global_exists("pegar_jaleco")){
 	global.pegar_jaleco = false;
 }
 
-switch(global.player)
-{
-	case 0: player = new Personagem_CuidadorSJ(); break;
-	case 1: player = new Personagem_CuidadorCJ(); break;
-	case 2: player = new Personagem_CuidadoraSJ(); break;
-	case 3: player = new Personagem_CuidadoraCJ(); break; 
-}
+
+
+
 
 velh = 0; 
 velv = 0; 
@@ -22,7 +18,7 @@ right = 0
 image_xscale = 0.3;
 image_yscale = 0.3;
 
-sprite_index = player.sprite_idle
+
 
 pega_input = function() { 
 	up = keyboard_check(vk_up); 
@@ -36,12 +32,8 @@ estado = noone;
 estado_idle = function()
 
 {
-	sprite_index = player.sprite_idle;
-
-
+	
 	pega_input();
-
-//Se a pessoa apertou alguma tecla, eu saio do estado
 
 	if (up xor down or right xor left)
 
@@ -56,7 +48,7 @@ estado_walk = function()
 {
 	pega_input();
 
-	sprite_index = player.sprite_walk;
+	
 
 	velh = (right - left) * vel;
 

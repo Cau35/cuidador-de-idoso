@@ -1,3 +1,27 @@
+//movi
+
+var move_x = keyboard_check(ord("D")) - keyboard_check(ord("A"));
+var move_y = keyboard_check(ord("S")) - keyboard_check(ord("W"));
+
+var vel = 4;
+
+if (move_x != 0 || move_y != 0)
+{
+    var len = point_distance(0, 0, move_x, move_y);
+
+    move_x /= len;
+    move_y /= len;
+
+    x += move_x * vel;
+    y += move_y * vel;
+}
+
+
+
+
+
+
+
 if (global.dialogo)
 {
     velh = 0;
@@ -20,11 +44,6 @@ if (global.pegar_jaleco)
 	if (global.player == 0) global.player = 1;
 	else if (global.player == 2) global.player = 3;
 
-	switch (global.player)
-	{
-		case 1: player = new Personagem_CuidadorCJ(); break;
-		case 3: player = new Personagem_CuidadoraCJ(); break;
-	}
 
 	sprite_index = player.sprite_idle;
 

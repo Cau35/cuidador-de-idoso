@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_chico_parada_baixo",
-    "path":"sprites/spr_chico_parada_baixo/spr_chico_parada_baixo.yy",
+    "name":"Sprite128",
+    "path":"sprites/Sprite128/Sprite128.yy",
   },
   "spriteMaskId":null,
   "visible":true,
