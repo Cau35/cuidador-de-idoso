@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_cadeira",
+  "%Name":"obj_mesa",
   "eventList":[],
   "managed":true,
-  "name":"Obj_cadeira",
+  "name":"obj_mesa",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite134",
-    "path":"sprites/Sprite134/Sprite134.yy",
+    "name":"Sprite86",
+    "path":"sprites/Sprite86/Sprite86.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_cadeira",
+  "%Name":"obj_porta",
   "eventList":[],
   "managed":true,
-  "name":"Obj_cadeira",
+  "name":"obj_porta",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite134",
-    "path":"sprites/Sprite134/Sprite134.yy",
+    "name":"spr_porta",
+    "path":"sprites/spr_porta/spr_porta.yy",
   },
   "spriteMaskId":null,
   "visible":true,

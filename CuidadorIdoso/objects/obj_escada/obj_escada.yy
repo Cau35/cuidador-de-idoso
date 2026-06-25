@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_cadeira",
+  "%Name":"obj_escada",
   "eventList":[],
   "managed":true,
-  "name":"Obj_cadeira",
+  "name":"obj_escada",
   "overriddenProperties":[],
   "parent":{
     "name":"objeto",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Sprite134",
-    "path":"sprites/Sprite134/Sprite134.yy",
+    "name":"spr_escada",
+    "path":"sprites/spr_escada/spr_escada.yy",
   },
   "spriteMaskId":null,
   "visible":true,
