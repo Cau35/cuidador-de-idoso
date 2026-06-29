@@ -1,0 +1,9 @@
+arrastando = false;
+offset_x = 0;
+offset_y = 0;
+pos_origem_x = x;
+pos_origem_y = y;
+caixa_alvo = -1;      
+na_caixa_correta = false;
+nome_item = "";
+eh_distrator = true;

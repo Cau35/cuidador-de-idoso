@@ -20,15 +20,15 @@ if (paused)
     {
         switch (menu_index)
         {
-            case 0: // Continuar
+            case 0:
                 paused = false;
                 break;
 
-            case 1: // Opcoes
-                room_goto(rm_opcoes);
+            case 1: 
+                room_goto(opcoes);
                 break;
 
-            case 2: // Sair
+            case 2:
                 game_end();
                 break;
         }

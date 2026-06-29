@@ -1,1 +1,0 @@
-tipo_caixa = 1; nome_caixa = "O que vestir/usar";
