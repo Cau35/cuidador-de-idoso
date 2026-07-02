@@ -17,8 +17,8 @@
   ],
   "name":"opcoes",
   "parent":{
-    "name":"CuidadorIdoso",
-    "path":"CuidadorIdoso.yyp",
+    "name":"rooms",
+    "path":"folders/rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

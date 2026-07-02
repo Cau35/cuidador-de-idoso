@@ -5,5 +5,5 @@ pos_origem_x = x;
 pos_origem_y = y;
 caixa_alvo = -1;      
 na_caixa_correta = false;
-nome_item = "";
+nome_item = nome_item;
 eh_distrator = false;

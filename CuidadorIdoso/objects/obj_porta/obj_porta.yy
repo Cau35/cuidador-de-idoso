@@ -1,15 +1,22 @@
 {
   "$GMObject":"",
   "%Name":"obj_porta",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_porta",
   "overriddenProperties":[],
   "parent":{
-    "name":"objeto",
-    "path":"folders/objeto.yy",
+    "name":"jogo",
+    "path":"folders/objeto/jogo.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_solido",
+    "path":"objects/obj_solido/obj_solido.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -23,14 +30,15 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"porta_id","filters":[],"listItems":[],"multiselect":false,"name":"porta_id","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"porta_a\"","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"room_destino","filters":[],"listItems":[],"multiselect":false,"name":"room_destino","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"rm_sala_informatica","varType":4,},
+    {"$GMObjectProperty":"v2","%Name":"porta_destino_id","filters":[],"listItems":[],"multiselect":false,"name":"porta_destino_id","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"porta_b\"","varType":4,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_porta",
-    "path":"sprites/spr_porta/spr_porta.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

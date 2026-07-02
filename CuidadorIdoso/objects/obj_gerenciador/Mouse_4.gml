@@ -1,13 +1,17 @@
 if mostrar_fala_professor {
     var gw = display_get_gui_width();
     var gh = display_get_gui_height();
-    var bx = 60; var by = gh - 260;
-    var bw = gw - 120; var bh = 220;
-    // Clicou no botão "Continuar"?
-    if point_in_rectangle(mouse_x, mouse_y,
-        bx + bw - 110, by + bh - 45,
-        bx + bw - 10,  by + bh - 10) {
+    var bw = gw - 80; var bh = 240;
+    var bx = 40;      var by = gh - bh - 20;
+    var btn_w = 140;  var btn_h = 36;
+    var btn_x = bx + bw - btn_w - 16;
+    var btn_y = by + bh - btn_h - 12;
+
+    if point_in_rectangle(
+        display_mouse_get_x(), display_mouse_get_y(),
+        btn_x, btn_y, btn_x + btn_w, btn_y + btn_h) {
         mostrar_fala_professor = false;
-       room_goto_next();
+        obj_quest_gerenciador.marcar_quest_completa(0);
+        room_goto(rm_sala_informatica);
     }
 }

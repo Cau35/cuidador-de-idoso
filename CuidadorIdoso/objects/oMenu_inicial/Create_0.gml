@@ -1,4 +1,4 @@
-menu_inicial = ["Jogar", "Opções", "Sair"];
+menu_inicial = ["Jogar","carregar",  "Opções", "Sair"];
 esc[array_length(menu_inicial) - 1] = 0;
 
 for(var i = 0; i < array_length(esc); i++)

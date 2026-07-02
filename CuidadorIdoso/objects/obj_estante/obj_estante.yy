@@ -8,13 +8,10 @@
   "name":"obj_estante",
   "overriddenProperties":[],
   "parent":{
-    "name":"objeto",
-    "path":"folders/objeto.yy",
+    "name":"cenario",
+    "path":"folders/objeto/cenario.yy",
   },
-  "parentObjectId":{
-    "name":"obj_par_npcs",
-    "path":"objects/obj_par_npcs/obj_par_npcs.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

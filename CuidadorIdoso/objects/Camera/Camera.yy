@@ -8,8 +8,8 @@
   "name":"Camera",
   "overriddenProperties":[],
   "parent":{
-    "name":"objeto",
-    "path":"folders/objeto.yy",
+    "name":"jogo",
+    "path":"folders/objeto/jogo.yy",
   },
   "parentObjectId":null,
   "persistent":false,

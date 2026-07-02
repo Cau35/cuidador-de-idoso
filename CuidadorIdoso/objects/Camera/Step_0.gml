@@ -1,2 +1,4 @@
-x = lerp(x, Obj_player_2.x, 0.05);
-y = lerp(y, Obj_player_2.y, 0.05);
+if instance_exists(Obj_player) {
+    x = lerp(x, Obj_player.x, 0.04);
+    y = lerp(y, Obj_player.y, 0.04);
+}

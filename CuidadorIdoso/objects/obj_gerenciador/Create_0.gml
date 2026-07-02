@@ -5,7 +5,7 @@ caixa_nomes[2] = "conferir antes de sair";
 
 
 caixa_respostas[0] = ["luva", "cracha", "alcool"];
-caixa_respostas[1] = ["caderno_de_anotacoes", "caneta", "ficha_acompanhamento", "lista_de_cuidados"];
+caixa_respostas[1] = ["caderno", "caneta", "ficha", "lista_de_cuidados"];
 caixa_respostas[2] = ["endereco", "documento", "agua"];
 
 
@@ -41,9 +41,9 @@ function desenhar_fala_professor() {
     var bw = gw - 120; var bh = 220;
 
     draw_set_alpha(0.95);
-    draw_set_color(c_white);
+    draw_set_color(c_black);
     draw_rectangle(bx, by, bx + bw, by + bh, false);
-    draw_set_color(c_navy);
+    draw_set_color(c_gray);
     draw_rectangle(bx, by, bx + bw, by + bh, true);
     draw_set_alpha(1);
 
@@ -53,13 +53,13 @@ function desenhar_fala_professor() {
 
     draw_set_font(fnt_dialogo);
     var fala = "Percebeu? Preparar uma visita domiciliar parecia uma tarefa grande.\nMas, quando você separou em partes menores — o que vestir,\no que levar e o que conferir — ficou muito mais fácil!\n\nIsso é DECOMPOSIÇÃO.";
-    draw_text_ext(bx + 20, by + 55, fala, 28, bw - 40);
+    draw_text_ext(bx + 30, by + 65, fala, 25, bw - 40);
 
     // Botão fechar
-    draw_set_color(c_navy);
+    draw_set_color(c_black);
     draw_rectangle(bx + bw - 110, by + bh - 45, bx + bw - 10, by + bh - 10, false);
     draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_text(bx + bw - 60, by + bh - 38, "Continuar");
-    draw_set_halign(fa_left);
+    draw_set_halign(fa_center);
 }

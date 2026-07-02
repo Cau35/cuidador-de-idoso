@@ -6,8 +6,8 @@
   "name":"Obj_Parede",
   "overriddenProperties":[],
   "parent":{
-    "name":"objeto",
-    "path":"folders/objeto.yy",
+    "name":"cenario",
+    "path":"folders/objeto/cenario.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -26,7 +26,7 @@
   "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
     "name":"Sprite69",
     "path":"sprites/Sprite69/Sprite69.yy",

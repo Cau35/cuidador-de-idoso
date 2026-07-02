@@ -28,6 +28,7 @@ with (obj_caixa) {
                 mostrar_feedback = true;
                 feedback_timer = 90;
             }
+			
         } else if other.eh_distrator {
             // É distrator: devolve à origem
             other.x = other.pos_origem_x;

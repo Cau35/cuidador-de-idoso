@@ -6,10 +6,13 @@
   "name":"obj_mesa",
   "overriddenProperties":[],
   "parent":{
-    "name":"objeto",
-    "path":"folders/objeto.yy",
+    "name":"cenario",
+    "path":"folders/objeto/cenario.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_solido",
+    "path":"objects/obj_solido/obj_solido.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

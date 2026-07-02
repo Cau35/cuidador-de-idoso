@@ -1514,8 +1514,8 @@
   "maintainGms1Font":false,
   "name":"fnt_dialogo",
   "parent":{
-    "name":"CuidadorIdoso",
-    "path":"CuidadorIdoso.yyp",
+    "name":"fontes",
+    "path":"folders/fontes.yy",
   },
   "pointRounding":0,
   "ranges":[
