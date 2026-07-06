@@ -17,10 +17,10 @@ for(var i = 0; i < tam_menu; i++)
 	var _wstr = string_width(menu_inicial[i]);
 	
 	var x1 = _wgui / 2 - _wstr / 2;
-	var y1 = _hgui / 2 - _hstr / 2 + _hstr * i //top left
+	var y1 = _hgui / 2 - _hstr / 2 + _hstr * i 
 	
 	var x2 = _wgui / 2 + _wstr / 2;
-	var y2 = _hgui / 2 + _hstr / 2 + _hstr * i //buttom right
+	var y2 = _hgui / 2 + _hstr / 2 + _hstr * i 
 	
 	if(point_in_rectangle(_mx, _my, x1, y1, x2, y2))
 	{
@@ -30,15 +30,15 @@ for(var i = 0; i < tam_menu; i++)
 		{
 			switch menu_inicial[i]
 			{
-				case menu_inicial[0]: // Jogar
-    // Deleta o save anterior
+				case menu_inicial[0]:
+
     if file_exists("save01.ini") {
         file_delete("save01.ini");
     }
 
-    // Reseta ou cria o gerenciador do zero
+ 
     if instance_exists(obj_quest_gerenciador) {
-        // Reseta todas as variáveis
+
         with (obj_quest_gerenciador) {
             quest_completa[0] = false;
             quest_completa[1] = false;
@@ -69,7 +69,7 @@ for(var i = 0; i < tam_menu; i++)
 
     room_goto(rm_inicio);
     break;
-					 case menu_inicial[1]: // Continuar
+					 case menu_inicial[1]:
             if file_exists("save01.ini") {
               
                 if !instance_exists(obj_quest_gerenciador) {

@@ -1,72 +1,73 @@
-var input_x = (keyboard_check(vk_right) || keyboard_check(ord("D")))
-            - (keyboard_check(vk_left)  || keyboard_check(ord("A")));
-var input_y = (keyboard_check(vk_down)  || keyboard_check(ord("S")))
-            - (keyboard_check(vk_up)    || keyboard_check(ord("W")));
 
-show_debug_message("pausado: " + string(obj_quest_gerenciador.pausado)
-    + " | dialogo: " + string(instance_exists(obj_cena_jaleco) ? obj_cena_jaleco.dialogo_ativo : false)
-    + " | fala_prof: " + string(instance_exists(obj_gerenciador) ? obj_gerenciador.mostrar_fala_professor : false)
-    + " | quest_concluida: " + string(instance_exists(obj_gerenciador) ? obj_gerenciador.quest_concluida : false));			// Roda só uma vez na primeira frame
-if !variable_instance_exists(id, "reposicionamento_feito") {
-    reposicionamento_feito = true;
+if (instance_exists(obj_quest_gerenciador) && obj_quest_gerenciador.pausado) exit;
+if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.dialogo_ativo) exit;
+if (instance_exists(obj_quest_gerenciador)
+    && obj_quest_gerenciador.quest_overlay_ativa != -1) exit;
 
-    if instance_exists(obj_quest_gerenciador) {
-        var ger = obj_quest_gerenciador;
 
-        // Reposicionamento por load
-        if ger.porta_destino_pendente == "__load__" {
-            x = ger.load_x;
-            y = ger.load_y;
-            ger.porta_destino_pendente = "";
+if instance_exists(obj_quest_gerenciador) {
+    var ger = obj_quest_gerenciador;
 
-        // Reposicionamento por porta
-        } else if ger.porta_destino_pendente != "" {
-            var alvo_id = ger.porta_destino_pendente;
-            with (obj_porta) {
-                if porta_id == alvo_id {
-                    other.x = x + spawn_offset_x;
-                    other.y = y + spawn_offset_y;
-                }
+    if ger.porta_destino_pendente == "__load__" && ger.load_x != 0 {
+        x = ger.load_x;
+        y = ger.load_y;
+        ger.load_x = 0;
+        ger.load_y = 0;
+        ger.porta_destino_pendente = "";
+    } else if ger.porta_destino_pendente != "" && ger.porta_destino_pendente != "__load__" {
+        var alvo_id = ger.porta_destino_pendente;
+        with (obj_porta) {
+            if porta_id == alvo_id {
+                other.x = x + spawn_offset_x;
+                other.y = y + spawn_offset_y;
             }
-            ger.porta_destino_pendente = "";
         }
-
-        // Sprite com ou sem jaleco
-        if ger.jaleco_vestido {
-            sprite_index = spr_player_idle_com_jaleco;
-        } else {
-            sprite_index = spr_jogador_idle_sem_jaleco;
-        }
+        ger.porta_destino_pendente = "";
     }
 }
 
+
+var spr_idle_baixo_sj  = spr_jogador_idle_sem_jaleco;   
+var spr_andar_baixo_sj = noone;      
+var spr_andar_cima_sj  = noone;   
+var spr_andar_lado_sj  = spr_pmcj_caminhando_direita;  
+
+
+var spr_idle_baixo_cj  = spr_player_idle_com_jaleco;  
+var spr_andar_baixo_cj = noone;
+var spr_andar_cima_cj  = noone;
+var spr_andar_lado_cj  = noone;  
+
+var tem_jaleco = instance_exists(obj_quest_gerenciador)
+    && obj_quest_gerenciador.jaleco_vestido;
+
+
 var input_x = (keyboard_check(vk_right) || keyboard_check(ord("D")))
             - (keyboard_check(vk_left)  || keyboard_check(ord("A")));
 var input_y = (keyboard_check(vk_down)  || keyboard_check(ord("S")))
             - (keyboard_check(vk_up)    || keyboard_check(ord("W")));
 
 
-if (input_x != 0) && (input_y != 0) {
-    input_x *= 0.7071; 
+if input_x != 0 && input_y != 0 {
+    input_x *= 0.7071;
     input_y *= 0.7071;
 }
 
-var mover_x = input_x * velocidade_movimento;
-var mover_y = input_y * velocidade_movimento;
+var velocidade = 4;
+var mover_x = input_x * velocidade;
+var mover_y = input_y * velocidade;
 
-// === COLISÃO NO EIXO X ===
+
 if mover_x != 0 {
     if !place_meeting(x + mover_x, y, obj_solido) {
         x += mover_x;
     } else {
-        
         while !place_meeting(x + sign(mover_x), y, obj_solido) {
             x += sign(mover_x);
         }
     }
 }
 
-// === COLISÃO NO EIXO Y ===
 if mover_y != 0 {
     if !place_meeting(x, y + mover_y, obj_solido) {
         y += mover_y;
@@ -77,6 +78,36 @@ if mover_y != 0 {
     }
 }
 
+
+var movendo = (input_x != 0 || input_y != 0);
+
+if movendo {
+    
+    if input_x != 0 {
+
+        sprite_index = tem_jaleco ? spr_andar_lado_cj : spr_andar_lado_sj;
+
+        image_xscale = (input_x < 0) ? -1 : 1;
+
+    } else if input_y > 0 {
+  
+        sprite_index = tem_jaleco ? spr_andar_baixo_cj : spr_andar_baixo_sj;
+        image_xscale = 1;
+
+    } else if input_y < 0 {
+
+        sprite_index = tem_jaleco ? spr_andar_cima_cj : spr_andar_cima_sj;
+        image_xscale = 1;
+    }
+
+    image_speed = 1;
+
+} else {
+   
+    sprite_index = tem_jaleco ? spr_idle_baixo_cj : spr_idle_baixo_sj;
+    image_speed  = 0;      
+    image_index  = 0;       
+}
 
 
 var half_w = sprite_width / 2;

@@ -1,5 +1,4 @@
 
-
 if (instance_exists(obj_quest_gerenciador) && obj_quest_gerenciador.pausado) exit;
 if (instance_exists(obj_gerenciador) && obj_gerenciador.quest_concluida) exit;
 if (instance_exists(obj_gerenciador) && obj_gerenciador.mostrar_fala_professor) exit;

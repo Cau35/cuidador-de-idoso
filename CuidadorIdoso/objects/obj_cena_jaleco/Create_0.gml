@@ -1,19 +1,18 @@
-event_inherited(); // herda raio_interacao e detecção de proximidade do obj_npc
+event_inherited(); 
 
 nome_npc = "Professora Coordenadora";
 
-// === SPRITES DOS PERSONAGENS NO DIÁLOGO ===
-spr_aluna      = portrait_pmn       // troque pelo nome do seu sprite
-spr_professora = noone;  // troque pelo nome do seu sprite
-spr_jaleco_icone = noone;            // sprite do item jaleco (ícone pequeno)
 
-// === ESTADO DO DIÁLOGO ===
+spr_aluna      = portrait_pmn       
+spr_professora = noone;  
+spr_jaleco_icone = spr_jaleco;            
+
+
 dialogo_ativo   = false;
 linha_atual     = 0;
-ja_jogou_cena   = false; // evita repetir a cutscene depois de concluída
+ja_jogou_cena   = false;
 
-// === LINHAS DO DIÁLOGO ===
-// falante: "aluna" ou "professora"
+
 falas[0] = { falante: "aluna",
     texto: "Nossa... vestir esse jaleco é muita responsabilidade. Ainda me sinto insegura. Como me organizar? O que fazer num momento inesperado?" };
 
@@ -28,21 +27,21 @@ falas[3] = { falante: "professora",
 
 num_falas = 4;
 
-// === EFEITO DE DIGITAÇÃO (igual ao usado na Estação 3) ===
+
 texto_atual = "";
 char_index = 0;
 timer_digitar = 0;
 velocidade = 1;
 digitacao_completa = false;
 
-// === ANIMAÇÃO DE ENTREGA DO JALECO ===
+
 mostrar_entrega_jaleco = false;
 entrega_timer = 0;
 
-// === SOBRESCREVE A INTERAÇÃO HERDADA DO obj_npc ===
+
 function iniciar_interacao() {
     if ja_jogou_cena {
-        // Depois de concluída, futuras interações podem levar a um diálogo de apoio
+       
         show_debug_message("Cutscene já concluída — diálogo de apoio aqui, se quiser.");
         exit;
     }

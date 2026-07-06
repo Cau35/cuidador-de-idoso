@@ -1,6 +1,7 @@
 event_inherited();
 nome_npc = "Professor de Padrões";
+indice_quest = 1;
 
 function iniciar_interacao() {
-    room_goto(room_padroes);
+    obj_quest_gerenciador.abrir_quest(1);
 }

@@ -12,7 +12,7 @@ if (instance_exists(Obj_player)) {
 
 
 function usar_porta() {
-    // Grava qual porta de destino o jogador deve usar como ponto de chegada
+   
     obj_quest_gerenciador.porta_destino_pendente = porta_destino_id;
     room_goto(room_destino);
 }

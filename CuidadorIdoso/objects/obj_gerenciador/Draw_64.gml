@@ -1,4 +1,4 @@
-// PARTE 1 — definição da função (pode ficar aqui ou no Create)
+
 function desenhar_fala_professor() {
     var gw = display_get_gui_width();
     var gh = display_get_gui_height();
@@ -38,9 +38,6 @@ function desenhar_fala_professor() {
     draw_set_alpha(1);
 }
 
-// =========================================
-// PARTE 2 — código que roda a cada frame (PRECISA ESTAR AQUI, fora da função)
-// =========================================
 draw_set_alpha(0.85);
 draw_set_color(c_navy);
 draw_rectangle(0, 0, display_get_gui_width(), 60, false);
@@ -57,9 +54,9 @@ if mostrar_feedback {
     draw_text(display_get_gui_width()/ 2,display_get_gui_height() - 80, feedback_texto);
 }
 
-// ← ESTA LINHA É O QUE ESTAVA FALTANDO
+
 if mostrar_fala_professor {
-    desenhar_fala_professor(); // chama a função acima
+    desenhar_fala_professor();
 }
 
 draw_set_halign(fa_left);

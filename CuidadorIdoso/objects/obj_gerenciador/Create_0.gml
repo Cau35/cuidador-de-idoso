@@ -15,7 +15,7 @@ feedback_timer = 0;
 feedback_texto = "";
 mostrar_fala_professor = false;
 
-// Função: verificar quest completa
+
 function verificar_quest_completa() {
     var total_corretos = 0;
     var total_esperados = 0;

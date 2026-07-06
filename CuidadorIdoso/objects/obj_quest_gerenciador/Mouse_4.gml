@@ -1,6 +1,4 @@
 
-
-
 if tablet_aberto {
     var px=140; var py=80; var pw=1000;
     var aba_w = pw/4;

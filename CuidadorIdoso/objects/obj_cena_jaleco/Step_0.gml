@@ -1,10 +1,7 @@
-// A detecção de proximidade + tecla E do obj_npc pai continua rodando normalmente
-// (herdada via event_inherited no Create), mas só dispara iniciar_interacao()
-// quando o jogador NÃO está em diálogo — adicionamos essa trava abaixo.
+
 
 if dialogo_ativo {
-    // === EFEITO DE DIGITAÇÃO DA LINHA ATUAL ===
-	// Detecta clique OU tecla E
+ 
 var avancar = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("E"));
 
 if avancar {
@@ -31,7 +28,7 @@ if avancar {
         ja_jogou_cena = true;
 
     } else {
-        // Avança para a próxima fala
+   
         linha_atual++;
         iniciar_linha();
     }
@@ -74,9 +71,7 @@ if !dialogo_ativo {
 
         if keyboard_check_pressed(ord("E")) {
             iniciar_interacao();
-			// === DENTRO DO BLOCO "if dialogo_ativo {" que já existe no Step Event ===
 
-// Detecta clique usando coordenadas do GUI (não da room)
 if mouse_check_button_pressed(mb_left) {
     var gx = display_mouse_get_x(); // posição X do mouse na tela GUI
     var gy = display_mouse_get_y(); // posição Y do mouse na tela GUI
