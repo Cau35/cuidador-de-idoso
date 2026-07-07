@@ -28,15 +28,15 @@ if instance_exists(obj_quest_gerenciador) {
 
 
 var spr_idle_baixo_sj  = spr_jogador_idle_sem_jaleco;   
-var spr_andar_baixo_sj = noone;      
-var spr_andar_cima_sj  = noone;   
-var spr_andar_lado_sj  = spr_pmcj_caminhando_direita;  
+var spr_andar_baixo_sj = spr_pmsj_andando_baixo;      
+var spr_andar_cima_sj  = spr_pmsj_andando_cima;   
+var spr_andar_lado_sj  = spr_pmsj_caminhando_direita;  
 
 
 var spr_idle_baixo_cj  = spr_player_idle_com_jaleco;  
-var spr_andar_baixo_cj = noone;
-var spr_andar_cima_cj  = noone;
-var spr_andar_lado_cj  = noone;  
+var spr_andar_baixo_cj = Sprite170;
+var spr_andar_cima_cj  = Sprite169;
+var spr_andar_lado_cj  = spr_pmcj_caminhando_direita;  
 
 var tem_jaleco = instance_exists(obj_quest_gerenciador)
     && obj_quest_gerenciador.jaleco_vestido;
