@@ -34,7 +34,7 @@ quest_nome[2] = "Abstração";
 quest_nome[3] = "Criação de Algoritmos";
 
 integradora_completa = false;
-tablet_recebido = false;
+tablet_recebido = true;
 
 
 inventario = [];
@@ -64,7 +64,10 @@ function marcar_quest_completa(_indice) {
     verificar_todas_completas();
 }
 
+
+
 function verificar_todas_completas() {
+	
     var todas = true;
     for (var i = 0; i < 4; i++) {
         if !quest_completa[i] { todas = false; break; }
@@ -79,7 +82,7 @@ function verificar_todas_completas() {
 }
 
 function dar_tablet() {
-    tablet_recebido = false;
+    tablet_recebido = true;
     array_push(inventario, "Tablet");
     array_push(mensagens, {
         remetente: "Sistema",
@@ -274,6 +277,9 @@ p3_texto_tutor = "Saber ouvir é fundamental, mas saber o que registrar salva vi
 
 
 function abrir_quest(_indice) {
+    // Não abre se já foi concluída
+    if _indice < 4 && quest_completa[_indice] exit;
+
     quest_overlay_ativa = _indice;
     pausado = false;
     tablet_aberto = false;
@@ -281,9 +287,10 @@ function abrir_quest(_indice) {
     if _indice == 1 {
         p2_fase = 0;
         p2_resposta_selecionada = -1;
-		p2_mostrar_tutor = false;
+        p2_mostrar_tutor = false;
     }
-    if _indice == 2 { // Plantão
+
+    if _indice == 2 {
         p3_fase = 0;
         p3_texto_atual = "";
         p3_char_index = 0;
@@ -291,7 +298,9 @@ function abrir_quest(_indice) {
         p3_digitacao_completa = false;
         p3_itens_selecionados = 0;
         p3_acertou = false;
-        for (var i = 0; i < 6; i++) { p3_itens_sel[i] = false; }
+        for (var i = 0; i < 6; i++) {
+            p3_itens_sel[i] = false;
+        }
     }
 }
 

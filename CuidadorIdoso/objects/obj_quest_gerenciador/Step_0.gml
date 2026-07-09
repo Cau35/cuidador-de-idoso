@@ -94,55 +94,101 @@ if keyboard_check_pressed(ord("T")) && tablet_recebido {
 }
 
 
+if tablet_aberto && mouse_check_button_pressed(mb_left) {
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
+	
+    var tab_w = 380; var tab_h = 620;
+    var tab_x = display_get_gui_width()/2  - tab_w/2;
+    var tab_y = display_get_gui_height()/2 - tab_h/2;
+    var tela_x = tab_x+28; var tela_y = tab_y+48;
+    var tela_w = tab_w-56; var tela_h = tab_h-120;
 
+    // Fechar X
+    if point_in_rectangle(mx, my, tela_x+4, tela_y+4, tela_x+28, tela_y+28) {
+        tablet_aberto = false;
+        exit;
+    }
 
+    // Botão voltar
+    if tablet_aba != -1 {
+        if point_in_rectangle(mx, my, tela_x+8, tela_y+44, tela_x+72, tela_y+80) {
+            tablet_aba = -1;
+            exit;
+        }
+    }
+
+    // Clique nos botões da home
+    if tablet_aba == -1 {
+        var icone_h = 80; var gap = 24;
+        var start_y = tela_y + 100;
+        var ix = tela_x+20; var iw = tela_w-40;
+
+        for (var i = 0; i < 3; i++) {
+            var iy = start_y + i*(icone_h+gap);
+            if point_in_rectangle(mx, my, ix, iy, ix+iw, iy+icone_h) {
+                tablet_aba = i;
+                exit;
+            }
+        }
+    }
+	// Draw GUI — temporário
+draw_set_color(c_red);
+draw_rectangle(tela_x, tela_y, tela_x+tela_w, tela_y+tela_h, true);
+}
 
 
 if quest_overlay_ativa == 1 {
-
 
     if p2_fase == 0 && keyboard_check_pressed(ord("E")) {
         p2_fase = 1;
     }
 
- if p2_fase == 1 && mouse_check_button_pressed(mb_left) {
-    var mx = device_mouse_x_to_gui(0);
-    var my = device_mouse_y_to_gui(0);
-    var ex = gui_w / 1280;
-    var ey = gui_h / 720;
+    // Validação acontece aqui, ao clicar na alternativa
+    if p2_fase == 1 && mouse_check_button_pressed(mb_left) {
+        var mx = display_mouse_get_x();
+        var my = display_mouse_get_y();
+        var gw = display_get_gui_width();
 
-    var base_y = 320*ey;
-    var alt    = 15*ey;
-    var gap    = 5*ey;
+        var pront_h = 420;
+        var qy = 10 + pront_h + 10 + 44;
+        var base_y = qy + 50;
+        var alt    = 44;
+        var gap    = 8;
 
-    for (var i = 0; i < 4; i++) {
-        var oy = base_y + i*(alt+gap);
-        if point_in_rectangle(mx, my, 40*ex, oy, 1240*ex, oy+alt) {
-            p2_resposta_selecionada = i;
-            p2_fase = 2;
-            if i == p2_resposta_correta {
-                ganhar_moedas(20);
-            } else {
-                ganhar_moedas(5);
+        var i = 0;
+        repeat (4) {
+            var oy = base_y + i*(alt+gap);
+            if point_in_rectangle(mx, my, 20, oy, gw-20, oy+alt) {
+                p2_resposta_selecionada = i;
+                p2_fase = 2; // ← só avança para fase 2 (feedback) aqui
+
+                // Validação explícita
+                if i == p2_resposta_correta {
+                    ganhar_moedas(20);
+                } else {
+                    ganhar_moedas(5);
+                }
             }
+            i++;
         }
     }
-}
-        
 
-
+    // Fase 2: mostra feedback, espera confirmação para ver tutor
     if p2_fase == 2 {
-        var avancar = keyboard_check_pressed(ord("E"))
-                   || mouse_check_button_pressed(mb_left);
-        if avancar { p2_fase = 3; }
+        if keyboard_check_pressed(ord("E")) || mouse_check_button_pressed(mb_left) {
+            p2_fase = 3;
+        }
     }
 
-
+    // Fase 3: só fecha com E, e só marca completa aqui
     if p2_fase == 3 && keyboard_check_pressed(ord("E")) {
         marcar_quest_completa(1);
         fechar_quest_overlay();
     }
 }
+
+
 
 if quest_overlay_ativa == 2 {
 
@@ -168,7 +214,7 @@ if quest_overlay_ativa == 2 {
     if p3_fase == 0 {
         if (keyboard_check_pressed(ord("E")) || clicou) {
             if !p3_digitacao_completa {
-                // Pula digitação
+               
                 p3_texto_atual = p3_relato;
                 p3_char_index  = string_length(p3_relato);
                 p3_digitacao_completa = true;

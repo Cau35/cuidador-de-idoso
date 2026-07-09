@@ -5,7 +5,7 @@ nome_npc = "Professora Coordenadora";
 
 spr_aluna      = portrait_pmn       
 spr_professora = noone;  
-spr_jaleco_icone = spr_jaleco;            
+spr_jaleco_icone = spr_item_jaleco;            
 
 
 dialogo_ativo   = false;

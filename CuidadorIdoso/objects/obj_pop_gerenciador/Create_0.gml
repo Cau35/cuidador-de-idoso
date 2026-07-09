@@ -1,87 +1,75 @@
-show_debug_message("bloco 1");
+// Sprite do quarto
+spr_quarto = Spr_QuartoIdoso; 
 
-spr_quarto = Spr_QuartoIdoso;
+// Estado da quest
+fase = 0; // 0=jogando | 1=conclusao | 2=tutor
 
-fase = 0;
-todos_corretos = false;
-
+// Ordem correta dos blocos por slot
+// Blocos: 0=A 1=B 2=C 3=D 4=E
+// Resposta: slot0=D(3) slot1=E(4) slot2=A(0) slot3=B(1) slot4=C(2)
 ordem_correta[0] = 3;
 ordem_correta[1] = 4;
 ordem_correta[2] = 0;
 ordem_correta[3] = 1;
 ordem_correta[4] = 2;
 
+// Estado dos slots
+slot_correto[0] = false;
+slot_correto[1] = false;
+slot_correto[2] = false;
+slot_correto[3] = false;
+slot_correto[4] = false;
+slot_errado[0]  = false;
+slot_errado[1]  = false;
+slot_errado[2]  = false;
+slot_errado[3]  = false;
+slot_errado[4]  = false;
 
-
-num_slots = 5;
-
-slot_conteudo = array_create(num_slots, -1);
-slot_correto = array_create(num_slots, false);
-slot_errado = array_create(num_slots, false);
-
-passo_rotulo = [
-    "Preparar paciente",
-    "..."
-];
-
-dica_slot = array_create(num_slots, "");
-slot_x = 780;
-slot_y_inicio = 108;
-slot_largura  = 460;
-slot_altura   = 88;
-slot_gap      = 12;
-
-
-function criar_blocos() {
-	var textos = []
-    textos[0] = "Travar as rodas da cama e da cadeira de rodas.";
-    textos[1] = " Sentar a paciente na beira da cama e aguardar alguns segundos.";
-    textos[2] = "Realizar a transferência apoiando a paciente com firmeza.";
-    textos[3] = " Explicar para Dona Sílvia o procedimento que será realizado.";
-    textos[4] = "  Posicionar a cadeira de rodas paralela à cama.";
-
-	var pos_x = [60, 60, 60, 60, 60]; var pos_y = [160, 280, 400,520, 640];
-   
-
-    for (var i = 0; i < 5; i++) {
-        var b = instance_create_layer(pos_x[i], pos_y[i], "Instances", obj_pop_bloco);
-        b.indice       = i;
-        b.texto_bloco  = textos[i];
-        b.largura      = 660;
-        b.altura       = 80;
-        b.pos_origem_x = pos_x[i];
-        b.pos_origem_y = pos_y[i];
-        b.gerenciador  = id;
-        b.no_slot      = -1;
-    }
-}
-
-function verificar_conclusao() {
-    var total_certos = 0;
-    for (var i = 0; i < num_slots; i++) {
-        if slot_correto[i] total_certos++;
-    }
-    if total_certos == num_slots {
-        todos_corretos = true;
-        fase = 1;
-        obj_quest_gerenciador.ganhar_moedas(20); // bônus de conclusão
-    }
-}
-
-
-passo_rotulo[0] = "Passo 1 — Comunicação";
-passo_rotulo[1] = "Passo 2 — Logística";
-passo_rotulo[2] = "Passo 3 — Segurança Física";
-passo_rotulo[3] = "Passo 4 — Prevenção Fisiológica";
-passo_rotulo[4] = "Passo 5 — Execução";
+// Rotulos
+passo_rotulo[0] = "Passo 1 - Comunicacao";
+passo_rotulo[1] = "Passo 2 - Logistica";
+passo_rotulo[2] = "Passo 3 - Seguranca Fisica";
+passo_rotulo[3] = "Passo 4 - Prevencao Fisiologica";
+passo_rotulo[4] = "Passo 5 - Execucao";
 
 dica_slot[0] = "Dica: O que vem antes de qualquer toque?";
 dica_slot[1] = "Dica: A ferramenta precisa estar posicionada primeiro.";
-dica_slot[2] = "Dica: Qual condição física precisa ser garantida antes de mover?";
-dica_slot[3] = "Dica: Dona Sílvia tem tontura. O que previne a queda?";
-dica_slot[4] = "Dica: Só agora é seguro realizar o movimento.";
+dica_slot[2] = "Dica: Qual condicao fisica precisa ser garantida?";
+dica_slot[3] = "Dica: Dona Silvia tem tontura. O que previne a queda?";
+dica_slot[4] = "Dica: So agora e seguro realizar o movimento.";
 
-texto_tutor = "Excelente! Você executou o Procedimento Operacional Padrão corretamente...";
+// Textos dos blocos
+textos_blocos[0] = "[A] Travar as rodas da cama e da cadeira.";
+textos_blocos[1] = "[B] Sentar a paciente na beira e aguardar.";
+textos_blocos[2] = "[C] Realizar a transferencia com firmeza.";
+textos_blocos[3] = "[D] Explicar o procedimento para Dona Silvia.";
+textos_blocos[4] = "[E] Posicionar a cadeira paralela a cama.";
 
+// Qual slot cada bloco ocupa (-1 = painel esquerdo)
+bloco_no_slot[0] = -1;
+bloco_no_slot[1] = -1;
+bloco_no_slot[2] = -1;
+bloco_no_slot[3] = -1;
+bloco_no_slot[4] = -1;
 
-criar_blocos();
+// Arrasto
+bloco_arrastando = -1;
+bloco_offset_x   = 0;
+bloco_offset_y   = 0;
+
+// Posicoes originais no painel esquerdo
+bloco_orig_x[0] = 60;
+bloco_orig_x[1] = 60;
+bloco_orig_x[2] = 60;
+bloco_orig_x[3] = 60;
+bloco_orig_x[4] = 60;
+bloco_orig_y[0] = 140;
+bloco_orig_y[1] = 228;
+bloco_orig_y[2] = 316;
+bloco_orig_y[3] = 404;
+bloco_orig_y[4] = 492;
+bloco_w = 620;
+bloco_h = 72;
+
+// Texto do tutor
+texto_tutor = "Excelente! Voce executou o Procedimento Operacional Padrao corretamente.\n\nCada passo tem uma razao clinica precisa:\n- Comunicar primeiro garante consentimento e preparo psicologico.\n- Posicionar a cadeira antes evita improvissos.\n- Travar as rodas e condicao critica.\n- Aguardar na beira previne a hipotensao ortostatica.\n- So entao a transferencia e executada com seguranca.";

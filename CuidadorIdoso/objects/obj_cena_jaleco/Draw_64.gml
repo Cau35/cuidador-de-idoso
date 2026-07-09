@@ -70,7 +70,7 @@ if dialogo_ativo {
         var escala = 1 + min(entrega_timer / 30, 0.3);
 
         draw_set_alpha(min(entrega_timer / 20, 1));
-        draw_sprite_ext(spr_jaleco, 0, jx, jy, escala, escala, 0, c_white, 1);
+        draw_sprite_ext(spr_item_jaleco, 0, jx, jy, escala, escala, 0, c_white, 1);
         draw_set_alpha(1);
 
         draw_set_color(c_white);
