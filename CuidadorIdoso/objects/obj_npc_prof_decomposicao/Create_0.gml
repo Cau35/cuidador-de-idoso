@@ -1,11 +1,14 @@
 event_inherited();
-nome_npc = "Professor de Decomposicao";
-indice_quest = 0;
+nome_npc      = "Professor de Decomposicao";
+indice_quest  = 0;
 
-
-dialogo_ativo = false;
-linha_atual   = 0;
-
+dialogo_ativo      = false;
+dialogo_concluido  = false;
+linha_atual        = 0;
+texto_atual        = "";
+char_index         = 0;
+timer_digitar      = 0;
+digitacao_completa = false;
 
 falas = [
     "Agora vamos aprender sobre decomposição, uma habilidade muito importante para resolver problemas.Quando uma tarefa parece grande ou complicada, a melhor estratégia é dividi-la em partes menores e mais fáceis de organizar. ",
@@ -14,16 +17,19 @@ falas = [
 ];
 num_falas = array_length(falas);
 
-texto_atual        = "";
-char_index         = 0;
-timer_digitar      = 0;
-digitacao_completa = false;
-
 function iniciar_interacao() {
-    if obj_quest_gerenciador.quest_completa[0] exit;
-    dialogo_ativo = true;
-    linha_atual   = 0;
-    iniciar_linha();
+    if obj_quest_gerenciador.quest_completa[indice_quest] exit;
+    if !obj_quest_gerenciador.quest_disponivel(indice_quest) exit;
+
+    if !dialogo_concluido {
+    
+        dialogo_ativo = true;
+        linha_atual   = 0;
+        iniciar_linha();
+    } else {
+     
+        abrir_quest_desta_estacao();
+    }
 }
 
 function iniciar_linha() {
@@ -31,3 +37,8 @@ function iniciar_linha() {
     char_index         = 0;
     digitacao_completa = false;
 }
+
+function abrir_quest_desta_estacao() {
+    room_goto(room_deomposicao); 
+}
+

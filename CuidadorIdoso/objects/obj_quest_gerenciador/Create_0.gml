@@ -307,3 +307,20 @@ function abrir_quest(_indice) {
 function fechar_quest_overlay() {
     quest_overlay_ativa = -1;
 }
+
+
+function quest_disponivel(_indice) {
+    if _indice == 0 { return true; }
+    return quest_completa[_indice - 1];
+}
+
+// Quest do idoso só disponível após as 4 quests + avaliação final
+function quest_idoso_disponivel() {
+    var todas = true;
+    var i = 0;
+    repeat (4) {
+        if !quest_completa[i] { todas = false; }
+        i++;
+    }
+    return todas && integradora_completa;
+}

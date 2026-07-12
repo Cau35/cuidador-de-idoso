@@ -5,9 +5,9 @@ nome_npc = "Professora Coordenadora";
 // =========================================
 // SPRITES
 // =========================================
-spr_aluna        = portrait_pmn;       // troque pelo nome real
-spr_professora   = portrait_IN;  // troque pelo nome real
-spr_jaleco_icone = spr_item_jaleco;              // sprite do item jaleco
+spr_aluna        = portrait_pmn;
+spr_professora   = portrait_IN;
+spr_jaleco_icone = spr_item_jaleco;
 
 // =========================================
 // ESTADO DO DIALOGO (jaleco / incentivo)

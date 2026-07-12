@@ -2,8 +2,8 @@ if !quest_ativa exit;
 
 var gw = display_get_gui_width();
 var gh = display_get_gui_height();
-var mx = display_mouse_get_x();
-var my = display_mouse_get_y();
+var mx = device_mouse_x_to_gui(0);
+var my = device_mouse_y_to_gui(0);
 var num = obter_num_itens();
 
 // Fundo do overlay

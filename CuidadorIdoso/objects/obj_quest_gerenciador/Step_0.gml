@@ -1,4 +1,4 @@
-
+dialogo_npc_ativo = false;
 
 
 if pausado && mouse_check_button_pressed(mb_left) {

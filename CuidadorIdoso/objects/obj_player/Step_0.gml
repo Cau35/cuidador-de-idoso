@@ -1,4 +1,6 @@
-
+if instance_exists(obj_npc_prof_decomposicao) {
+    if obj_npc_prof_decomposicao.dialogo_ativo exit;
+}
 if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.dialogo_ativo) exit;
 if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.qz_ativo) exit;
 

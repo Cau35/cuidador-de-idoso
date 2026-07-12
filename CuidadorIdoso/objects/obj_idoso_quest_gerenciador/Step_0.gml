@@ -1,5 +1,36 @@
+
+// Fase 1 → clique no botão COM MOUSE, E também funciona
+if fase == 1 {
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
+    var gw = display_get_gui_width();
+
+    var clicou_botao = mouse_check_button_pressed(mb_left)
+        && point_in_rectangle(mx, my, gw/2-180, 358, gw/2+180, 402);
+
+    if clicou_botao || keyboard_check_pressed(ord("E")) {
+        fase = 2;
+    }
+}
+
+// Fase 2 → SÓ E avança (mouse não interfere aqui)
+if fase == 2 && keyboard_check_pressed(ord("E")) {
+    mini_completa[mini_quest_atual] = true;
+    obj_quest_gerenciador.ganhar_moedas(10);
+
+    if mini_quest_atual < 2 {
+        iniciar_mini_quest(mini_quest_atual + 1);
+    } else {
+        quest_ativa = false;
+        obj_quest_gerenciador.marcar_quest_completa(4);
+    }
+}
+
 if !quest_ativa exit;
 if fase != 0 exit;
+
+
+
 
 var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
@@ -22,7 +53,7 @@ if item_arrastando != -1 && mouse_check_button_released(mb_left) {
         var cat_x = cat_gap + c * (cat_w + cat_gap);
 
         if point_in_rectangle(mx, my, cat_x, cat_y, cat_x+cat_w, cat_y+cat_h) {
-            // Verifica se item ja esta correto nessa cat (nao remove)
+            
             var bloqueado = false;
             var b2 = 0;
             repeat (num) {
@@ -134,15 +165,15 @@ if fase == 1 && keyboard_check_pressed(ord("E")) {
 }
 
 if fase == 2 && keyboard_check_pressed(ord("E")) {
-    // Verifica se tem proxima mini-quest
+   
     mini_completa[mini_quest_atual] = true;
     obj_quest_gerenciador.ganhar_moedas(10);
 
     if mini_quest_atual < 2 {
         iniciar_mini_quest(mini_quest_atual + 1);
     } else {
-        // Todas concluidas
+        
         quest_ativa = false;
-        obj_quest_gerenciador.marcar_quest_completa(4); // ajuste o indice conforme seu projeto
+        obj_quest_gerenciador.marcar_quest_completa(5);
     }
 }

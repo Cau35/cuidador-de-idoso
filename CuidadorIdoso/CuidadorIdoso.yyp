@@ -74,7 +74,7 @@
     {"id":{"name":"obj_npc_cordenadora","path":"objects/obj_npc_cordenadora/obj_npc_cordenadora.yy",},},
     {"id":{"name":"obj_npc_prof_abstracao","path":"objects/obj_npc_prof_abstracao/obj_npc_prof_abstracao.yy",},},
     {"id":{"name":"obj_npc_prof_algoritmos","path":"objects/obj_npc_prof_algoritmos/obj_npc_prof_algoritmos.yy",},},
-    {"id":{"name":"obj_npc_prof_decomposicao_1","path":"objects/obj_npc_prof_decomposicao_1/obj_npc_prof_decomposicao_1.yy",},},
+    {"id":{"name":"obj_npc_prof_decomposicao","path":"objects/obj_npc_prof_decomposicao/obj_npc_prof_decomposicao.yy",},},
     {"id":{"name":"obj_npc_prof_padroes","path":"objects/obj_npc_prof_padroes/obj_npc_prof_padroes.yy",},},
     {"id":{"name":"obj_npc","path":"objects/obj_npc/obj_npc.yy",},},
     {"id":{"name":"obj_opcoes_config","path":"objects/obj_opcoes_config/obj_opcoes_config.yy",},},

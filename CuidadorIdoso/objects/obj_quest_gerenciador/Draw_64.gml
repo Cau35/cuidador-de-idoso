@@ -917,3 +917,4 @@ function desenhar_confirmacao_sair() {
     draw_set_halign(fa_left);
 }
 
+
