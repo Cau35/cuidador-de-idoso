@@ -1,6 +1,13 @@
 
-if (instance_exists(obj_quest_gerenciador) && obj_quest_gerenciador.pausado) exit;
 if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.dialogo_ativo) exit;
+if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.qz_ativo) exit;
+
+if (instance_exists(obj_quest_gerenciador) && obj_quest_gerenciador.pausado) exit;
+
+
+if (instance_exists(obj_idoso_quest_gerenciador)
+    && obj_idoso_quest_gerenciador.quest_ativa) exit;
+
 if (instance_exists(obj_quest_gerenciador)
     && obj_quest_gerenciador.quest_overlay_ativa != -1) exit;
 if (instance_exists(obj_gerenciador) && obj_gerenciador.mostrar_fala_professor) exit;

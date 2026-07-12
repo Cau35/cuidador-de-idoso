@@ -1,5 +1,5 @@
 // Sprite do quarto
-spr_quarto = Spr_QuartoIdoso; 
+spr_quarto = Spr_QuartoIdoso; // troque pelo nome real
 
 // Estado da quest
 fase = 0; // 0=jogando | 1=conclusao | 2=tutor

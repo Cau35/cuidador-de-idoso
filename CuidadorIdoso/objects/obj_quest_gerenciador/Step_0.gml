@@ -1,5 +1,4 @@
 
-var dialogo_rolando = (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.dialogo_ativo);
 
 
 if pausado && mouse_check_button_pressed(mb_left) {
@@ -64,9 +63,16 @@ if pausado && mouse_check_button_pressed(mb_left) {
         }
     }
 }
+
+var dialogo_rolando = false;
+if instance_exists(obj_cena_jaleco) {
+    if obj_cena_jaleco.dialogo_ativo || obj_cena_jaleco.qz_ativo {
+        dialogo_rolando = true;
+    }
+}
+
 if keyboard_check_pressed(vk_escape) && !dialogo_rolando {
     if quest_overlay_ativa != -1 {
-        // ESC fecha o overlay de quest, não abre o pause
         fechar_quest_overlay();
     } else {
         pausado = !pausado;
@@ -82,7 +88,7 @@ if hud_moeda_anim > 0 {
     hud_moeda_anim--;
 }
 
-// Atualização segura da flag de NPC próximo (evita problema de ordem de execução)
+
 hud_npc_perto = hud_npc_perto_proximo_frame;
 hud_npc_nome  = hud_npc_nome_proximo_frame;
 hud_npc_perto_proximo_frame = false;

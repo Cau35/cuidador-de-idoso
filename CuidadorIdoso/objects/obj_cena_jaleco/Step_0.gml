@@ -1,40 +1,12 @@
+event_inherited(); // deteccao de proximidade + tecla E do obj_npc pai
 
-
+// =========================================
+// DIALOGO (jaleco / incentivo)
+// =========================================
 if dialogo_ativo {
- 
-var avancar = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("E"));
+    var texto_completo = obter_fala_texto();
 
-if avancar {
     if !digitacao_completa {
-        // Pula a digitação
-        texto_atual = falas[linha_atual].texto;
-        char_index = string_length(falas[linha_atual].texto);
-        digitacao_completa = true;
-
-    } else if linha_atual == num_falas - 1 && !mostrar_entrega_jaleco {
-        // Última fala — dispara animação de entrega
-        mostrar_entrega_jaleco = true;
-        entrega_timer = 0;
-        array_push(obj_quest_gerenciador.inventario, "Jaleco");
-        obj_quest_gerenciador.objetivos[0] = "Ir até a sala de informática e conversar com os 4 professores";
-        obj_quest_gerenciador.nova_mensagem("Professora Coordenadora",
-            "Vista o jaleco com orgulho. Agora vá até a sala de informática.");
-        Obj_player.sprite_index = spr_player_idle_com_jaleco;
-        obj_quest_gerenciador.jaleco_vestido = true;
-
-    } else if linha_atual == num_falas - 1 && mostrar_entrega_jaleco {
-        // Encerra o diálogo
-        dialogo_ativo = false;
-        ja_jogou_cena = true;
-
-    } else {
-   
-        linha_atual++;
-        iniciar_linha();
-    }
-}
-    if !digitacao_completa {
-        var texto_completo = falas[linha_atual].texto;
         timer_digitar++;
         if timer_digitar >= velocidade {
             timer_digitar = 0;
@@ -44,67 +16,127 @@ if avancar {
                     texto_atual = string_copy(texto_completo, 1, char_index);
                 } else {
                     digitacao_completa = true;
-                    break;
                 }
             }
         }
     }
 
-  
-    if (mouse_check_button_pressed(mb_left) || keyboard_check_pressed(vk_space)) && !digitacao_completa {
-        texto_atual = falas[linha_atual].texto;
-        char_index = string_length(falas[linha_atual].texto);
-        digitacao_completa = true;
-    }
+    var avancar = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("E"));
 
+    if avancar {
+        if !digitacao_completa {
+            texto_atual = texto_completo;
+            char_index  = string_length(texto_completo);
+            digitacao_completa = true;
 
-    if mostrar_entrega_jaleco {
-        entrega_timer++;
-    }
-}
-// Versão sobrescrita do Step do obj_npc, adaptada para não interagir durante o diálogo
-if !dialogo_ativo {
-    var dist = point_distance(x, y, Obj_player.x, Obj_player.y);
+        } else if modo_dialogo == "jaleco"
+               && linha_atual == num_falas_jaleco - 1
+               && !mostrar_entrega_jaleco {
+            // Ultima fala do jaleco -- dispara entrega
+            mostrar_entrega_jaleco = true;
+            entrega_timer = 0;
 
-    if dist <= raio_interacao {
-        obj_quest_gerenciador.set_npc_proximo(nome_npc);
+            array_push(obj_quest_gerenciador.inventario, "Jaleco");
+            obj_quest_gerenciador.objetivos[0] = "Ir ate a sala de informatica e conversar com os 4 professores";
+            obj_quest_gerenciador.nova_mensagem("Professora Coordenadora",
+                "Vista o jaleco com orgulho. Agora va ate a sala de informatica.");
+            obj_quest_gerenciador.jaleco_vestido = true;
+            if instance_exists(Obj_player) {
+                Obj_player.sprite_index = spr_player_idle_com_jaleco;
+            }
 
-        if keyboard_check_pressed(ord("E")) {
-            iniciar_interacao();
+        } else if modo_dialogo == "jaleco"
+               && linha_atual == num_falas_jaleco - 1
+               && mostrar_entrega_jaleco {
+            // Encerra cutscene do jaleco
+            dialogo_ativo = false;
+            ja_jogou_cena = true;
 
-if mouse_check_button_pressed(mb_left) {
-    var gx = display_mouse_get_x(); // posição X do mouse na tela GUI
-    var gy = display_mouse_get_y(); // posição Y do mouse na tela GUI
+        } else if modo_dialogo == "incentivo"
+               && linha_atual == num_falas_incentivo - 1 {
+            // Encerra dialogo de incentivo
+            dialogo_ativo = false;
 
-    if !digitacao_completa {
-        // Pula a digitação
-        texto_atual = falas[linha_atual].texto;
-        char_index = string_length(falas[linha_atual].texto);
-        digitacao_completa = true;
-
-    } else if linha_atual == num_falas - 1 && !mostrar_entrega_jaleco {
-        // Última fala — dispara animação de entrega
-        mostrar_entrega_jaleco = true;
-        entrega_timer = 0;
-        array_push(obj_quest_gerenciador.inventario, "Jaleco");
-        obj_quest_gerenciador.objetivos[0] = "Ir até a sala de informática e conversar com os 4 professores";
-        obj_quest_gerenciador.nova_mensagem("Professora Coordenadora",
-            "Vista o jaleco com orgulho. Agora vá até a sala de informática.");
-        Obj_player.sprite_index = spr_player_idle_com_jaleco;
-        obj_quest_gerenciador.jaleco_vestido = true;
-
-    } else if linha_atual == num_falas - 1 && mostrar_entrega_jaleco {
-        // Encerra o diálogo
-        dialogo_ativo = false;
-        ja_jogou_cena = true;
-
-    } else {
-        // Avança para a próxima fala
-        linha_atual++;
-        iniciar_linha();
-    }
-}
+        } else {
+            linha_atual++;
+            iniciar_linha();
         }
     }
 }
 
+// =========================================
+// QUIZ -- clique nas alternativas / avancar
+// =========================================
+if qz_ativo {
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
+
+    // Fase 0 -- selecionar resposta
+    if qz_fase == 0 && !qz_resposta_revelada && mouse_check_button_pressed(mb_left) {
+        var gw = display_get_gui_width();
+        var base_y = 320; var alt_op = 64; var gap = 14;
+        var i = 0;
+        repeat (4) {
+            var oy = base_y + i * (alt_op + gap);
+            if point_in_rectangle(mx, my, 140, oy, gw-140, oy+alt_op) {
+                qz_resposta_selecionada = i;
+                qz_resposta_revelada    = true;
+                if i == qz_correta[qz_pergunta_atual] {
+                    qz_acertos++;
+                    obj_quest_gerenciador.ganhar_moedas(15);
+                }
+            }
+            i++;
+        }
+    }
+
+    // Avancar pergunta com E ou clique no botao continuar
+    if qz_fase == 0 && qz_resposta_revelada {
+        var avancar_pergunta = keyboard_check_pressed(ord("E"));
+        if !avancar_pergunta && mouse_check_button_pressed(mb_left) {
+            var gw2 = display_get_gui_width();
+            if point_in_rectangle(mx, my, gw2-260, 612, gw2-100, 654) {
+                avancar_pergunta = true;
+            }
+        }
+        if avancar_pergunta {
+            qz_pergunta_atual++;
+            qz_resposta_selecionada = -1;
+            qz_resposta_revelada    = false;
+            if qz_pergunta_atual >= qz_num_perguntas {
+                qz_fase = 1;
+            }
+        }
+    }
+
+    // Fase 1 -- resultado
+    if qz_fase == 1 {
+        var avancar_resultado = keyboard_check_pressed(ord("E"));
+        if !avancar_resultado && mouse_check_button_pressed(mb_left) {
+            var gw3 = display_get_gui_width();
+            if point_in_rectangle(mx, my, gw3/2-150, 540, gw3/2+150, 586) {
+                avancar_resultado = true;
+            }
+        }
+        if avancar_resultado {
+            if qz_acertos >= 3 {
+                qz_fase = 2;
+                obj_quest_gerenciador.integradora_completa = true;
+                obj_quest_gerenciador.dar_tablet();
+                obj_quest_gerenciador.ganhar_moedas(50);
+            } else {
+                qz_pergunta_atual       = 0;
+                qz_acertos              = 0;
+                qz_resposta_selecionada = -1;
+                qz_resposta_revelada    = false;
+                qz_fase                 = 0;
+            }
+        }
+    }
+
+    // Fase 2 -- recompensa, fecha o quiz
+    if qz_fase == 2 && keyboard_check_pressed(ord("E")) {
+        fechar_quiz();
+        room_goto(room_quarto_idoso); // proxima etapa do jogo
+    }
+}
