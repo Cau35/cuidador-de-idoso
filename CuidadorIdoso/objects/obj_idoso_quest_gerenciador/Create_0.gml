@@ -94,14 +94,12 @@ mq2_correto[4] = 2; // Adaptar
 mq2_correto[5] = 2; // Adaptar
 mq2_num_itens  = 6;
 
-// Textos dos tutores
+
 tutor_texto[0] = "Muito bem! Higiene pessoal e conforto sao pilares fundamentais do cuidado.\nItens como toalha, sabonete e escova garantem a dignidade do idoso.\nTravesseiro e coberta adequados previnem escaras e garantem um sono reparador.";
 tutor_texto[1] = "Excelente! Reconhecer sinais de alerta como quedas e pressao alta e fundamental.\nCabelo branco e uso de bengala sao naturais da idade e nao indicam problema.\nJa tapetes antiderrapantes e grades na cama fazem parte de um ambiente seguro.";
 tutor_texto[2] = "Perfeito! Agua e frutas sao sempre recomendados para idosos.\nRefrigerante e sal em excesso devem ser evitados.\nComida mole e canudo sao adaptacoes que garantem seguranca e autonomia.";
 
-// =========================================
-// ESTADO DO ARRASTO (igual a quest 4)
-// =========================================
+
 item_arrastando = -1;
 item_offset_x   = 0;
 item_offset_y   = 0;
@@ -129,7 +127,7 @@ function iniciar_mini_quest(_indice) {
     item_no_cat  = array_create(num, -1);
     cat_correto  = array_create(3, false);
     cat_errado   = array_create(3, false);
-    itens_na_cat = array_create(3, 0); // quantos itens corretos em cada cat
+    itens_na_cat = array_create(3, 0);
 }
 
 function obter_num_itens() {
@@ -172,7 +170,7 @@ function obter_pos_item_orig(_i) {
     return { x: ix, y: iy };
 }
 
-// Inicializa a primeira mini-quest
+
 cat_errado  = array_create(3, false);
 itens_na_cat = array_create(3, 0);
 iniciar_mini_quest(0);

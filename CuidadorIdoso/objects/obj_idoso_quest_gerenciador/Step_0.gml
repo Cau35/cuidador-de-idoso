@@ -169,11 +169,12 @@ if fase == 2 && keyboard_check_pressed(ord("E")) {
     mini_completa[mini_quest_atual] = true;
     obj_quest_gerenciador.ganhar_moedas(10);
 
-    if mini_quest_atual < 2 {
-        iniciar_mini_quest(mini_quest_atual + 1);
-    } else {
-        
-        quest_ativa = false;
-        obj_quest_gerenciador.marcar_quest_completa(5);
-    }
-}
+   if mini_quest_atual < 2 {
+    iniciar_mini_quest(mini_quest_atual + 1);
+} else {
+    // Todas concluidas -- fecha definitivamente
+    quest_ativa = false;
+    obj_quest_gerenciador.marcar_quest_completa(4);
+    // Impede de reabrir
+    obj_quest_gerenciador.quest_idoso_concluida = true;
+}}

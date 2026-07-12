@@ -130,7 +130,7 @@ if tablet_aberto && mouse_check_button_pressed(mb_left) {
         var start_y = tela_y + 100;
         var ix = tela_x+20; var iw = tela_w-40;
 
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < 4; i++) {
             var iy = start_y + i*(icone_h+gap);
             if point_in_rectangle(mx, my, ix, iy, ix+iw, iy+icone_h) {
                 tablet_aba = i;
@@ -138,6 +138,33 @@ if tablet_aberto && mouse_check_button_pressed(mb_left) {
             }
         }
     }
+	// Clique nas setas do guia
+if tablet_aba == 3 {
+    var tela_x = tab_x + 22;
+    var tela_y = tab_y + 55;
+    var tela_w = tab_w - 44;
+    var tela_h = tab_h - 110;
+
+    var seta_y  = tela_y + tela_h - 52;
+    var seta_w  = 60; var seta_h = 36;
+
+    // Seta esquerda
+    if point_in_rectangle(mx, my,
+        tela_x+20, seta_y, tela_x+20+seta_w, seta_y+seta_h) {
+        if guia_pagina_atual > 0 {
+            guia_pagina_atual--;
+        }
+    }
+
+    // Seta direita
+    if point_in_rectangle(mx, my,
+        tela_x+tela_w-20-seta_w, seta_y,
+        tela_x+tela_w-20, seta_y+seta_h) {
+        if guia_pagina_atual < guia_num_paginas-1 {
+            guia_pagina_atual++;
+        }
+    }
+}
 	// Draw GUI — temporário
 draw_set_color(c_red);
 draw_rectangle(tela_x, tela_y, tela_x+tela_w, tela_y+tela_h, true);
@@ -152,8 +179,8 @@ if quest_overlay_ativa == 1 {
 
     // Validação acontece aqui, ao clicar na alternativa
     if p2_fase == 1 && mouse_check_button_pressed(mb_left) {
-        var mx = display_mouse_get_x();
-        var my = display_mouse_get_y();
+        var mx = device_mouse_x_to_gui(0);
+        var my = device_mouse_y_to_gui(0);
         var gw = display_get_gui_width();
 
         var pront_h = 420;

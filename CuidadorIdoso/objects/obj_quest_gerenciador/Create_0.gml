@@ -9,9 +9,27 @@ gui_h = display_get_gui_height();
 escala_x = gui_w / 1280;
 escala_y = gui_h / 720;
 
+quest_idoso_concluida = false;
 jaleco_vestido = false;
+cena_jaleco_concluida = false;
 
+/////////TABLET//////////
 
+// === ABA GUIA DO TABLET ===
+guia_pagina_atual = 0;
+guia_num_paginas  = 4;
+
+// Sprites de cada página do guia
+
+guia_sprites[0] = -1;
+guia_sprites[1] = -1;
+guia_sprites[2] = -1;
+guia_sprites[3] = -1;
+
+guia_nomes[0] = "Decomposicao";
+guia_nomes[1] = "Reconhecimento de Padroes";
+guia_nomes[2] = "Abstracao";
+guia_nomes[3] = "Criacao de Algoritmos";
 
 
 
@@ -34,7 +52,7 @@ quest_nome[2] = "Abstração";
 quest_nome[3] = "Criação de Algoritmos";
 
 integradora_completa = false;
-tablet_recebido = true;
+tablet_recebido = false;
 
 
 inventario = [];
@@ -49,7 +67,7 @@ saldo_moedas = 0;
 
 
 tablet_aberto = false;
-tablet_aba = 0;
+tablet_aba = -1;
 
 
 hud_npc_perto = false;
@@ -123,6 +141,7 @@ function salvar_jogo() {
     ini_write_real("quests", "quest_1", quest_completa[1]);
     ini_write_real("quests", "quest_2", quest_completa[2]);
     ini_write_real("quests", "quest_3", quest_completa[3]);
+	ini_write_real("quests", "cena_jaleco_concluida", cena_jaleco_concluida);
     ini_write_real("quests", "integradora", integradora_completa);
     ini_write_real("quests", "jaleco_vestido", jaleco_vestido);
     ini_write_real("quests", "tablet_recebido", tablet_recebido);
@@ -160,6 +179,7 @@ function carregar_jogo() {
     quest_completa[2]    = bool(ini_read_real("quests", "quest_2",        0));
     quest_completa[3]    = bool(ini_read_real("quests", "quest_3",        0));
     integradora_completa = bool(ini_read_real("quests", "integradora",    0));
+	cena_jaleco_concluida = bool(ini_read_real("quests", "cena_jaleco_concluida", 0));
     jaleco_vestido       = bool(ini_read_real("quests", "jaleco_vestido", 0));
     tablet_recebido      = bool(ini_read_real("quests", "tablet_recebido",0));
 

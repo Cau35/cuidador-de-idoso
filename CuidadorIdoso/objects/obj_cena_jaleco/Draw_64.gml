@@ -198,3 +198,108 @@ if qz_ativo {
 draw_set_font(-1);
 draw_set_halign(fa_left);
 draw_set_alpha(1);
+
+// === DIÁLOGO PRÉ-QUIZ ===
+if pre_quiz_ativo {
+    var falante  = falas_pre_quiz[pre_quiz_linha].falante;
+    var eh_aluna = (falante == "aluna");
+
+    // Retrato
+    var retrato_sprite = eh_aluna ? spr_aluna : spr_professora;
+    var retrato_w = 320; var retrato_h = 420;
+    var retrato_x = eh_aluna ? 40 : gw - 40 - retrato_w;
+    var retrato_y = gh - retrato_h - 180;
+    draw_sprite_stretched(retrato_sprite, 0, retrato_x, retrato_y, retrato_w, retrato_h);
+
+    // Caixa
+    var cx = 40; var cy = gh-170; var cw = gw-80; var ch = 150;
+    draw_set_color(make_color_rgb(15,20,30));
+    draw_set_alpha(0.95);
+    draw_rectangle(cx, cy, cx+cw, cy+ch, false);
+    draw_set_alpha(1);
+    draw_set_color(make_color_rgb(60,200,255));
+    draw_rectangle(cx, cy, cx+cw, cy+ch, true);
+
+    var nome = eh_aluna ? "Voce" : "Professora Coordenadora";
+    var cor_nome = eh_aluna ? make_color_rgb(120,200,255) : make_color_rgb(255,200,120);
+    draw_set_color(make_color_rgb(15,20,30));
+    draw_rectangle(cx+20, cy-18, cx+20+string_width(nome)*1.4+24, cy+2, false);
+    draw_set_color(cor_nome);
+    draw_set_font(fnt_subtitulo);
+    draw_set_halign(fa_left);
+    draw_text(cx+32, cy-14, nome);
+
+    draw_set_color(c_white);
+    draw_set_font(fnt_normal);
+    draw_text_ext(cx+24, cy+20, pre_quiz_texto_atual, 26, cw-48);
+
+    if pre_quiz_digitacao_ok {
+        draw_set_color(make_color_rgb(180,200,230));
+        draw_set_halign(fa_right);
+        draw_text(cx+cw-20, cy+ch-28,
+            pre_quiz_linha < num_falas_pre_quiz-1 ? "[E] Continuar" : "[E] Iniciar Avaliacao");
+        draw_set_halign(fa_left);
+    }
+}
+
+// === DIÁLOGO DE ENTREGA DO TABLET ===
+if tablet_dialogo_ativo {
+    var falante2  = falas_tablet[tablet_dialogo_linha].falante;
+    var eh_aluna2 = (falante2 == "aluna");
+
+    var retrato_sprite2 = eh_aluna2 ? spr_aluna : spr_professora;
+    var retrato_w2 = 320; var retrato_h2 = 420;
+    var retrato_x2 = eh_aluna2 ? 40 : gw - 40 - retrato_w2;
+    var retrato_y2 = gh - retrato_h2 - 180;
+    draw_sprite_stretched(retrato_sprite2, 0, retrato_x2, retrato_y2, retrato_w2, retrato_h2);
+
+    var cx2 = 40; var cy2 = gh-170; var cw2 = gw-80; var ch2 = 150;
+    draw_set_color(make_color_rgb(15,20,30));
+    draw_set_alpha(0.95);
+    draw_rectangle(cx2, cy2, cx2+cw2, cy2+ch2, false);
+    draw_set_alpha(1);
+    draw_set_color(make_color_rgb(60,200,255));
+    draw_rectangle(cx2, cy2, cx2+cw2, cy2+ch2, true);
+
+    var nome2 = eh_aluna2 ? "Voce" : "Professora Coordenadora";
+    var cor_nome2 = eh_aluna2 ? make_color_rgb(120,200,255) : make_color_rgb(255,200,120);
+    draw_set_color(make_color_rgb(15,20,30));
+    draw_rectangle(cx2+20, cy2-18, cx2+20+string_width(nome2)*1.4+24, cy2+2, false);
+    draw_set_color(cor_nome2);
+    draw_set_font(fnt_subtitulo);
+    draw_set_halign(fa_left);
+    draw_text(cx2+32, cy2-14, nome2);
+
+    draw_set_color(c_white);
+    draw_set_font(fnt_normal);
+    draw_text_ext(cx2+24, cy2+20, tablet_dialogo_texto, 26, cw2-48);
+
+    if tablet_dialogo_digit_ok {
+        draw_set_color(make_color_rgb(180,200,230));
+        draw_set_halign(fa_right);
+        draw_text(cx2+cw2-20, cy2+ch2-28,
+            tablet_dialogo_linha < num_falas_tablet-1 ? "[E] Continuar" : "[E] Receber Tablet");
+        draw_set_halign(fa_left);
+    }
+}
+
+// === ANIMAÇÃO DE ENTREGA DO TABLET (igual ao jaleco) ===
+if mostrar_entrega_tablet {
+    var jx = gw/2;
+    var jy = gh/2 - 60 - min(tablet_entrega_timer*2, 40);
+    var escala = 0.5 + min(tablet_entrega_timer/30, 0.4);
+
+    draw_set_alpha(min(tablet_entrega_timer/20, 1));
+    draw_sprite_ext(spr_tablet_icone, 0, jx, jy, escala, escala, 0, c_white, 1);
+    draw_set_alpha(1);
+
+    draw_set_color(c_white);
+    draw_set_font(fnt_subtitulo);
+    draw_set_halign(fa_center);
+    draw_text(jx, jy+80, "Tablet recebido!");
+
+    draw_set_color(make_color_rgb(150,170,220));
+    draw_set_font(fnt_normal);
+    draw_text(jx, jy+110, "Pressione [E] para continuar");
+    draw_set_halign(fa_left);
+}

@@ -1,4 +1,4 @@
-event_inherited(); // deteccao de proximidade + tecla E do obj_npc pai
+event_inherited();
 
 // =========================================
 // DIALOGO (jaleco / incentivo)
@@ -25,17 +25,15 @@ if dialogo_ativo {
 
     if avancar {
         if !digitacao_completa {
-            texto_atual = texto_completo;
-            char_index  = string_length(texto_completo);
+            texto_atual        = texto_completo;
+            char_index         = string_length(texto_completo);
             digitacao_completa = true;
 
         } else if modo_dialogo == "jaleco"
                && linha_atual == num_falas_jaleco - 1
                && !mostrar_entrega_jaleco {
-            // Ultima fala do jaleco -- dispara entrega
             mostrar_entrega_jaleco = true;
             entrega_timer = 0;
-
             array_push(obj_quest_gerenciador.inventario, "Jaleco");
             obj_quest_gerenciador.objetivos[0] = "Ir ate a sala de informatica e conversar com os 4 professores";
             obj_quest_gerenciador.nova_mensagem("Professora Coordenadora",
@@ -48,13 +46,12 @@ if dialogo_ativo {
         } else if modo_dialogo == "jaleco"
                && linha_atual == num_falas_jaleco - 1
                && mostrar_entrega_jaleco {
-            // Encerra cutscene do jaleco
             dialogo_ativo = false;
             ja_jogou_cena = true;
+			obj_quest_gerenciador.cena_jaleco_concluida = true;
 
         } else if modo_dialogo == "incentivo"
                && linha_atual == num_falas_incentivo - 1 {
-            // Encerra dialogo de incentivo
             dialogo_ativo = false;
 
         } else {
@@ -65,7 +62,47 @@ if dialogo_ativo {
 }
 
 // =========================================
-// QUIZ -- clique nas alternativas / avancar
+// DIALOGO PRE-QUIZ
+// =========================================
+if pre_quiz_ativo {
+    var texto_pq = falas_pre_quiz[pre_quiz_linha].texto;
+
+    if !pre_quiz_digitacao_ok {
+        pre_quiz_timer++;
+        if pre_quiz_timer >= 1 {
+            pre_quiz_timer = 0;
+            if pre_quiz_char_index < string_length(texto_pq) {
+                pre_quiz_char_index++;
+                pre_quiz_texto_atual = string_copy(texto_pq, 1, pre_quiz_char_index);
+            } else {
+                pre_quiz_digitacao_ok = true;
+            }
+        }
+    }
+
+    var avancar_pq = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("E"));
+
+    if avancar_pq {
+        if !pre_quiz_digitacao_ok {
+            pre_quiz_texto_atual  = texto_pq;
+            pre_quiz_char_index   = string_length(texto_pq);
+            pre_quiz_digitacao_ok = true;
+        } else if pre_quiz_linha < num_falas_pre_quiz - 1 {
+            pre_quiz_linha++;
+            pre_quiz_texto_atual  = "";
+            pre_quiz_char_index   = 0;
+            pre_quiz_timer        = 0;
+            pre_quiz_digitacao_ok = false;
+        } else {
+            // Falas pre-quiz terminaram -- abre o quiz
+            pre_quiz_ativo = false;
+            abrir_quiz();
+        }
+    }
+}
+
+// =========================================
+// QUIZ
 // =========================================
 if qz_ativo {
     var mx = device_mouse_x_to_gui(0);
@@ -90,7 +127,7 @@ if qz_ativo {
         }
     }
 
-    // Avancar pergunta com E ou clique no botao continuar
+    // Avancar pergunta com E ou clique
     if qz_fase == 0 && qz_resposta_revelada {
         var avancar_pergunta = keyboard_check_pressed(ord("E"));
         if !avancar_pergunta && mouse_check_button_pressed(mb_left) {
@@ -120,11 +157,17 @@ if qz_ativo {
         }
         if avancar_resultado {
             if qz_acertos >= 3 {
-                qz_fase = 2;
-                obj_quest_gerenciador.integradora_completa = true;
-                obj_quest_gerenciador.dar_tablet();
-                obj_quest_gerenciador.ganhar_moedas(50);
+               
+                qz_ativo                = false;
+                tablet_dialogo_ativo    = true;
+                tablet_dialogo_linha    = 0;
+                tablet_dialogo_texto    = "";
+                tablet_dialogo_char     = 0;
+                tablet_dialogo_timer    = 0;
+                tablet_dialogo_digit_ok = false;
+                mostrar_entrega_tablet  = false;
             } else {
+               
                 qz_pergunta_atual       = 0;
                 qz_acertos              = 0;
                 qz_resposta_selecionada = -1;
@@ -133,10 +176,62 @@ if qz_ativo {
             }
         }
     }
+}
 
-    // Fase 2 -- recompensa, fecha o quiz
-    if qz_fase == 2 && keyboard_check_pressed(ord("E")) {
-        fechar_quiz();
-        room_goto(room_quarto_idoso); // proxima etapa do jogo
+// =========================================
+// DIALOGO DE ENTREGA DO TABLET
+// =========================================
+if tablet_dialogo_ativo {
+    var texto_tab = falas_tablet[tablet_dialogo_linha].texto;
+
+    if !tablet_dialogo_digit_ok {
+        tablet_dialogo_timer++;
+        if tablet_dialogo_timer >= 1 {
+            tablet_dialogo_timer = 0;
+            if tablet_dialogo_char < string_length(texto_tab) {
+                tablet_dialogo_char++;
+                tablet_dialogo_texto = string_copy(texto_tab, 1, tablet_dialogo_char);
+            } else {
+                tablet_dialogo_digit_ok = true;
+            }
+        }
+    }
+
+    var avancar_tab = mouse_check_button_pressed(mb_left) || keyboard_check_pressed(ord("E"));
+
+    if avancar_tab {
+        if !tablet_dialogo_digit_ok {
+            tablet_dialogo_texto    = texto_tab;
+            tablet_dialogo_char     = string_length(texto_tab);
+            tablet_dialogo_digit_ok = true;
+        } else if tablet_dialogo_linha < num_falas_tablet - 1 {
+            tablet_dialogo_linha++;
+            tablet_dialogo_texto    = "";
+            tablet_dialogo_char     = 0;
+            tablet_dialogo_timer    = 0;
+            tablet_dialogo_digit_ok = false;
+        } else {
+            // Falas do tablet terminaram -- dispara animacao
+            tablet_dialogo_ativo   = false;
+            mostrar_entrega_tablet = true;
+            tablet_entrega_timer   = 0;
+
+            // Entrega o tablet
+            obj_quest_gerenciador.integradora_completa = true;
+            obj_quest_gerenciador.dar_tablet();
+            obj_quest_gerenciador.ganhar_moedas(50);
+        }
+    }
+}
+
+// =========================================
+// ANIMACAO DE ENTREGA DO TABLET
+// =========================================
+if mostrar_entrega_tablet {
+    tablet_entrega_timer++;
+    // Aguarda 60 frames antes de aceitar E para nao pular acidentalmente
+    if tablet_entrega_timer > 60 && keyboard_check_pressed(ord("E")) {
+        mostrar_entrega_tablet = false;
+        room_goto(room_quarto_idoso);
     }
 }

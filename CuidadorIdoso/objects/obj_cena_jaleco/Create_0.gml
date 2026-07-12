@@ -9,12 +9,48 @@ spr_aluna        = portrait_pmn;
 spr_professora   = portrait_IN;
 spr_jaleco_icone = spr_item_jaleco;
 
+
+
+
+// === FALAS ANTES DO QUIZ ===
+falas_pre_quiz[0] = { falante: "professora", texto: "Agora vamos fazer sua avaliacao final, vamos ver se voce esta pronta para cuidar do idoso. " };
+falas_pre_quiz[1] = { falante: "professora", texto: "voce esta pronta? "  };
+falas_pre_quiz[2] = { falante: "aluna",      texto: "sim. " };
+
+num_falas_pre_quiz = 3;
+
+// === FALAS NA ENTREGA DO TABLET ===
+falas_tablet[0] = { falante: "professora", texto: "COLOQUE SUA FALA AQUI" };
+falas_tablet[1] = { falante: "aluna",      texto: "COLOQUE SUA FALA AQUI" };
+// adicione ou remova linhas conforme necessário
+num_falas_tablet = 2; // ajuste para o número de falas que tiver
+
+// Sprite do tablet (igual ao jaleco)
+spr_tablet_icone = spr_tablet_fundo;
+
+// Estado das falas pré-quiz e tablet
+pre_quiz_ativo           = false;
+pre_quiz_linha           = 0;
+pre_quiz_texto_atual     = "";
+pre_quiz_char_index      = 0;
+pre_quiz_timer           = 0;
+pre_quiz_digitacao_ok    = false;
+
+tablet_dialogo_ativo     = false;
+tablet_dialogo_linha     = 0;
+tablet_dialogo_texto     = "";
+tablet_dialogo_char      = 0;
+tablet_dialogo_timer     = 0;
+tablet_dialogo_digit_ok  = false;
+mostrar_entrega_tablet   = false;
+tablet_entrega_timer     = 0;
+
 // =========================================
 // ESTADO DO DIALOGO (jaleco / incentivo)
 // =========================================
 dialogo_ativo   = false;
 linha_atual     = 0;
-ja_jogou_cena   = false;
+ja_jogou_cena   = obj_quest_gerenciador.cena_jaleco_concluida;
 modo_dialogo    = "jaleco"; // "jaleco" | "incentivo"
 
 texto_atual        = "";
@@ -117,7 +153,7 @@ function iniciar_interacao() {
 
     // MODO 3 -- quiz (todas completas, integradora pendente)
     if todas_completas && !obj_quest_gerenciador.integradora_completa {
-        abrir_quiz();
+        abrir_pre_quiz();
         return;
     }
 
@@ -177,4 +213,12 @@ function abrir_quiz() {
 
 function fechar_quiz() {
     qz_ativo = false;
+}
+function abrir_pre_quiz() {
+    pre_quiz_ativo        = true;
+    pre_quiz_linha        = 0;
+    pre_quiz_texto_atual  = "";
+    pre_quiz_char_index   = 0;
+    pre_quiz_timer        = 0;
+    pre_quiz_digitacao_ok = false;
 }
