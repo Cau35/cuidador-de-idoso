@@ -396,7 +396,7 @@ if tablet_aberto {
 
     // === TABLET VERTICAL ===
     // Dimensões do sprite do tablet (vertical)
-    var tab_w = 480;
+    var tab_w = 380;
     var tab_h = 620;
     var tab_x = gw/2 - tab_w/2;
     var tab_y = gh/2 - tab_h/2;

@@ -26,7 +26,7 @@ falas_tablet[1] = { falante: "aluna",      texto: "COLOQUE SUA FALA AQUI" };
 num_falas_tablet = 2; // ajuste para o número de falas que tiver
 
 // Sprite do tablet (igual ao jaleco)
-spr_tablet_icone = spr_tablet_fundo;
+spr_tablet_icone = spr_tablet;
 
 // Estado das falas pré-quiz e tablet
 pre_quiz_ativo           = false;

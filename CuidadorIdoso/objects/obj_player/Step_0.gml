@@ -2,9 +2,15 @@ if instance_exists(obj_npc_prof_decomposicao) {
     if obj_npc_prof_decomposicao.dialogo_ativo exit;
 }
 if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.dialogo_ativo) exit;
+if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.pre_quiz_ativo) exit;
+if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.tablet_dialogo_ativo) exit;
+
 if (instance_exists(obj_cena_jaleco) && obj_cena_jaleco.qz_ativo) exit;
 
 if (instance_exists(obj_quest_gerenciador) && obj_quest_gerenciador.pausado) exit;
+if (instance_exists(obj_npc_prof_abstracao) && obj_npc_prof_abstracao.dialogo_ativo) exit;
+if (instance_exists(obj_npc_prof_padroes) && obj_npc_prof_padroes.dialogo_ativo) exit;
+if (instance_exists(obj_npc_prof_algoritmos) && obj_npc_prof_algoritmos.dialogo_ativo) exit;
 
 
 if (instance_exists(obj_idoso_quest_gerenciador)
