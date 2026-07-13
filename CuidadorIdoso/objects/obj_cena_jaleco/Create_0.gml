@@ -6,7 +6,7 @@ nome_npc = "Professora Coordenadora";
 // SPRITES
 // =========================================
 spr_aluna        = portrait_pmn;
-spr_professora   = spr_rosto_acacia;
+spr_professora   = spr_r;
 spr_jaleco_icone = spr_item_jaleco;
 
 
