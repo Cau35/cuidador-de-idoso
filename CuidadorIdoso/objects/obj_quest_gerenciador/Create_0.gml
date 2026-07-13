@@ -21,10 +21,10 @@ guia_num_paginas  = 4;
 
 // Sprites de cada página do guia
 
-guia_sprites[0] = -1;
-guia_sprites[1] = -1;
-guia_sprites[2] = -1;
-guia_sprites[3] = -1;
+guia_sprites[0] = spr_decomposicao;
+guia_sprites[1] = spr_padroes;
+guia_sprites[2] = spr_abstracao;
+guia_sprites[3] = spr_algoritimo;
 
 guia_nomes[0] = "Decomposicao";
 guia_nomes[1] = "Reconhecimento de Padroes";
