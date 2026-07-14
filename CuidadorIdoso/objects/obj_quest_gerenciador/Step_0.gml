@@ -97,8 +97,51 @@ hud_npc_nome_proximo_frame  = "";
 
 if keyboard_check_pressed(ord("T")) && tablet_recebido {
     tablet_aberto = !tablet_aberto;
-}
+} 
 
+// =========================================
+// CLIQUES NO GUIA
+// =========================================
+if guia_aberto && mouse_check_button_pressed(mb_left) {
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
+    var gw = display_get_gui_width();
+    var gh = display_get_gui_height();
+
+    var g_w = gw * 0.70;
+    var g_x = gw/2 - g_w/2;
+    var g_y = 0;
+
+    var btn_w2  = 120;
+    var btn_h2  = 44;
+    var btn_y2  = gh - btn_h2 - 10;
+
+    // Botão voltar
+    if point_in_rectangle(mx, my, g_x+10, g_y+8, g_x+110, g_y+44) {
+        guia_aberto   = false;
+        // Volta para a aba do guia no tablet
+        tablet_aba    = -1;
+        tablet_aberto = true;
+        exit;
+    }
+
+    // Seta esquerda
+    if point_in_rectangle(mx, my, g_x+12, btn_y2, g_x+12+btn_w2, btn_y2+btn_h2) {
+        if guia_pagina_atual > 0 {
+            guia_pagina_atual--;
+        }
+        exit;
+    }
+
+    // Seta direita
+    var btn_dir_x = g_x + g_w - btn_w2 - 12;
+    if point_in_rectangle(mx, my, btn_dir_x, btn_y2, btn_dir_x+btn_w2, btn_y2+btn_h2) {
+        if guia_pagina_atual < guia_num_paginas-1 {
+            guia_pagina_atual++;
+        }
+        exit;
+    }
+}
 
 if tablet_aberto && mouse_check_button_pressed(mb_left) {
     var mx = device_mouse_x_to_gui(0);
@@ -125,19 +168,29 @@ if tablet_aberto && mouse_check_button_pressed(mb_left) {
     }
 
     // Clique nos botões da home
-    if tablet_aba == -1 {
-        var icone_h = 80; var gap = 24;
-        var start_y = tela_y + 100;
-        var ix = tela_x+20; var iw = tela_w-40;
-
-        for (var i = 0; i < 4; i++) {
-            var iy = start_y + i*(icone_h+gap);
-            if point_in_rectangle(mx, my, ix, iy, ix+iw, iy+icone_h) {
+   // Dentro do repeat(4) de clique nos icones da home
+// Quando i == 3 (Guia), abre o painel em vez de mudar aba
+if tablet_aba == -1 {
+    var icone_h = 80; var gap = 16;
+    var start_y = tela_y + 100;
+    var ix = tela_x + 20; var iw = tela_w - 40;
+    var i = 0;
+    repeat (4) {
+        var iy = start_y + i*(icone_h+gap);
+        if point_in_rectangle(mx, my, ix, iy, ix+iw, iy+icone_h) {
+            if i == 3 {
+                // Guia abre o painel separado
+                tablet_aberto     = false;
+                guia_aberto       = true;
+                guia_pagina_atual = 0;
+            } else {
                 tablet_aba = i;
-                exit;
             }
+            exit;
         }
+        i++;
     }
+}
 	// Clique nas setas do guia
 if tablet_aba == 3 {
     var tela_x = tab_x + 22;

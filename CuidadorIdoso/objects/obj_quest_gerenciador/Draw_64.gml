@@ -444,10 +444,7 @@ if tablet_aberto {
         desenhar_tablet_mensagens(tela_x, tela_y, tela_w, tela_h);
     } else if tablet_aba == 2 {
         desenhar_tablet_inventario(tela_x, tela_y, tela_w, tela_h);
-    }else if tablet_aba == 3 {
-    desenhar_tablet_guia(tela_x, tela_y, tela_w, tela_h);
-}
-
+    }
     draw_set_font(-1);
     draw_set_halign(fa_left);
     draw_set_alpha(1);
@@ -675,80 +672,80 @@ function desenhar_tablet_inventario(_tx, _ty, _tw, _th) {
 
     draw_set_halign(fa_left);
 }
+////////////////
+//function desenhar_tablet_guia(_tx, _ty, _tw, _th) {
+  //  desenhar_cabecalho_aba(_tx, _ty, _tw, "Guia de Cuidados");
 
-function desenhar_tablet_guia(_tx, _ty, _tw, _th) {
-    desenhar_cabecalho_aba(_tx, _ty, _tw, "Guia de Cuidados");
-
-    var area_y  = _ty + 100;
-    var area_h  = _th - 100;
-    var area_cx = _tx + _tw/2;
+//    var area_y  = _ty + 100;
+//    var area_h  = _th - 100;
+//    var area_cx = _tx + _tw/2;
 
     // Fundo da área da imagem
-    draw_set_color(make_color_rgb(20, 25, 40));
-    draw_rectangle(_tx+12, area_y, _tx+_tw-12, _ty+_th-12, false);
+ //   draw_set_color(make_color_rgb(20, 25, 40));
+ //   draw_rectangle(_tx+12, area_y, _tx+_tw-12, _ty+_th-12, false);
 
     // Nome da página atual
-    draw_set_color(make_color_rgb(120, 160, 220));
-    draw_set_font(fnt_normal);
-    draw_set_halign(fa_center);
-    draw_text(area_cx, area_y+10, guia_nomes[guia_pagina_atual]);
+ //   draw_set_color(make_color_rgb(120, 160, 220));
+  //  draw_set_font(fnt_normal);
+  //  draw_set_halign(fa_center);
+  //  draw_text(area_cx, area_y+10, guia_nomes[guia_pagina_atual]);
 
     // Imagem da página
-    var spr_pag = guia_sprites[guia_pagina_atual];
-    var img_x   = _tx + 24;
-    var img_y   = area_y + 36;
-    var img_w   = _tw - 48;
-    var img_h   = area_h - 80;
+  //  var spr_pag = guia_sprites[guia_pagina_atual];
+  //  var img_x   = _tx + 24;
+  //  var img_y   = area_y + 36;
+  //  var img_w   = _tw - 48;
+  //  var img_h   = area_h - 80;
 
-    if sprite_exists(spr_pag) {
-        draw_sprite_stretched(spr_pag, 0, img_x, img_y, img_w, img_h);
-    } else {
-        draw_set_color(make_color_rgb(40, 50, 80));
-        draw_rectangle(img_x, img_y, img_x+img_w, img_y+img_h, false);
-        draw_set_color(make_color_rgb(100, 120, 180));
-        draw_set_font(fnt_subtitulo);
-        draw_text(area_cx, img_y+img_h/2-10, guia_nomes[guia_pagina_atual]);
-    }
+   // if sprite_exists(spr_pag) {
+      //  draw_sprite_stretched(spr_pag, 0, img_x, img_y, img_w, img_h);
+  //  } else {
+     //   draw_set_color(make_color_rgb(40, 50, 80));
+     //   draw_rectangle(img_x, img_y, img_x+img_w, img_y+img_h, false);
+    //    draw_set_color(make_color_rgb(100, 120, 180));
+    //    draw_set_font(fnt_subtitulo);
+    //    draw_text(area_cx, img_y+img_h/2-10, guia_nomes[guia_pagina_atual]);
+//    }//
 
     // Seta esquerda
-    var seta_y   = _ty + _th - 52;
-    var seta_w   = 60;
-    var seta_h   = 36;
-    var mx = device_mouse_x_to_gui(0);
-    var my = device_mouse_y_to_gui(0);
+   // var seta_y   = _ty + _th - 52;
+  //  var seta_w   = 60;
+ //   var seta_h   = 36;
+  //  var mx = device_mouse_x_to_gui(0);
+//var my = device_mouse_y_to_gui(0);
+//
+ //   var hover_esq = point_in_rectangle(mx, my, _tx+20, seta_y, _tx+20+seta_w, seta_y+seta_h);
+   // var pode_esq  = (guia_pagina_atual > 0);
 
-    var hover_esq = point_in_rectangle(mx, my, _tx+20, seta_y, _tx+20+seta_w, seta_y+seta_h);
-    var pode_esq  = (guia_pagina_atual > 0);
-
-    draw_set_color(pode_esq
-        ? (hover_esq ? make_color_rgb(60,120,220) : make_color_rgb(40,80,160))
-        : make_color_rgb(40,40,60));
-    draw_rectangle(_tx+20, seta_y, _tx+20+seta_w, seta_y+seta_h, false);
-    draw_set_color(pode_esq ? c_white : make_color_rgb(80,80,100));
-    draw_set_font(fnt_titulo);
-    draw_set_halign(fa_center);
-    draw_text(_tx+20+seta_w/2, seta_y+4, "<");
+ //   draw_set_color(pode_esq//
+     //   ? (hover_esq ? make_color_rgb(60,120,220) : make_color_rgb(40,80,160))
+      //  : make_color_rgb(40,40,60));
+ //   draw_rectangle(_tx+20, seta_y, _tx+20+seta_w, seta_y+seta_h, false);
+ //   draw_set_color(pode_esq ? c_white : make_color_rgb(80,80,100));
+  //  draw_set_font(fnt_titulo);
+  //  draw_set_halign(fa_center);
+  //  draw_text(_tx+20+seta_w/2, seta_y+4, "<");
 
     // Indicador de página (centro)
-    draw_set_color(make_color_rgb(150,170,220));
-    draw_set_font(fnt_normal);
-    draw_text(area_cx, seta_y+8,
-        string(guia_pagina_atual+1) + " / " + string(guia_num_paginas));
+  //  draw_set_color(make_color_rgb(150,170,220));
+ //   draw_set_font(fnt_normal);
+ //   draw_text(area_cx, seta_y+8,
+   //     string(guia_pagina_atual+1) + " / " + string(guia_num_paginas));
 
-    // Seta direita
-    var hover_dir = point_in_rectangle(mx, my,
-        _tx+_tw-20-seta_w, seta_y, _tx+_tw-20, seta_y+seta_h);
-    var pode_dir  = (guia_pagina_atual < guia_num_paginas-1);
+  //  // Seta direita
+  //  var hover_dir = point_in_rectangle(mx, my,
+  //      _tx+_tw-20-seta_w, seta_y, _tx+_tw-20, seta_y+seta_h);
+  //  var pode_dir  = (guia_pagina_atual < guia_num_paginas-1);
 
-    draw_set_color(pode_dir
-        ? (hover_dir ? make_color_rgb(60,120,220) : make_color_rgb(40,80,160))
-        : make_color_rgb(40,40,60));
-    draw_rectangle(_tx+_tw-20-seta_w, seta_y, _tx+_tw-20, seta_y+seta_h, false);
-    draw_set_color(pode_dir ? c_white : make_color_rgb(80,80,100));
-    draw_text(_tx+_tw-20-seta_w/2, seta_y+4, ">");
-    draw_set_halign(fa_left);
-}
-
+  //  draw_set_color(pode_dir
+  //      ? (hover_dir ? make_color_rgb(60,120,220) : make_color_rgb(40,80,160))
+  //      : make_color_rgb(40,40,60));
+  //  draw_rectangle(_tx+_tw-20-seta_w, seta_y, _tx+_tw-20, seta_y+seta_h, false);
+  //  draw_set_color(pode_dir ? c_white : make_color_rgb(80,80,100));
+   // draw_text(_tx+_tw-20-seta_w/2, seta_y+4, ">");
+   // draw_set_halign(fa_left);
+//}//
+/////
 // =========================================
 function desenhar_cabecalho_aba(_tx, _ty, _tw, _titulo) {
     // Barra da aba
@@ -820,6 +817,129 @@ function desenhar_dica_tecla(_x, _y, _tecla, _label) {
     draw_set_font(fnt_normal);
     draw_set_halign(fa_left);
     draw_text(tx + tecla_w + 10, _y + 10, _label);
+}
+
+// =========================================
+// GUIA — por cima do tablet
+// =========================================
+if guia_aberto {
+    var gw = display_get_gui_width();
+    var gh = display_get_gui_height();
+
+    // Dimensões: 100% vertical, 70% horizontal, centralizado
+    var g_w  = gw * 0.70;
+    var g_h  = gh;
+    var g_x  = gw/2 - g_w/2;
+    var g_y  = 0;
+
+    // Overlay escuro nas laterais
+    draw_set_alpha(0.6);
+    draw_set_color(c_black);
+    draw_rectangle(0, 0, g_x, gh, false);
+    draw_rectangle(g_x+g_w, 0, gw, gh, false);
+    draw_set_alpha(1);
+
+    // Fundo do guia
+    draw_set_color(make_color_rgb(15, 18, 28));
+    draw_rectangle(g_x, g_y, g_x+g_w, g_y+g_h, false);
+    draw_set_color(make_color_rgb(60, 200, 255));
+    draw_rectangle(g_x, g_y, g_x+g_w, g_y+g_h, true);
+
+    // Barra de topo
+    draw_set_color(make_color_rgb(20, 40, 80));
+    draw_rectangle(g_x, g_y, g_x+g_w, g_y+52, false);
+
+    // Botão voltar
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
+
+    var btn_voltar_x = g_x + 10;
+    var btn_voltar_y = g_y + 8;
+    var btn_voltar_w = 100;
+    var btn_voltar_h = 36;
+    var hover_voltar = point_in_rectangle(mx, my,
+        btn_voltar_x, btn_voltar_y,
+        btn_voltar_x+btn_voltar_w, btn_voltar_y+btn_voltar_h);
+
+    draw_set_color(hover_voltar
+        ? make_color_rgb(60, 120, 220)
+        : make_color_rgb(30, 70, 150));
+    draw_rectangle(btn_voltar_x, btn_voltar_y,
+        btn_voltar_x+btn_voltar_w, btn_voltar_y+btn_voltar_h, false);
+    draw_set_color(c_white);
+    draw_set_font(fnt_normal);
+    draw_set_halign(fa_center);
+    draw_text(btn_voltar_x+btn_voltar_w/2, btn_voltar_y+9, "< Voltar");
+
+    // Título / indicador de página
+    draw_set_color(c_white);
+    draw_set_font(fnt_subtitulo);
+    draw_text(g_x+g_w/2, g_y+14,
+        "Guia de Cuidados — " + string(guia_pagina_atual+1) + " / " + string(guia_num_paginas));
+    draw_set_halign(fa_left);
+
+    // Área da imagem
+    var img_x = g_x + 12;
+    var img_y = g_y + 60;
+    var img_w = g_w - 24;
+    var img_h = g_h - 120;
+
+    var spr_pag = guia_sprites[guia_pagina_atual];
+    if sprite_exists(spr_pag) {
+        draw_sprite_stretched(spr_pag, 0, img_x, img_y, img_w, img_h);
+    } else {
+        draw_set_color(make_color_rgb(30, 40, 65));
+        draw_rectangle(img_x, img_y, img_x+img_w, img_y+img_h, false);
+        draw_set_color(make_color_rgb(80, 100, 160));
+        draw_set_font(fnt_subtitulo);
+        draw_set_halign(fa_center);
+        draw_text(g_x+g_w/2, img_y+img_h/2-10,
+            "Pagina " + string(guia_pagina_atual+1));
+        draw_set_halign(fa_left);
+    }
+
+    // Botões de navegação (inferior)
+    var btn_h2   = 44;
+    var btn_w2   = 120;
+    var btn_y2   = g_y + g_h - btn_h2 - 10;
+
+    // Seta esquerda
+    var btn_esq_x = g_x + 12;
+    var pode_esq  = (guia_pagina_atual > 0);
+    var hover_esq = point_in_rectangle(mx, my,
+        btn_esq_x, btn_y2, btn_esq_x+btn_w2, btn_y2+btn_h2) && pode_esq;
+
+    draw_set_color(pode_esq
+        ? (hover_esq ? make_color_rgb(60,120,220) : make_color_rgb(30,70,150))
+        : make_color_rgb(30,35,55));
+    draw_rectangle(btn_esq_x, btn_y2, btn_esq_x+btn_w2, btn_y2+btn_h2, false);
+    draw_set_color(pode_esq ? c_white : make_color_rgb(60,65,85));
+    draw_set_font(fnt_subtitulo);
+    draw_set_halign(fa_center);
+    draw_text(btn_esq_x+btn_w2/2, btn_y2+10, "< Anterior");
+
+    // Indicador central
+    draw_set_color(make_color_rgb(120, 160, 220));
+    draw_set_font(fnt_normal);
+    draw_text(g_x+g_w/2, btn_y2+12,
+        string(guia_pagina_atual+1) + " / " + string(guia_num_paginas));
+
+    // Seta direita
+    var btn_dir_x = g_x + g_w - btn_w2 - 12;
+    var pode_dir  = (guia_pagina_atual < guia_num_paginas-1);
+    var hover_dir = point_in_rectangle(mx, my,
+        btn_dir_x, btn_y2, btn_dir_x+btn_w2, btn_y2+btn_h2) && pode_dir;
+
+    draw_set_color(pode_dir
+        ? (hover_dir ? make_color_rgb(60,120,220) : make_color_rgb(30,70,150))
+        : make_color_rgb(30,35,55));
+    draw_rectangle(btn_dir_x, btn_y2, btn_dir_x+btn_w2, btn_y2+btn_h2, false);
+    draw_set_color(pode_dir ? c_white : make_color_rgb(60,65,85));
+    draw_text(btn_dir_x+btn_w2/2, btn_y2+10, "Proximo >");
+    draw_set_halign(fa_left);
+
+    draw_set_font(-1);
+    draw_set_alpha(1);
 }
 // =========================================
 // MENU DE PAUSE
