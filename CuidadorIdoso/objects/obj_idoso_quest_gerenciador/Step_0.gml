@@ -34,6 +34,41 @@ if !quest_ativa exit;
 if fase != 0 exit;
 
 // =========================================
+// FASES 1 E 2 -- antes do exit
+// =========================================
+if quest_ativa {
+
+    if fase == 1 {
+        var mx = device_mouse_x_to_gui(0);
+        var my = device_mouse_y_to_gui(0);
+        var gw = display_get_gui_width();
+
+        var clicou_botao = mouse_check_button_pressed(mb_left)
+            && point_in_rectangle(mx, my, gw/2-180, 358, gw/2+180, 402);
+
+        if clicou_botao || keyboard_check_pressed(ord("E")) {
+            fase = 2;
+        }
+    }
+
+    if fase == 2 && keyboard_check_pressed(ord("E")) {
+        mini_completa[mini_quest_atual] = true;
+        obj_quest_gerenciador.ganhar_moedas(10);
+
+        if mini_quest_atual < 2 {
+            iniciar_mini_quest(mini_quest_atual + 1);
+        } else {
+            quest_ativa = false;
+            obj_quest_gerenciador.marcar_quest_completa(4);
+            obj_quest_gerenciador.quest_idoso_concluida = true;
+        }
+    }
+}
+
+if !quest_ativa exit;
+if fase != 0 exit;
+
+// =========================================
 // ARRASTO -- so roda na fase 0
 // =========================================
 var mx = device_mouse_x_to_gui(0);
@@ -42,7 +77,14 @@ var gw = display_get_gui_width();
 var gh = display_get_gui_height();
 var num = obter_num_itens();
 
-var cat_gap = (gw - 3*cat_w) / 4;
+// Define a quantidade de categorias baseado na mini-quest atual
+var qtd_categorias = 2; 
+if (mini_quest_atual == 2) {
+    qtd_categorias = 3;
+}
+
+// Ajuste dinâmico do espaçamento das categorias para bater com o Draw GUI
+var cat_gap = (gw - qtd_categorias * cat_w) / (qtd_categorias + 1);
 var cat_y   = 80;
 
 // SOLTAR ITEM
@@ -50,7 +92,7 @@ if item_arrastando != -1 && mouse_check_button_released(mb_left) {
     var solto = false;
 
     var c = 0;
-    repeat (3) {
+    repeat (qtd_categorias) {
         var cat_x = cat_gap + c * (cat_w + cat_gap);
 
         if point_in_rectangle(mx, my, cat_x, cat_y, cat_x+cat_w, cat_y+cat_h) {

@@ -16,32 +16,19 @@ cena_jaleco_concluida = false;
 /////////TABLET//////////
 
 // === ABA GUIA DO TABLET ===
-guia_aberto		  = false;
 guia_pagina_atual = 0;
-guia_num_paginas  = 10;
+guia_num_paginas  = 4;
 
 // Sprites de cada página do guia
 
-guia_sprites[0] = -1;
-guia_sprites[1] = -1;
-guia_sprites[2] = -1;
-guia_sprites[3] = -1;
-guia_sprites[4] = -1;
-guia_sprites[5] = -1;
-guia_sprites[6] = -1;
-guia_sprites[7] = -1;
-guia_sprites[8] = -1;
-guia_sprites[9] = -1;
+guia_sprites[0] = spr_decomposicao;
+guia_sprites[1] = spr_padroes;
+guia_sprites[2] = spr_abstracao;
+guia_sprites[3] = spr_algoritimo;
 
 guia_nomes[0] = "Decomposicao";
 guia_nomes[1] = "Reconhecimento de Padroes";
 guia_nomes[2] = "Abstracao";
-guia_nomes[3] = "Criacao de Algoritmos";
-guia_nomes[3] = "Criacao de Algoritmos";
-guia_nomes[3] = "Criacao de Algoritmos";
-guia_nomes[3] = "Criacao de Algoritmos";
-guia_nomes[3] = "Criacao de Algoritmos";
-guia_nomes[3] = "Criacao de Algoritmos";
 guia_nomes[3] = "Criacao de Algoritmos";
 
 
@@ -65,7 +52,7 @@ quest_nome[2] = "Abstração";
 quest_nome[3] = "Criação de Algoritmos";
 
 integradora_completa = false;
-tablet_recebido = true;
+tablet_recebido = false;
 
 
 inventario = [];

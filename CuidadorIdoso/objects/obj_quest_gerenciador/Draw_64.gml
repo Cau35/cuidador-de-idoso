@@ -230,10 +230,10 @@ function desenhar_overlay_plantao() {
 
     // Fase 0 — Relato com digitação
     if p3_fase == 0 {
-        var sw = sprite_get_width(spr_eliza);
-        var sh = sprite_get_height(spr_eliza);
+        var sw = sprite_get_width(spr_marcio);
+        var sh = sprite_get_height(spr_marcio);
         var escala = 520/sh;
-        draw_sprite_ext(spr_eliza,0,40,80,escala,escala,0,c_white,1);
+        draw_sprite_ext(spr_marcio,0,40,80,escala,escala,0,c_white,1);
 
         var cx=360; var cy=80; var cw=880; var ch=520;
         draw_set_color(make_color_rgb(240,246,255));

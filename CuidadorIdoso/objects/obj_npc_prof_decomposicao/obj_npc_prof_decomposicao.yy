@@ -40,7 +40,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_eliza",
+    "path":"sprites/spr_eliza/spr_eliza.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

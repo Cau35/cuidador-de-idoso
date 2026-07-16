@@ -41,8 +41,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_acacia_caminhando_baixo",
-    "path":"sprites/spr_acacia_caminhando_baixo/spr_acacia_caminhando_baixo.yy",
+    "name":"spr_acacia_parada_baixo",
+    "path":"sprites/spr_acacia_parada_baixo/spr_acacia_parada_baixo.yy",
   },
   "spriteMaskId":{
     "name":"spr_acacia_parada_baixo",

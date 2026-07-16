@@ -9,7 +9,7 @@
   "canGenerateBitmap":true,
   "charset":0,
   "first":0,
-  "fontName":"Arial",
+  "fontName":"Arabic Transparent",
   "glyphOperations":0,
   "glyphs":{
     "32":{"character":32,"h":19,"offset":0,"shift":4,"w":4,"x":2,"y":2,},
@@ -207,7 +207,7 @@
     "8226":{"character":8226,"h":19,"offset":0,"shift":6,"w":5,"x":231,"y":44,},
     "8592":{"character":8592,"h":19,"offset":0,"shift":16,"w":16,"x":2,"y":65,},
     "8594":{"character":8594,"h":19,"offset":0,"shift":16,"w":16,"x":20,"y":65,},
-    "9647":{"character":9647,"h":19,"offset":3,"shift":16,"w":10,"x":78,"y":86,},
+    "9647":{"character":9647,"h":19,"offset":4,"shift":16,"w":10,"x":78,"y":86,},
     "9660":{"character":9660,"h":19,"offset":2,"shift":16,"w":12,"x":70,"y":170,},
   },
   "hinting":0,

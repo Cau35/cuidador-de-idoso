@@ -36,13 +36,20 @@ draw_text(gw/2, 44, prog);
 draw_set_halign(fa_left);
 
 // =========================================
-// 3 CATEGORIAS (painel superior)
+// CATEGORIAS (painel superior) - CORRIGIDO E DINÂMICO
 // =========================================
-var cat_gap = (gw - 3*cat_w) / 4;
+// Define a quantidade de categorias baseado na mini-quest atual
+var qtd_categorias = 2; 
+if (mini_quest_atual == 2) {
+    qtd_categorias = 3; // Apenas a última missão tem 3 categorias
+}
+
+// Calcula o espaçamento dinamicamente para que fiquem sempre centralizadas
+var cat_gap = (gw - qtd_categorias * cat_w) / (qtd_categorias + 1);
 var cat_y   = 80;
 
 var c = 0;
-repeat (3) {
+repeat (qtd_categorias) { // Mudado de 'repeat(3)' para a variável dinâmica
     var cat_x = cat_gap + c * (cat_w + cat_gap);
 
     // Cor da categoria

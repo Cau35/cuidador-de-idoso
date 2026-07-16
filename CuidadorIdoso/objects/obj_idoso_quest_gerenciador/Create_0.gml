@@ -11,14 +11,12 @@ fase             = 0; // 0=jogando | 1=feedback | 2=tutor
 
 
 // Mini-quest 1 — Higiene e Conforto
-cat_nomes0[0] = "Higiene Pessoal";
-cat_nomes0[1] = "Conforto e Repouso";
-cat_nomes0[2] = "Nao e item de cuidado";
+cat_nomes0[0] = "Conduta Correta";
+cat_nomes0[1] = "Conduta Errada";
 
 // Mini-quest 2 — Sinais de Alerta
-cat_nomes1[0] = "Sinal de Alerta";
-cat_nomes1[1] = "Normal para a idade";
-cat_nomes1[2] = "Ambiente seguro";
+cat_nomes1[0] = "Lateralização";
+cat_nomes1[1] = "Troca de Lençol";
 
 // Mini-quest 3 — Alimentacao e Hidratacao
 cat_nomes2[0] = "Recomendado";
@@ -32,46 +30,46 @@ cat_nomes2[2] = "Adaptar para o idoso";
 // =========================================
 
 // Mini-quest 1 — 6 itens
-mq0_sprites[0] = -1;         // Higiene Pessoal
-mq0_sprites[1] = -1;       // Higiene Pessoal
-mq0_sprites[2] = -1;  // Higiene Pessoal
-mq0_sprites[3] = -1;    // Conforto e Repouso
-mq0_sprites[4] = -1;        // Conforto e Repouso
-mq0_sprites[5] = -1;        // Nao e item de cuidado
-mq0_nomes[0] = "Toalha";
-mq0_nomes[1] = "Sabonete";
-mq0_nomes[2] = "Escova";
-mq0_nomes[3] = "Travesseiro";
-mq0_nomes[4] = "Coberta";
-mq0_nomes[5] = "Celular";
+mq0_sprites[0] = V1;         // Higiene Pessoal
+mq0_sprites[1] = V2;       // Higiene Pessoal
+mq0_sprites[2] = V3;  // Higiene Pessoal
+mq0_sprites[3] = F1;    // Conforto e Repouso
+mq0_sprites[4] = F2;        // Conforto e Repouso
+mq0_nomes[0] = "Paciente Alinhado";
+mq0_nomes[1] = "Fralda Ajustada";
+mq0_nomes[2] = "Lençol Liso";
+mq0_nomes[3] = "Fralda com Dobra";
+mq0_nomes[4] = "Lençol Enrrugado";
 mq0_correto[0] = 0; // Higiene Pessoal
 mq0_correto[1] = 0; // Higiene Pessoal
 mq0_correto[2] = 0; // Higiene Pessoal
 mq0_correto[3] = 1; // Conforto e Repouso
 mq0_correto[4] = 1; // Conforto e Repouso
-mq0_correto[5] = 2; // Nao e item de cuidado
-mq0_num_itens  = 6;
+mq0_num_itens  = 5;
 
 // Mini-quest 2 — 6 itens
-mq1_sprites[0] = -1;          // Sinal de Alerta
-mq1_sprites[1] = -1;   // Sinal de Alerta
-mq1_sprites[2] = -1;  // Normal para a idade
-mq1_sprites[3] = -1;        // Normal para a idade
-mq1_sprites[4] = -1;    // Ambiente seguro
-mq1_sprites[5] = -1;     // Ambiente seguro
-mq1_nomes[0] = "Queda";
-mq1_nomes[1] = "Pressao Alta";
-mq1_nomes[2] = "Cabelo Branco";
-mq1_nomes[3] = "Bengala";
-mq1_nomes[4] = "Tapete Antiderrapante";
-mq1_nomes[5] = "Grade na Cama";
+mq1_sprites[0] = la3;          // Sinal de Alerta
+mq1_sprites[1] = la2;   // Sinal de Alerta
+mq1_sprites[2] = la1;  // Normal para a idade
+mq1_sprites[3] = trle;        // Normal para a idade
+mq1_sprites[4] = trle2;    // Ambiente seguro
+mq1_sprites[5] = trle3;     // Ambiente seguro
+mq1_sprites[6] = trle4;     // Ambiente seguro
+mq1_nomes[0] = "Lateralizar o Paciente";
+mq1_nomes[1] = "Posicionar Fralda";
+mq1_nomes[2] = "Ajustar e Conferir";
+mq1_nomes[3] = "Tirar o Lençol";
+mq1_nomes[4] = "Ajustar Paciente";
+mq1_nomes[5] = "Soltar Lençol";
+mq1_nomes[6] = "Esticar e Finalizar";
 mq1_correto[0] = 0; // Sinal de Alerta
 mq1_correto[1] = 0; // Sinal de Alerta
-mq1_correto[2] = 1; // Normal para a idade
+mq1_correto[2] = 0; // Normal para a idade
 mq1_correto[3] = 1; // Normal para a idade
-mq1_correto[4] = 2; // Ambiente seguro
-mq1_correto[5] = 2; // Ambiente seguro
-mq1_num_itens  = 6;
+mq1_correto[4] = 1; // Ambiente seguro
+mq1_correto[5] = 1; // Ambiente seguro
+mq1_correto[6] = 1; // Ambiente seguro
+mq1_num_itens  = 7;
 
 // Mini-quest 3 — 6 itens
 mq2_sprites[0] = spr_item_agua;           // Recomendado
