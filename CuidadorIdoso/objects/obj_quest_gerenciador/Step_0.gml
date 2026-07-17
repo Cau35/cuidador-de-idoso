@@ -1,9 +1,41 @@
+// =====================================================================================
+// 🛡️ BLOCO DE SEGURANÇA (Inicialização Automática)
+// Impede travamentos caso alguma variável não tenha sido criada no Create Event.
+// =====================================================================================
+if (!variable_instance_exists(id, "guia_aberto")) { guia_aberto = false; }
+if (!variable_instance_exists(id, "guia_pagina_atual")) { guia_pagina_atual = 0; }
+if (!variable_instance_exists(id, "guia_num_paginas")) { guia_num_paginas = 1; }
+if (!variable_instance_exists(id, "pausado")) { pausado = false; }
+if (!variable_instance_exists(id, "pause_aba")) { pause_aba = 0; }
+if (!variable_instance_exists(id, "save_slot_existe")) { save_slot_existe = false; }
+if (!variable_instance_exists(id, "tablet_aberto")) { tablet_aberto = false; }
+if (!variable_instance_exists(id, "tablet_aba")) { tablet_aba = -1; }
+if (!variable_instance_exists(id, "tablet_recebido")) { tablet_recebido = false; }
+if (!variable_instance_exists(id, "quest_overlay_ativa")) { quest_overlay_ativa = -1; }
+if (!variable_instance_exists(id, "hud_moeda_anim")) { hud_moeda_anim = 0; }
+if (!variable_instance_exists(id, "hud_npc_perto")) { hud_npc_perto = false; }
+if (!variable_instance_exists(id, "hud_npc_nome")) { hud_npc_nome = ""; }
+if (!variable_instance_exists(id, "hud_npc_perto_proximo_frame")) { hud_npc_perto_proximo_frame = false; }
+if (!variable_instance_exists(id, "hud_npc_nome_proximo_frame")) { hud_npc_nome_proximo_frame = ""; }
+
+// Variáveis específicas da Quest 2 e 3 (caso não existam)
+if (!variable_instance_exists(id, "p2_fase")) { p2_fase = 0; }
+if (!variable_instance_exists(id, "p2_resposta_correta")) { p2_resposta_correta = 0; }
+if (!variable_instance_exists(id, "p2_resposta_selecionada")) { p2_resposta_selecionada = -1; }
+if (!variable_instance_exists(id, "p3_fase")) { p3_fase = 0; }
+if (!variable_instance_exists(id, "p3_digitacao_completa")) { p3_digitacao_completa = false; }
+if (!variable_instance_exists(id, "p3_timer_digitar")) { p3_timer_digitar = 0; }
+if (!variable_instance_exists(id, "p3_char_index")) { p3_char_index = 0; }
+if (!variable_instance_exists(id, "p3_texto_atual")) { p3_texto_atual = ""; }
+if (!variable_instance_exists(id, "p3_relato")) { p3_relato = ""; }
+if (!variable_instance_exists(id, "p3_itens_selecionados")) { p3_itens_selecionados = 0; }
+// =====================================================================================
+
 dialogo_npc_ativo = false;
 
-
 if pausado && mouse_check_button_pressed(mb_left) {
-	var mx = device_mouse_x_to_gui(0);
-	var my = device_mouse_y_to_gui(0);
+    var mx = device_mouse_x_to_gui(0);
+    var my = device_mouse_y_to_gui(0);
     var gw = display_get_gui_width();
     var gh = display_get_gui_height();
 
@@ -81,19 +113,14 @@ if keyboard_check_pressed(vk_escape) && !dialogo_rolando {
     }
 }
 
-
-
-
 if hud_moeda_anim > 0 {
     hud_moeda_anim--;
 }
-
 
 hud_npc_perto = hud_npc_perto_proximo_frame;
 hud_npc_nome  = hud_npc_nome_proximo_frame;
 hud_npc_perto_proximo_frame = false;
 hud_npc_nome_proximo_frame  = "";
-
 
 if keyboard_check_pressed(ord("T")) && tablet_recebido {
     tablet_aberto = !tablet_aberto;
@@ -119,7 +146,6 @@ if guia_aberto && mouse_check_button_pressed(mb_left) {
     // Botão voltar
     if point_in_rectangle(mx, my, g_x+10, g_y+8, g_x+110, g_y+44) {
         guia_aberto   = false;
-        // Volta para a aba do guia no tablet
         tablet_aba    = -1;
         tablet_aberto = true;
         exit;
@@ -146,7 +172,7 @@ if guia_aberto && mouse_check_button_pressed(mb_left) {
 if tablet_aberto && mouse_check_button_pressed(mb_left) {
     var mx = device_mouse_x_to_gui(0);
     var my = device_mouse_y_to_gui(0);
-	
+    
     var tab_w = 380; var tab_h = 620;
     var tab_x = display_get_gui_width()/2  - tab_w/2;
     var tab_y = display_get_gui_height()/2 - tab_h/2;
@@ -167,65 +193,56 @@ if tablet_aberto && mouse_check_button_pressed(mb_left) {
         }
     }
 
-    // Clique nos botões da home
-   // Dentro do repeat(4) de clique nos icones da home
-// Quando i == 3 (Guia), abre o painel em vez de mudar aba
-if tablet_aba == -1 {
-    var icone_h = 80; var gap = 16;
-    var start_y = tela_y + 100;
-    var ix = tela_x + 20; var iw = tela_w - 40;
-    var i = 0;
-    repeat (4) {
-        var iy = start_y + i*(icone_h+gap);
-        if point_in_rectangle(mx, my, ix, iy, ix+iw, iy+icone_h) {
-            if i == 3 {
-                // Guia abre o painel separado
-                tablet_aberto     = false;
-                guia_aberto       = true;
-                guia_pagina_atual = 0;
-            } else {
-                tablet_aba = i;
+    // Clique nos botões da home (tablet_aba == -1)
+    if tablet_aba == -1 {
+        var icone_h = 80; var gap = 16;
+        var start_y = tela_y + 100;
+        var ix = tela_x + 20; var iw = tela_w - 40;
+        var i = 0;
+        repeat (4) {
+            var iy = start_y + i*(icone_h+gap);
+            if point_in_rectangle(mx, my, ix, iy, ix+iw, iy+icone_h) {
+                if i == 3 {
+                    // Guia abre o painel separado
+                    tablet_aberto     = false;
+                    guia_aberto       = true;
+                    guia_pagina_atual = 0;
+                } else {
+                    tablet_aba = i;
+                }
+                exit;
             }
-            exit;
-        }
-        i++;
-    }
-}
-	// Clique nas setas do guia
-if tablet_aba == 3 {
-    var tela_x = tab_x + 22;
-    var tela_y = tab_y + 55;
-    var tela_w = tab_w - 44;
-    var tela_h = tab_h - 110;
-
-    var seta_y  = tela_y + tela_h - 52;
-    var seta_w  = 60; var seta_h = 36;
-
-    // Seta esquerda
-    if point_in_rectangle(mx, my,
-        tela_x+20, seta_y, tela_x+20+seta_w, seta_y+seta_h) {
-        if guia_pagina_atual > 0 {
-            guia_pagina_atual--;
+            i++;
         }
     }
+    
+    // Clique nas setas do guia (dentro do tablet se a aba for 3)
+    if tablet_aba == 3 {
+        var tela_x_guia = tab_x + 22;
+        var tela_y_guia = tab_y + 55;
+        var tela_w_guia = tab_w - 44;
+        var tela_h_guia = tab_h - 110;
 
-    // Seta direita
-    if point_in_rectangle(mx, my,
-        tela_x+tela_w-20-seta_w, seta_y,
-        tela_x+tela_w-20, seta_y+seta_h) {
-        if guia_pagina_atual < guia_num_paginas-1 {
-            guia_pagina_atual++;
+        var seta_y  = tela_y_guia + tela_h_guia - 52;
+        var seta_w  = 60; var seta_h = 36;
+
+        // Seta esquerda
+        if point_in_rectangle(mx, my, tela_x_guia+20, seta_y, tela_x_guia+20+seta_w, seta_y+seta_h) {
+            if guia_pagina_atual > 0 {
+                guia_pagina_atual--;
+            }
+        }
+
+        // Seta direita
+        if point_in_rectangle(mx, my, tela_x_guia+tela_w_guia-20-seta_w, seta_y, tela_x_guia+tela_w_guia-20, seta_y+seta_h) {
+            if guia_pagina_atual < guia_num_paginas-1 {
+                guia_pagina_atual++;
+            }
         }
     }
 }
-	// Draw GUI — temporário
-draw_set_color(c_red);
-draw_rectangle(tela_x, tela_y, tela_x+tela_w, tela_y+tela_h, true);
-}
-
 
 if quest_overlay_ativa == 1 {
-
     if p2_fase == 0 && keyboard_check_pressed(ord("E")) {
         p2_fase = 1;
     }
@@ -274,11 +291,7 @@ if quest_overlay_ativa == 1 {
     }
 }
 
-
-
 if quest_overlay_ativa == 2 {
-
-
     if p3_fase == 0 && !p3_digitacao_completa {
         p3_timer_digitar++;
         if p3_timer_digitar >= 1 {
@@ -296,26 +309,20 @@ if quest_overlay_ativa == 2 {
     var mx =  device_mouse_x_to_gui(0);
     var my =  device_mouse_y_to_gui(0);
 
-
     if p3_fase == 0 {
         if (keyboard_check_pressed(ord("E")) || clicou) {
             if !p3_digitacao_completa {
-               
                 p3_texto_atual = p3_relato;
                 p3_char_index  = string_length(p3_relato);
                 p3_digitacao_completa = true;
             } else {
-
                 p3_fase = 1;
             }
         }
     }
 
-
     else if p3_fase == 1 && clicou {
-     
-        if p3_itens_selecionados == 2
-        && point_in_rectangle(mx, my, 980, 660, 1240, 704) {
+        if p3_itens_selecionados == 2 && point_in_rectangle(mx, my, 980, 660, 1240, 704) {
             var certos = 0;
             for (var i = 0; i < 6; i++) {
                 if p3_itens_sel[i] && p3_itens_corretos[i] certos++;
@@ -351,7 +358,6 @@ if quest_overlay_ativa == 2 {
         }
     }
 
-    
     else if p3_fase == 3 && keyboard_check_pressed(ord("E")) {
         marcar_quest_completa(2);
         fechar_quest_overlay();
