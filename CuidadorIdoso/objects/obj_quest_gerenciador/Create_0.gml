@@ -17,22 +17,32 @@ cena_jaleco_concluida = false;
 
 // === ABA GUIA DO TABLET ===
 guia_pagina_atual = 0;
-guia_num_paginas  = 4;
+guia_num_paginas  = 10;
 
 // Sprites de cada página do guia
 
-guia_sprites[0] = spr_decomposicao;
-guia_sprites[1] = spr_padroes;
-guia_sprites[2] = spr_abstracao;
-guia_sprites[3] = spr_algoritimo;
+guia_sprites[0] = spr_trl1;
+guia_sprites[1] = spr_trl2;
+guia_sprites[2] = spr_trl3;
+guia_sprites[3] = spr_trl4;
+guia_sprites[4] = spr_fralda;
+guia_sprites[5] = spr_laterizacao;
+guia_sprites[6] = spr_decomposicao;
+guia_sprites[7] = spr_padroes;
+guia_sprites[8] = spr_abstracao;
+guia_sprites[9] = spr_algoritimo;
 
-guia_nomes[0] = "Decomposicao";
-guia_nomes[1] = "Reconhecimento de Padroes";
-guia_nomes[2] = "Abstracao";
-guia_nomes[3] = "Criacao de Algoritmos";
 
-
-
+guia_nomes[0] = "Troca de lençol Parte 1";
+guia_nomes[1] = "Troca de lençol Parte 2";
+guia_nomes[2] = "Troca de lençol Parte 3";
+guia_nomes[3] = "Troca de lençol Parte 4";
+guia_nomes[4] = "Troca de Fralda";
+guia_nomes[5] = "Lateralização";
+guia_nomes[6] = "Decomposicao";
+guia_nomes[7] = "Reconhecimento de Padroes";
+guia_nomes[8] = "Abstracao";
+guia_nomes[9] = "Criacao de Algoritmos";
 
 if instance_number(obj_quest_gerenciador) > 1 {
     instance_destroy();
