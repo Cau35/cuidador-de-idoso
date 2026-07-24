@@ -10,8 +10,8 @@ char_index         = 0;
 timer_digitar      = 0;
 digitacao_completa = false;
 
-falas[0] = "Bem-vinda! Antes de qualquer coisa, precisamos aprender a dividir problemas grandes em partes menores.";
-falas[1] = "Isso se chama abstracao. Vamos praticar com um desafio real de cuidado domiciliar!";
+falas[0] = "Um algoritmo é uma sequência de passos organizados para realizar uma tarefa. No cuidado com a pessoa idosa, isso aparece quando seguimos uma ordem correta: primeiro observar a situação, depois preparar os materiais, executar o cuidado e, por fim, conferir se tudo ficou seguro.";
+falas[1] = "Quando seguimos uma boa sequência, evitamos erros e cuidamos melhor.";
 num_falas = 2;
 
 function iniciar_interacao() {

@@ -73,11 +73,11 @@ mq1_num_itens  = 7;
 
 // Mini-quest 3 — 6 itens
 mq2_sprites[0] = spr_item_agua;           // Recomendado
-mq2_sprites[1] = -1;          // Recomendado
-mq2_sprites[2] = -1;   // Evitar
-mq2_sprites[3] = -1;            // Evitar
-mq2_sprites[4] = -1;    // Adaptar
-mq2_sprites[5] = -1;         // Adaptar
+mq2_sprites[1] = fruta;          // Recomendado
+mq2_sprites[2] = refrigerante;   // Evitar
+mq2_sprites[3] = sal;            // Evitar
+mq2_sprites[4] = comida;    // Adaptar
+mq2_sprites[5] = canudo;         // Adaptar
 mq2_nomes[0] = "Agua";
 mq2_nomes[1] = "Fruta";
 mq2_nomes[2] = "Refrigerante";

@@ -10,8 +10,8 @@ char_index         = 0;
 timer_digitar      = 0;
 digitacao_completa = false;
 
-falas[0] = "...";
-falas[1] = "...";
+falas[0] = "Reconhecimento de padrões é a habilidade de observar informações e perceber o que se repete. No cuidado com a pessoa idosa, isso é muito importante, porque sinais repetidos podem indicar que algo não está bem. Um comportamento isolado pode não dizer muita coisa, mas quando ele aparece várias vezes, precisamos prestar atenção.";
+falas[1] = "Agora você vai analisar três prontuários médicos de uma mesma pessoa idosa. Observe os registros com atenção e descubra qual variável se repete. Essa repetição pode ajudar a entender a causa da agitação do idoso. Compare os prontuários, identifique o padrão e escolha a resposta correta.";
 num_falas = 2;
 
 function iniciar_interacao() {

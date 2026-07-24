@@ -29,7 +29,7 @@ slot_errado[4]  = false;
 passo_rotulo[0] = "Passo 1 - Comunicacao";
 passo_rotulo[1] = "Passo 2 - Logistica";
 passo_rotulo[2] = "Passo 3 - Seguranca Fisica";
-passo_rotulo[3] = "Passo 4 - Prevencao Fisiologica";
+passo_rotulo[3] = "Passo 4 - Prevencao";
 passo_rotulo[4] = "Passo 5 - Execucao";
 
 dica_slot[0] = "Dica: O que vem antes de qualquer toque?";

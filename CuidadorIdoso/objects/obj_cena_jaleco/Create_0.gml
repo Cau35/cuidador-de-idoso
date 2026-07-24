@@ -20,8 +20,8 @@ falas_pre_quiz[2] = { falante: "aluna",      texto: "sim. " };
 num_falas_pre_quiz = 3;
 
 // === FALAS NA ENTREGA DO TABLET ===
-falas_tablet[0] = { falante: "professora", texto: "COLOQUE SUA FALA AQUI" };
-falas_tablet[1] = { falante: "aluna",      texto: "COLOQUE SUA FALA AQUI" };
+falas_tablet[0] = { falante: "professora", texto: "Parabéns! Você demonstrou que conseguiu assimilar bem os conceitos. Agora vamos pôr esse conhecimento em prática." };
+falas_tablet[1] = { falante: "aluna",      texto: "Agora me sinto mais segura. Vamos lá!" };
 // adicione ou remova linhas conforme necessário
 num_falas_tablet = 2; // ajuste para o número de falas que tiver
 
