@@ -12,7 +12,6 @@ if (instance_exists(obj_npc_prof_abstracao) && obj_npc_prof_abstracao.dialogo_at
 if (instance_exists(obj_npc_prof_padroes) && obj_npc_prof_padroes.dialogo_ativo) exit;
 if (instance_exists(obj_npc_prof_algoritmos) && obj_npc_prof_algoritmos.dialogo_ativo) exit;
 
-
 if (instance_exists(obj_idoso_quest_gerenciador)
     && obj_idoso_quest_gerenciador.quest_ativa) exit;
 
@@ -58,16 +57,58 @@ var tem_jaleco = instance_exists(obj_quest_gerenciador)
     && obj_quest_gerenciador.jaleco_vestido;
 
 
+// --- INÍCIO DA ATUALIZAÇÃO DOS INPUTS ---
+
+// 1. Checa as direções no teclado
 var input_x = (keyboard_check(vk_right) || keyboard_check(ord("D")))
             - (keyboard_check(vk_left)  || keyboard_check(ord("A")));
 var input_y = (keyboard_check(vk_down)  || keyboard_check(ord("S")))
             - (keyboard_check(vk_up)    || keyboard_check(ord("W")));
 
+// Captura as ações no teclado
+var tecla_interagir = keyboard_check_pressed(ord("E"));     
+var tecla_cancelar  = keyboard_check_pressed(vk_escape) || keyboard_check_pressed(vk_shift); 
 
-if input_x != 0 && input_y != 0 {
-    input_x *= 0.7071;
-    input_y *= 0.7071;
+// 2. Procura qual controle está conectado (busca do slot 0 ao 11)
+var gp_id = -1;
+for (var i = 0; i < 12; i++) {
+    if (gamepad_is_connected(i)) {
+        gp_id = i;
+        break; // Encontrou um controle, para de procurar
+    }
 }
+
+// Se encontrou algum controle, faz a leitura
+if (gp_id != -1) {
+    var deadzone = 0.2;
+    gamepad_set_axis_deadzone(gp_id, deadzone);
+    
+    // Captura analógico
+    var axis_h = gamepad_axis_value(gp_id, gp_axislh);
+    var axis_v = gamepad_axis_value(gp_id, gp_axislv);
+    
+    // Captura D-pad (setinhas do controle)
+    var dpad_h = gamepad_button_check(gp_id, gp_padr) - gamepad_button_check(gp_id, gp_padl);
+    var dpad_v = gamepad_button_check(gp_id, gp_padd) - gamepad_button_check(gp_id, gp_padu);
+    
+    // Sobrescreve o input de movimento se o controle estiver sendo usado
+    if (abs(axis_h) > deadzone || abs(dpad_h) > 0) input_x = clamp(axis_h + dpad_h, -1, 1);
+    if (abs(axis_v) > deadzone || abs(dpad_v) > 0) input_y = clamp(axis_v + dpad_v, -1, 1);
+    
+    // Captura os botões de ação do controle
+    if (gamepad_button_check_pressed(gp_id, gp_face4)) tecla_interagir = true; // Triângulo (PS) / Y (Xbox)
+    if (gamepad_button_check_pressed(gp_id, gp_face2)) tecla_cancelar  = true; // Bola (PS) / B (Xbox)
+}
+
+// 3. Normalização atualizada para funcionar bem com analógicos e teclados
+var dist = point_distance(0, 0, input_x, input_y);
+if (dist > 1) {
+    input_x /= dist;
+    input_y /= dist;
+}
+
+// --- FIM DA ATUALIZAÇÃO DOS INPUTS ---
+
 
 var velocidade = 4;
 var mover_x = input_x * velocidade;
@@ -131,7 +172,3 @@ var half_h = sprite_height / 2;
 
 x = clamp(x, half_w, room_width - half_w);
 y = clamp(y, half_h, room_height - half_h);
-
-
-
-
