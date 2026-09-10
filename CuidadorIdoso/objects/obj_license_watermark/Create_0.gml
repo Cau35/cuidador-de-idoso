@@ -1,0 +1,1 @@
+// Garante que os macros estão carregados
