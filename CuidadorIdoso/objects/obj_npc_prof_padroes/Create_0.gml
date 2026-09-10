@@ -1,5 +1,5 @@
 event_inherited();
-nome_npc      = "Professor de padroes"
+nome_npc      = "Raviel"
 indice_quest  = 1;
 
 dialogo_ativo      = false;

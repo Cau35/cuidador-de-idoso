@@ -1,5 +1,5 @@
 event_inherited();
-nome_npc      = "Professor de Decomposicao";
+nome_npc      = "Elisa";
 indice_quest  = 0;
 
 dialogo_ativo      = false;
@@ -11,9 +11,9 @@ timer_digitar      = 0;
 digitacao_completa = false;
 
 falas = [
-    "Agora vamos aprender sobre decomposição, uma habilidade muito importante para resolver problemas.Quando uma tarefa parece grande ou complicada, a melhor estratégia é dividi-la em partes menores e mais fáceis de organizar. ",
-    ". Neste desafio, imagine que você está se preparando para uma visita domiciliar. ",
-    "Arraste cada item para a caixa correspondente à etapa em que ele será utilizado: o que preciso vestir/usar, o que preciso levar para registrar o cuidado e o que preciso conferir antes de sair. Vamos comecar o desafio?"
+    "Agora vamos aprender sobre decomposição, uma habilidade muito importante para resolver problemas. Quando uma tarefa parece grande ou complicada, a melhor estratégia é dividi-la em partes menores e mais fáceis de organizar.",
+    "Neste desafio, imagine que você está se preparando para uma visita domiciliar.",
+    "Arraste cada item para a caixa correspondente à etapa em que ele será utilizado: o que preciso vestir/usar, o que preciso levar para registrar o cuidado e o que preciso conferir antes de sair. Vamos começar o desafio?"
 ];
 num_falas = array_length(falas);
 

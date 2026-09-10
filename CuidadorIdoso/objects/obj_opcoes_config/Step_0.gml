@@ -41,7 +41,7 @@ if (opcao_selecionada == 0 && mouse_check_button(mb_left)) {
 if (keyboard_check_pressed(vk_up)) {
     opcao_selecionada--;
     if (opcao_selecionada < 0) opcao_selecionada = total_opcoes - 1;
-    audio_play_sound(snd_citysound, 1, false); // Som opc
+    audio_play_sound(snd_backsound, 1, false); // Som opc
 }
 
 if (keyboard_check_pressed(vk_down)) {

@@ -1,6 +1,6 @@
 // --- VARIÁVEIS BÁSICAS ---
 raio_interacao = 64;
-nome_npc = "Idoso";
+nome_npc = "Mel";
 room_destino = room_deomposicao_1; // Mude "Room2" para o nome exato da room que você quer abrir!
 
 // --- VARIÁVEIS DE DIÁLOGO ---

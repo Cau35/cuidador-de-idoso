@@ -12,7 +12,7 @@ timer_digitar      = 0;
 digitacao_completa = false;
 
 falas[0] = "Bem-vinda! Antes de qualquer coisa, precisamos aprender a dividir problemas grandes em partes menores.";
-falas[1] = "Isso se chama Decomposicao. Vamos praticar com um desafio real de cuidado domiciliar!";
+falas[1] = "Isso se chama decomposição. Vamos praticar com um desafio real de cuidado domiciliar!";
 num_falas = 2;
 
 function iniciar_interacao() {

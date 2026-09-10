@@ -21,6 +21,7 @@
     {"name":"inst_419A6AB1","path":"rooms/room_quarto_idoso/room_quarto_idoso.yy",},
     {"name":"inst_7A14198","path":"rooms/room_quarto_idoso/room_quarto_idoso.yy",},
     {"name":"inst_113ACB05","path":"rooms/room_quarto_idoso/room_quarto_idoso.yy",},
+    {"name":"inst_DD0CBD3","path":"rooms/room_quarto_idoso/room_quarto_idoso.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -44,6 +45,7 @@
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":190.0,},
         {"$GMRInstance":"v4","%Name":"inst_419A6AB1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_419A6AB1","objectId":{"name":"obj_npc_cordenadora","path":"objects/obj_npc_cordenadora/obj_npc_cordenadora.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1050.0,"y":320.0,},
         {"$GMRInstance":"v4","%Name":"inst_7A14198","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7A14198","objectId":{"name":"obj_idoso_quest_gerenciador","path":"objects/obj_idoso_quest_gerenciador/obj_idoso_quest_gerenciador.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-30.0,"y":290.0,},
+        {"$GMRInstance":"v4","%Name":"inst_DD0CBD3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_DD0CBD3","objectId":{"name":"obj_som_jogo","path":"objects/obj_som_jogo/obj_som_jogo.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":850.0,"y":500.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets_2","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_39757C1C","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_39757C1C","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":0.53846157,"scaleY":0.45321402,"spriteId":{"name":"spr_bb_idoso","path":"sprites/spr_bb_idoso/spr_bb_idoso.yy",},"x":670.0,"y":337.0,},

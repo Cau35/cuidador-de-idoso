@@ -13,9 +13,9 @@ spr_jaleco_icone = spr_item_jaleco;
 
 
 // === FALAS ANTES DO QUIZ ===
-falas_pre_quiz[0] = { falante: "professora", texto: "Agora vamos fazer sua avaliacao final, vamos ver se voce esta pronta para cuidar do idoso. " };
-falas_pre_quiz[1] = { falante: "professora", texto: "voce esta pronta? "  };
-falas_pre_quiz[2] = { falante: "aluna",      texto: "sim. " };
+falas_pre_quiz[0] = { falante: "professora", texto: "Agora vamos fazer sua avaliação final; vamos ver se você está pronta para cuidar do idoso."};
+falas_pre_quiz[1] = { falante: "professora", texto: "Você está pronta?"  };
+falas_pre_quiz[2] = { falante: "aluna",      texto: "Sim. " };
 
 num_falas_pre_quiz = 3;
 

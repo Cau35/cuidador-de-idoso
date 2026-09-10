@@ -268,7 +268,7 @@ p2_registros[0]  = ["10:00  Banho realizado. Cooperativo.",
                      "11:00  PA: 120x80 mmHg.",
                      "11:30  Lanche: Suco e Bolacha.",
                      "12:30  Almoço: Ingesta 50%.  ⚠ Agitado."];
-p2_registros[1]  = ["10:30  Banho de leito. Resistente.",
+p2_registros[1]  = ["10:30  Banho no leito. Resistente.",
                      "11:30  PA: 130x85 mmHg.",
                      "11:45  Lanche: Água e Fruta.",
                      "12:30  Almoço: Ingesta 80%.  Calmo."];

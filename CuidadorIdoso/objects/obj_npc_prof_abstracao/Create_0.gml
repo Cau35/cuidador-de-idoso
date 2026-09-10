@@ -1,5 +1,5 @@
 event_inherited();
-nome_npc      = "Professor de abstracao";
+nome_npc      = "Márcio";
 indice_quest  = 2;
 
 dialogo_ativo      = false;
@@ -11,7 +11,7 @@ timer_digitar      = 0;
 digitacao_completa = false;
 
 falas[0] = "Bem-vinda! Antes de qualquer coisa, precisamos aprender a dividir problemas grandes em partes menores.";
-falas[1] = "Isso se chama abstracao. Vamos praticar com um desafio real de cuidado domiciliar!";
+falas[1] = "Isso se chama abstração. Vamos praticar com um desafio real de cuidado domiciliar!";
 num_falas = 2;
 
 function iniciar_interacao() {
